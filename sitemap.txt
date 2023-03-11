@@ -1,2 +1,5 @@
+http://example.com/2023/03/11/two/
 http://example.com/2023/03/10/hello-world/
 http://example.com/
+http://example.com/tags/t/
+http://example.com/categories/t/
