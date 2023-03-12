@@ -1,5 +1,7 @@
+http://example.com/2023/03/12/%E7%AE%97%E6%B3%95/%E6%9A%B4%E5%8A%9B/
+http://example.com/categories/index.html
+http://example.com/2023/03/12/%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81/
 http://example.com/2023/03/12/%E6%95%99%E7%A8%8B/
-http://example.com/2023/03/12/%E6%9A%B4%E5%8A%9B/
 http://example.com/2023/03/11/two/
 http://example.com/2023/03/10/hello-world/
 http://example.com/
@@ -9,3 +11,4 @@ http://example.com/tags/hexo%E6%95%99%E7%A8%8B/
 http://example.com/categories/t/
 http://example.com/categories/%E7%AE%97%E6%B3%95/
 http://example.com/categories/hexo/
+http://example.com/categories/%E7%AE%97%E6%B3%95/%E6%9A%B4%E5%8A%9B/

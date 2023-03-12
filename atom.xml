@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-03-12T09:14:12.380Z</updated>
+  <updated>2023-03-12T14:24:59.311Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,19 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>动态</title>
+    <link href="http://example.com/2023/03/12/%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81/"/>
+    <id>http://example.com/2023/03/12/%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81/</id>
+    <published>2023-03-12T14:24:59.000Z</published>
+    <updated>2023-03-12T14:24:59.311Z</updated>
+    
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>教程</title>
@@ -35,15 +48,17 @@
   
   <entry>
     <title>暴力</title>
-    <link href="http://example.com/2023/03/12/%E6%9A%B4%E5%8A%9B/"/>
-    <id>http://example.com/2023/03/12/%E6%9A%B4%E5%8A%9B/</id>
+    <link href="http://example.com/2023/03/12/%E7%AE%97%E6%B3%95/%E6%9A%B4%E5%8A%9B/"/>
+    <id>http://example.com/2023/03/12/%E7%AE%97%E6%B3%95/%E6%9A%B4%E5%8A%9B/</id>
     <published>2023-03-12T08:06:00.000Z</published>
-    <updated>2023-03-12T08:06:48.074Z</updated>
+    <updated>2023-03-12T14:42:03.409Z</updated>
     
     
     
     
     <category term="算法" scheme="http://example.com/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="暴力" scheme="http://example.com/categories/%E7%AE%97%E6%B3%95/%E6%9A%B4%E5%8A%9B/"/>
     
     
     <category term="暴力" scheme="http://example.com/tags/%E6%9A%B4%E5%8A%9B/"/>
