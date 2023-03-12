@@ -3,4 +3,6 @@ http://example.com/2023/03/11/two/
 http://example.com/2023/03/10/hello-world/
 http://example.com/
 http://example.com/tags/t/
+http://example.com/tags/%E6%9A%B4%E5%8A%9B/
 http://example.com/categories/t/
+http://example.com/categories/%E7%AE%97%E6%B3%95/
