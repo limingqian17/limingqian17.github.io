@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-03-13T10:27:34.352Z</updated>
+  <updated>2023-03-13T10:31:22.160Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,12 +17,32 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>算法专题</title>
+    <link href="http://example.com/2023/03/13/%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%E4%B8%93%E9%A2%98/"/>
+    <id>http://example.com/2023/03/13/%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%E4%B8%93%E9%A2%98/</id>
+    <published>2023-03-13T10:31:22.000Z</published>
+    <updated>2023-03-13T10:31:22.160Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>C++笔记</title>
     <link href="http://example.com/2023/03/13/C++/C++%E7%AC%94%E8%AE%B0/"/>
     <id>http://example.com/2023/03/13/C++/C++%E7%AC%94%E8%AE%B0/</id>
     <published>2023-03-13T10:26:45.000Z</published>
-    <updated>2023-03-13T10:27:34.352Z</updated>
+    <updated>2023-03-13T10:30:27.784Z</updated>
     
+    <content type="html"><![CDATA[<h2 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;int&gt; A;</span><br><span class="line">A[0]=1;</span><br></pre></td></tr></table></figure><p>会报错，因为A还是空，需要A.push_back(1)</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;vector&quot;&gt;&lt;a href=&quot;#vector&quot; class=&quot;headerlink&quot; title=&quot;vector&quot;&gt;&lt;/a&gt;vector&lt;/h2&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=</summary>
+      
     
     
     
@@ -55,99 +75,6 @@
     
     
     <category term="算法" scheme="http://example.com/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>动态</title>
-    <link href="http://example.com/2023/03/12/%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81/"/>
-    <id>http://example.com/2023/03/12/%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81/</id>
-    <published>2023-03-12T14:24:59.000Z</published>
-    <updated>2023-03-12T14:24:59.311Z</updated>
-    
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>教程</title>
-    <link href="http://example.com/2023/03/12/%E6%95%99%E7%A8%8B/"/>
-    <id>http://example.com/2023/03/12/%E6%95%99%E7%A8%8B/</id>
-    <published>2023-03-12T09:13:50.000Z</published>
-    <updated>2023-03-12T09:14:12.380Z</updated>
-    
-    
-    
-    
-    <category term="hexo" scheme="http://example.com/categories/hexo/"/>
-    
-    
-    <category term="hexo教程" scheme="http://example.com/tags/hexo%E6%95%99%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>暴力</title>
-    <link href="http://example.com/2023/03/12/%E7%AE%97%E6%B3%95/%E6%9A%B4%E5%8A%9B/"/>
-    <id>http://example.com/2023/03/12/%E7%AE%97%E6%B3%95/%E6%9A%B4%E5%8A%9B/</id>
-    <published>2023-03-12T08:06:00.000Z</published>
-    <updated>2023-03-12T14:42:03.409Z</updated>
-    
-    
-    
-    
-    <category term="算法" scheme="http://example.com/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    <category term="暴力" scheme="http://example.com/categories/%E7%AE%97%E6%B3%95/%E6%9A%B4%E5%8A%9B/"/>
-    
-    
-    <category term="暴力" scheme="http://example.com/tags/%E6%9A%B4%E5%8A%9B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>two</title>
-    <link href="http://example.com/2023/03/11/two/"/>
-    <id>http://example.com/2023/03/11/two/</id>
-    <published>2023-03-11T15:49:34.000Z</published>
-    <updated>2023-03-11T15:50:08.941Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="adwa"><a href="#adwa" class="headerlink" title="adwa"></a>adwa</h1><h2 id="adwd"><a href="#adwd" class="headerlink" title="adwd"></a>adwd</h2><h3 id="wadw"><a href="#wadw" class="headerlink" title="wadw"></a>wadw</h3><h1 id="wadw-1"><a href="#wadw-1" class="headerlink" title="wadw"></a>wadw</h1>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;adwa&quot;&gt;&lt;a href=&quot;#adwa&quot; class=&quot;headerlink&quot; title=&quot;adwa&quot;&gt;&lt;/a&gt;adwa&lt;/h1&gt;&lt;h2 id=&quot;adwd&quot;&gt;&lt;a href=&quot;#adwd&quot; class=&quot;headerlink&quot; title=&quot;adwd&quot;&gt;&lt;/a</summary>
-      
-    
-    
-    
-    <category term="t" scheme="http://example.com/categories/t/"/>
-    
-    
-    <category term="t" scheme="http://example.com/tags/t/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://example.com/2023/03/10/hello-world/"/>
-    <id>http://example.com/2023/03/10/hello-world/</id>
-    <published>2023-03-10T03:21:09.301Z</published>
-    <updated>2023-03-11T15:40:23.623Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for</summary>
-      
-    
-    
-    
     
   </entry>
   
