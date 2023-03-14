@@ -18,14 +18,17 @@
   
   
   <title>算法专题 | Hexo</title>
-  <meta property="og:type" content="article">
+  <meta name="description" content="进度专题算法&gt;小算法&gt;STL&gt;c++&gt;机器学习&gt;项目3.14 25天暴力枚举[2]贪心[3]动态[3]排序[2]搜索[2]图论[2]数论[3]字符串算法[2]数据结构[2] 暴力枚举枚举排列生成1~n的全排列对1~n每个作为开始递归 123456789101112131415161718void print_permutation(int n,int *A,int c">
+<meta property="og:type" content="article">
 <meta property="og:title" content="算法专题">
 <meta property="og:url" content="http://example.com/2023/03/13/%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%E4%B8%93%E9%A2%98/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="进度专题算法&gt;小算法&gt;STL&gt;c++&gt;机器学习&gt;项目3.14 25天暴力枚举[2]贪心[3]动态[3]排序[2]搜索[2]图论[2]数论[3]字符串算法[2]数据结构[2] 暴力枚举枚举排列生成1~n的全排列对1~n每个作为开始递归 123456789101112131415161718void print_permutation(int n,int *A,int c">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-03-13T10:31:22.000Z">
-<meta property="article:modified_time" content="2023-03-13T10:31:22.160Z">
+<meta property="article:modified_time" content="2023-03-14T07:55:39.494Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="-算法">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
   <link rel="canonical" href="http://example.com/2023/03/13/%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%E4%B8%93%E9%A2%98/index.html">
@@ -216,7 +219,7 @@
   <div class="widget">
     <h3 class="widget-title">标签云</h3>
     <div class="widget-body tagcloud">
-      <a href="/tags/C/" style="font-size: 13px;">C++</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 13px;">算法</a>
+      <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 13px;">-算法</a> <a href="/tags/C/" style="font-size: 13px;">C++</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 13px;">算法</a>
     </div>
   </div>
 
@@ -225,7 +228,7 @@
   <div class="widget">
     <h3 class="widget-title">分类</h3>
     <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%93%E9%A2%98/">-算法专题</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -246,6 +249,15 @@
 
   
   
+  <aside class="sidebar sidebar-toc collapse   in  " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%9B%E5%BA%A6"><span class="toc-number">1.</span> <span class="toc-text">进度</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9A%B4%E5%8A%9B%E6%9E%9A%E4%B8%BE"><span class="toc-number">2.</span> <span class="toc-text">暴力枚举</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%9A%E4%B8%BE%E6%8E%92%E5%88%97"><span class="toc-number">2.1.</span> <span class="toc-text">枚举排列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%901-n%E7%9A%84%E5%85%A8%E6%8E%92%E5%88%97"><span class="toc-number">2.1.1.</span> <span class="toc-text">生成1~n的全排列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E5%8F%AF%E9%87%8D%E9%9B%86%E7%9A%84%E6%8E%92%E5%88%97"><span class="toc-number">2.1.2.</span> <span class="toc-text">生成可重集的排列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8STL%E4%B8%AD%E7%9A%84next-permutation"><span class="toc-number">2.1.3.</span> <span class="toc-text">使用STL中的next_permutation</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%90%E9%9B%86%E7%94%9F%E6%88%90"><span class="toc-number">2.2.</span> <span class="toc-text">子集生成</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A2%9E%E9%87%8F%E6%9E%84%E9%80%A0%E6%B3%95"><span class="toc-number">2.2.1.</span> <span class="toc-text">增量构造法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8D%E5%90%91%E9%87%8F%E6%B3%95"><span class="toc-number">2.2.2.</span> <span class="toc-text">位向量法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%B3%95"><span class="toc-number">2.2.3.</span> <span class="toc-text">二进制法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9E%E6%BA%AF%E6%B3%95"><span class="toc-number">2.3.</span> <span class="toc-text">回溯法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AB%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98"><span class="toc-number">2.3.1.</span> <span class="toc-text">八皇后问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E8%A7%84%E6%B3%95"><span class="toc-number">2.3.1.1.</span> <span class="toc-text">常规法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E7%89%88%EF%BC%88%E6%95%B0%E7%BB%84%EF%BC%89"><span class="toc-number">2.3.1.2.</span> <span class="toc-text">优化版（数组）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A0%E6%95%B0%E7%8E%AF-UVa-524"><span class="toc-number">2.3.2.</span> <span class="toc-text">素数环 UVa 524</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%B0%E9%9A%BE%E7%9A%84%E4%B8%B2-UVa-129"><span class="toc-number">2.3.3.</span> <span class="toc-text">困难的串 UVa 129</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%A6%E5%AE%BD-UVa-140"><span class="toc-number">2.3.4.</span> <span class="toc-text">带宽 UVa 140</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%A9%E5%B9%B3%E9%9A%BE%E9%A2%98-UVa-1354"><span class="toc-number">2.3.5.</span> <span class="toc-text">天平难题 UVa 1354</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B4%AA%E5%BF%83"><span class="toc-number">3.</span> <span class="toc-text">贪心</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8A%A8%E6%80%81"><span class="toc-number">4.</span> <span class="toc-text">动态</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F"><span class="toc-number">5.</span> <span class="toc-text">排序</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%90%9C%E7%B4%A2"><span class="toc-number">6.</span> <span class="toc-text">搜索</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%BE%E8%AE%BA"><span class="toc-number">7.</span> <span class="toc-text">图论</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E8%AE%BA"><span class="toc-number">8.</span> <span class="toc-text">数论</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%AE%97%E6%B3%95"><span class="toc-number">9.</span> <span class="toc-text">字符串算法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-number">10.</span> <span class="toc-text">数据结构</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+
 <main class="main" role="main">
   <div class="content">
   <article id="post-算法/算法专题" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
@@ -268,24 +280,56 @@
 	</a>
 </span>
         
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%93%E9%A2%98/">-算法专题</a>
+  </span>
+
         
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">-算法</a>
+  </span>
+
 
         
 
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2023/03/13/%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%E4%B8%93%E9%A2%98/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 0(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1.1k(字)</span>
 	
 	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 1(分)</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 5(分)</span>
 	
 
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        
+        <h1 id="进度"><a href="#进度" class="headerlink" title="进度"></a>进度</h1><p>专题算法&gt;小算法&gt;STL&gt;c++&gt;机器学习&gt;项目<br>3.14 25天<br>暴力枚举[2]<br>贪心[3]<br>动态[3]<br>排序[2]<br>搜索[2]<br>图论[2]<br>数论[3]<br>字符串算法[2]<br>数据结构[2]</p>
+<h1 id="暴力枚举"><a href="#暴力枚举" class="headerlink" title="暴力枚举"></a>暴力枚举</h1><h2 id="枚举排列"><a href="#枚举排列" class="headerlink" title="枚举排列"></a>枚举排列</h2><h3 id="生成1-n的全排列"><a href="#生成1-n的全排列" class="headerlink" title="生成1~n的全排列"></a>生成1~n的全排列</h3><p>对1~n每个作为开始递归</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">void print_permutation(int n,int *A,int cur) &#123;</span><br><span class="line">	if (cur == n) &#123;</span><br><span class="line">		for (int i = 0; i &lt; n;i++)cout &lt;&lt; A[i];</span><br><span class="line">		cout &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	else &#123;</span><br><span class="line">		for (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">			int ok = 1;</span><br><span class="line">			for (int j = 0; j &lt; cur; j++) &#123;</span><br><span class="line">				if (A[j] == i)ok = 0;</span><br><span class="line">			&#125;</span><br><span class="line">			if (ok) &#123;</span><br><span class="line">				A[cur] = i;</span><br><span class="line">				print_permutation(n, A, cur + 1);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="生成可重集的排列"><a href="#生成可重集的排列" class="headerlink" title="生成可重集的排列"></a>生成可重集的排列</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">void print_permutation(int n,int *P,int *A,int cur) &#123;</span><br><span class="line">	if (cur == n) &#123;</span><br><span class="line">		for (int i = 0; i &lt; n;i++)cout &lt;&lt; A[i];</span><br><span class="line">		cout &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	else &#123;</span><br><span class="line">		for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">            if(!i||p[i]!=p[i-1])&#123;</span><br><span class="line">	        int ok = 1;</span><br><span class="line">			for (int j = 0; j &lt; cur; j++) &#123;</span><br><span class="line">				if (A[j] == P[i])ok = 0;8</span><br><span class="line">			&#125;</span><br><span class="line">			if (ok) &#123;</span><br><span class="line">				A[cur] = P[i];</span><br><span class="line">				print_permutation(n,P, A, cur + 1);</span><br><span class="line">			&#125;</span><br><span class="line">            &#125;</span><br><span class="line">		</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用STL中的next-permutation"><a href="#使用STL中的next-permutation" class="headerlink" title="使用STL中的next_permutation"></a>使用STL中的next_permutation</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">int main() &#123;</span><br><span class="line">	int n = 3;</span><br><span class="line">	int p[3] = &#123; 2,1,3 &#125;;</span><br><span class="line">	sort(p, p + n);</span><br><span class="line">	do &#123;</span><br><span class="line">		for (int i = 0; i &lt; n; i++)cout &lt;&lt; p[i];</span><br><span class="line">		cout &lt;&lt; endl;</span><br><span class="line">	&#125;while (next_permutation(p, p + n));</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="子集生成"><a href="#子集生成" class="headerlink" title="子集生成"></a>子集生成</h2><h3 id="增量构造法"><a href="#增量构造法" class="headerlink" title="增量构造法"></a>增量构造法</h3><p>每次开始的位置+1,且每次都输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">0</span><br><span class="line">01</span><br><span class="line">012</span><br><span class="line">02</span><br><span class="line">1</span><br><span class="line">12</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">void print_subset(int n, int* A, int cur) &#123;</span><br><span class="line">	for (int i = 0; i &lt; cur; i++)cout &lt;&lt; A[i];</span><br><span class="line">	cout &lt;&lt; endl;</span><br><span class="line">	int s = cur ? A[cur - 1] + 1 : 0;</span><br><span class="line">	for (int i = s; i &lt; n; i++) &#123;</span><br><span class="line">		A[cur] = i;</span><br><span class="line">		print_subset(n, A, cur+1);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="位向量法"><a href="#位向量法" class="headerlink" title="位向量法"></a>位向量法</h3><p>同全排列一样，到n才输出，选取位置1，否则0</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">void print_subset(int n,int* B,int cur)&#123;</span><br><span class="line">    if(cur==n)&#123;</span><br><span class="line">        for(int i=0;i&lt;cur;i++)</span><br><span class="line">        if(B[i])cout&lt;&lt;i;</span><br><span class="line">        cout&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    B[cur]=1;//选取</span><br><span class="line">    print_subset(n,B,cur+1);</span><br><span class="line">    B[cur]=0;//不选取</span><br><span class="line">    print_subset(n,B,cur+1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="二进制法"><a href="#二进制法" class="headerlink" title="二进制法"></a>二进制法</h3><p>三个数的集合<br>001，010，100<br>s从000到111</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">void print_subset()&#123;</span><br><span class="line">    for(int i=0;i&lt;n;i++)</span><br><span class="line">        if(s&amp;(1&lt;&lt;i))cout&lt;&lt;i;</span><br><span class="line">    cout&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line">for(int i=0;i&lt;(1&lt;&lt;n);i++)&#123; //</span><br><span class="line">    print_subset(n,i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="回溯法"><a href="#回溯法" class="headerlink" title="回溯法"></a>回溯法</h2><p>在递归中判断</p>
+<h3 id="八皇后问题"><a href="#八皇后问题" class="headerlink" title="八皇后问题"></a>八皇后问题</h3><h4 id="常规法"><a href="#常规法" class="headerlink" title="常规法"></a>常规法</h4><p>递归每一行可能放置的列，并且检查是否冲突（回溯），若不冲突，继续递归</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">void search(int cur)&#123;</span><br><span class="line">    if(cur==n)total++;</span><br><span class="line">    else for(int i=0;i&lt;n;i++)&#123;</span><br><span class="line">        int ok=1;</span><br><span class="line">        C[cur]=i;      //把第cur行的皇后放在i列</span><br><span class="line">        for(int j=0;j&lt;cur;j++)&#123;//检查和之前皇后的冲突问题</span><br><span class="line">            if(C[cur]==C[j]||cur-C[cur]==j-C[j]||cur+C[cur]==j+C[cur])</span><br><span class="line">            &#123;ok=0;break;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(ok)search(cur+1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="优化版（数组）"><a href="#优化版（数组）" class="headerlink" title="优化版（数组）"></a>优化版（数组）</h4><p>用二维数组来判断列、副对角线、主对角线的冲突情况:<br>vis[0][i]:第i列冲突情况<br>vis[1][x+y]:副对角线冲突情况坐标（x，y）<br>vis[1][y-x+n]:主对角线冲突情况坐标（x，y）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">`void search(int cur)&#123;</span><br><span class="line">    if(cur==n)total++;</span><br><span class="line">    else for(int i=0;i&lt;n;i++)&#123;</span><br><span class="line">        if(!vis[0][i]&amp;&amp;!vis[1][i+cur]&amp;&amp;!vis[1][cur-i+n])&#123;//判断冲突</span><br><span class="line">            C[cur]=i;</span><br><span class="line">            vis[0][i]=vis[1][i+cur]=vis[1][cur-1+n]=1;//更新冲突情况</span><br><span class="line">            search(cur+1);</span><br><span class="line">            vis[0][i]=vis[1][i+cur]=vis[1][cur-1+n]=0;//当前i不可行，复原冲突情况</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="素数环-UVa-524"><a href="#素数环-UVa-524" class="headerlink" title="素数环 UVa 524"></a>素数环 UVa 524</h3><p>使用回溯，判断是否使用过以及是否和前一个之和为素数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">int main()&#123;</span><br><span class="line">	int A[16];</span><br><span class="line">	int isp[32];</span><br><span class="line">	int n;</span><br><span class="line">	cin&gt;&gt;n;</span><br><span class="line">	for(int i=2;i&lt;=2*n;i++)isp[i]=is_prime(i);//生成素数表</span><br><span class="line">	for(int i=2;i&lt;=n;i++)vis[i]=0;//未被选择</span><br><span class="line">	dfs(1,n,A,isp,vis);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line">void dfs(int cur,int n,int *A,int *isp,int *vis)&#123;</span><br><span class="line">	if(cur==n&amp;&amp;isp[A[0]+A[n-1]])&#123; //测试边界是否满足</span><br><span class="line">		for(int i=0;i&lt;n;i++)cout&lt;&lt;A[i]&lt;&lt;&quot; &quot;;</span><br><span class="line">		cout&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">	else for(int i=2;i&lt;=n;i++)&#123;</span><br><span class="line">		if(!vis[i]&amp;&amp;isp[i+A[cur-1]])&#123;//没有选择过且和前一位之和为素数</span><br><span class="line">			A[cur]=i;</span><br><span class="line">			vis[i]=1; //标记使用过</span><br><span class="line">			dfs(cur+1,n,A,isp,vis);</span><br><span class="line">			vis[i]=0; //清除标记</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int is_prime(int i)&#123;</span><br><span class="line">	if(i&lt;=1)return 0;</span><br><span class="line">	for(int i=2;i&lt;=sqrt(n);i++)&#123;</span><br><span class="line">		if(n%i==0)return 0;</span><br><span class="line">	&#125;</span><br><span class="line">	return 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="困难的串-UVa-129"><a href="#困难的串-UVa-129" class="headerlink" title="困难的串 UVa 129"></a>困难的串 UVa 129</h3><h3 id="带宽-UVa-140"><a href="#带宽-UVa-140" class="headerlink" title="带宽 UVa 140"></a>带宽 UVa 140</h3><h3 id="天平难题-UVa-1354"><a href="#天平难题-UVa-1354" class="headerlink" title="天平难题 UVa 1354"></a>天平难题 UVa 1354</h3><h1 id="贪心"><a href="#贪心" class="headerlink" title="贪心"></a>贪心</h1><h1 id="动态"><a href="#动态" class="headerlink" title="动态"></a>动态</h1><h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><h1 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h1><h1 id="图论"><a href="#图论" class="headerlink" title="图论"></a>图论</h1><h1 id="数论"><a href="#数论" class="headerlink" title="数论"></a>数论</h1><h1 id="字符串算法"><a href="#字符串算法" class="headerlink" title="字符串算法"></a>字符串算法</h1><h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1>
       
     </div>
     <div class="article-footer">
@@ -343,6 +387,14 @@
       <a href="/2023/03/13/C++/C++%E7%AC%94%E8%AE%B0/" title="C++笔记"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
     
   </ul>
   

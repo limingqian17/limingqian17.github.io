@@ -5,5 +5,7 @@ http://example.com/links/index.html
 http://example.com/
 http://example.com/tags/%E7%AE%97%E6%B3%95/
 http://example.com/tags/C/
+http://example.com/tags/%E7%AE%97%E6%B3%95/
 http://example.com/categories/%E7%AE%97%E6%B3%95/
 http://example.com/categories/C/
+http://example.com/categories/%E7%AE%97%E6%B3%95%E4%B8%93%E9%A2%98/
