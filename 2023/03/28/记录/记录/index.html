@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>记录 | Hexo</title>
+  <meta name="description" content="常用记录C++scanf不安全#define _CRT_SECURE_NO_WARNINGS 【C++】| 将程序打包成可执行文件（.exe）| Visual Studiohttps:&#x2F;&#x2F;blog.csdn.net&#x2F;HaohaoCppDebuger&#x2F;article&#x2F;details&#x2F;123451160 ffmpeg使用教程https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;2c00a1a59af1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="记录">
+<meta property="og:url" content="http://example.com/2023/03/28/%E8%AE%B0%E5%BD%95/%E8%AE%B0%E5%BD%95/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="常用记录C++scanf不安全#define _CRT_SECURE_NO_WARNINGS 【C++】| 将程序打包成可执行文件（.exe）| Visual Studiohttps:&#x2F;&#x2F;blog.csdn.net&#x2F;HaohaoCppDebuger&#x2F;article&#x2F;details&#x2F;123451160 ffmpeg使用教程https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;2c00a1a59af1">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-03-28T14:41:16.000Z">
+<meta property="article:modified_time" content="2023-04-14T15:57:19.744Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="记录">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://example.com/2023/03/28/%E8%AE%B0%E5%BD%95/%E8%AE%B0%E5%BD%95/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/limingqian17" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">安xy</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">安_blog</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/limingqian17" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>go on!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 13px;">-算法</a> <a href="/tags/C/" style="font-size: 13px;">C++</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 13px;">算法</a> <a href="/tags/%E8%AE%B0%E5%BD%95/" style="font-size: 13px;">记录</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%93%E9%A2%98/">-算法专题</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%B0%E5%BD%95/">记录</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">四月 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">三月 2023</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+
+  
+  
+  <aside class="sidebar sidebar-toc collapse   in  " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E8%AE%B0%E5%BD%95"><span class="toc-number">1.</span> <span class="toc-text">常用记录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#C"><span class="toc-number">1.1.</span> <span class="toc-text">C++</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#scanf%E4%B8%8D%E5%AE%89%E5%85%A8"><span class="toc-number">1.1.1.</span> <span class="toc-text">scanf不安全</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%80%90C-%E3%80%91-%E5%B0%86%E7%A8%8B%E5%BA%8F%E6%89%93%E5%8C%85%E6%88%90%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6%EF%BC%88-exe%EF%BC%89-Visual-Studio"><span class="toc-number">1.1.2.</span> <span class="toc-text">【C++】| 将程序打包成可执行文件（.exe）| Visual Studio</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ffmpeg%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B"><span class="toc-number">1.2.</span> <span class="toc-text">ffmpeg使用教程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8%E7%BA%BF%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE"><span class="toc-number">1.3.</span> <span class="toc-text">在线思维导图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8%E7%BA%BF%E8%BD%AC%E6%8D%A2pdf"><span class="toc-number">1.4.</span> <span class="toc-text">在线转换pdf</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8%E7%BA%BF%E8%A7%A3%E5%AF%86pdf"><span class="toc-number">1.5.</span> <span class="toc-text">在线解密pdf</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Arduino"><span class="toc-number">1.6.</span> <span class="toc-text">Arduino</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E6%95%99%E7%A8%8B"><span class="toc-number">1.6.1.</span> <span class="toc-text">代码教程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%E6%95%99%E7%A8%8B"><span class="toc-number">1.7.</span> <span class="toc-text">硬件教程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E6%8B%9F%E5%99%A8"><span class="toc-number">1.7.1.</span> <span class="toc-text">模拟器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%86%E7%A0%81"><span class="toc-number">1.8.</span> <span class="toc-text">密码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql"><span class="toc-number">1.8.1.</span> <span class="toc-text">mysql</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF"><span class="toc-number">1.8.2.</span> <span class="toc-text">宝塔面板</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E8%B4%A6%E5%8F%B7"><span class="toc-number">1.8.3.</span> <span class="toc-text">数据库账号</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9F%AD%E6%9C%9F%E4%BB%BB%E5%8A%A1"><span class="toc-number">2.</span> <span class="toc-text">短期任务</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E6%9C%9F%E4%BB%BB%E5%8A%A1"><span class="toc-number">3.</span> <span class="toc-text">长期任务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">3.0.1.</span> <span class="toc-text">阿里云服务器</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD"><span class="toc-number">4.</span> <span class="toc-text">人工智能</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-记录/记录" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      记录
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2023/03/28/%E8%AE%B0%E5%BD%95/%E8%AE%B0%E5%BD%95/" class="article-date">
+	  <time datetime="2023-03-28T14:41:16.000Z" itemprop="datePublished">2023-03-28</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/%E8%AE%B0%E5%BD%95/">记录</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/%E8%AE%B0%E5%BD%95/" rel="tag">记录</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2023/03/28/%E8%AE%B0%E5%BD%95/%E8%AE%B0%E5%BD%95/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 439(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 2(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="常用记录"><a href="#常用记录" class="headerlink" title="常用记录"></a>常用记录</h1><h2 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h2><h3 id="scanf不安全"><a href="#scanf不安全" class="headerlink" title="scanf不安全"></a>scanf不安全</h3><p>#define _CRT_SECURE_NO_WARNINGS</p>
+<h3 id="【C-】-将程序打包成可执行文件（-exe）-Visual-Studio"><a href="#【C-】-将程序打包成可执行文件（-exe）-Visual-Studio" class="headerlink" title="【C++】| 将程序打包成可执行文件（.exe）| Visual Studio"></a>【C++】| 将程序打包成可执行文件（.exe）| Visual Studio</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/HaohaoCppDebuger/article/details/123451160">https://blog.csdn.net/HaohaoCppDebuger/article/details/123451160</a></p>
+<h2 id="ffmpeg使用教程"><a href="#ffmpeg使用教程" class="headerlink" title="ffmpeg使用教程"></a>ffmpeg使用教程</h2><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/2c00a1a59af1">https://www.jianshu.com/p/2c00a1a59af1</a></p>
+<h2 id="在线思维导图"><a href="#在线思维导图" class="headerlink" title="在线思维导图"></a>在线思维导图</h2><p><a target="_blank" rel="noopener" href="https://www.processon.com/diagrams">https://www.processon.com/diagrams</a></p>
+<h2 id="在线转换pdf"><a href="#在线转换pdf" class="headerlink" title="在线转换pdf"></a>在线转换pdf</h2><p><a target="_blank" rel="noopener" href="https://convertio.co/zh/pptx-pdf/">https://convertio.co/zh/pptx-pdf/</a></p>
+<h2 id="在线解密pdf"><a href="#在线解密pdf" class="headerlink" title="在线解密pdf"></a>在线解密pdf</h2><p><a target="_blank" rel="noopener" href="https://smallpdf.com/cn/result#r=02670d7e41d25b3d4b4e002b9ad38d42&t=unlock">https://smallpdf.com/cn/result#r=02670d7e41d25b3d4b4e002b9ad38d42&amp;t=unlock</a></p>
+<h2 id="Arduino"><a href="#Arduino" class="headerlink" title="Arduino"></a>Arduino</h2><h3 id="代码教程"><a href="#代码教程" class="headerlink" title="代码教程"></a>代码教程</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/SumubeiFZ/article/details/118638228">https://blog.csdn.net/SumubeiFZ/article/details/118638228</a></p>
+<h2 id="硬件教程"><a href="#硬件教程" class="headerlink" title="硬件教程"></a>硬件教程</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/SFME008/article/details/110479408">https://blog.csdn.net/SFME008/article/details/110479408</a></p>
+<h3 id="模拟器"><a href="#模拟器" class="headerlink" title="模拟器"></a>模拟器</h3><p><a target="_blank" rel="noopener" href="https://www.tinkercad.com/">https://www.tinkercad.com/</a></p>
+<h2 id="密码"><a href="#密码" class="headerlink" title="密码"></a>密码</h2><h3 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h3><p>mysql -u root -p</p>
+<p>ho%anXp.(0de</p>
+<h3 id="宝塔面板"><a href="#宝塔面板" class="headerlink" title="宝塔面板"></a>宝塔面板</h3><p>外网面板地址: <a target="_blank" rel="noopener" href="http://47.98.106.218:8888/e862f26b">http://47.98.106.218:8888/e862f26b</a><br>内网面板地址: <a target="_blank" rel="noopener" href="http://172.21.188.44:8888/e862f26b">http://172.21.188.44:8888/e862f26b</a><br>username: psj97ktb<br>password: 052a5ef7</p>
+<h3 id="数据库账号"><a href="#数据库账号" class="headerlink" title="数据库账号"></a>数据库账号</h3><p>数据库名：47_98_106_218</p>
+<p>用户：47_98_106_218</p>
+<p>密码：sSnAMdGsECeZ6TMM</p>
+<h1 id="短期任务"><a href="#短期任务" class="headerlink" title="短期任务"></a>短期任务</h1><ul>
+<li><input disabled="" type="checkbox"> WEB</li>
+<li><input disabled="" type="checkbox"> 数据结构树完成</li>
+<li><input disabled="" type="checkbox"> 线性代数</li>
+</ul>
+<h1 id="长期任务"><a href="#长期任务" class="headerlink" title="长期任务"></a>长期任务</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">A(任务点)--&gt;B1(学校学习)</span><br><span class="line">B1--&gt;C1(马原)</span><br><span class="line">B1--&gt;C2(六级12.10)</span><br><span class="line">B1--&gt;C3(线性代数)</span><br><span class="line">B1--&gt;C4(口译周四前)</span><br><span class="line">C4--&gt;E(三,四,五+课文)</span><br><span class="line">B1--&gt;C5(形式与政策)</span><br><span class="line"></span><br><span class="line">A--&gt;B2(个性化)</span><br><span class="line">B2--&gt;D1(数据结构)</span><br><span class="line">D1--&gt;E2(学期结束前学完)</span><br><span class="line">B2--&gt;D2(数据库)</span><br><span class="line">B2--&gt;D3(C++)</span><br><span class="line">B2--&gt;D4(JAVA)</span><br><span class="line">B2--&gt;D5(wx,js)</span><br><span class="line">B2--&gt;D6(Unity)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="阿里云服务器"><a href="#阿里云服务器" class="headerlink" title="阿里云服务器"></a>阿里云服务器</h3><p><strong>云服务器</strong><br>Anxy9493</p>
+<p>实例登录名：root<br>实例密码：@Z94y9397<br><strong>云数据库</strong><br>mzxxydd<br>z94y9397<br><strong>云数据库账号</strong><br>zxxydd<br>Z94y9397<br><strong>云数据库外网地址</strong><br>rm-bp1nmvt3r7t7v1e7zwo.mysql.rds.aliyuncs.com<br><strong>宝塔</strong><br>外网面板地址: <a target="_blank" rel="noopener" href="https://47.120.14.52:29842/9789895a">https://47.120.14.52:29842/9789895a</a><br>内网面板地址: <a target="_blank" rel="noopener" href="https://172.27.217.192:29842/9789895a">https://172.27.217.192:29842/9789895a</a><br>username: owk5vwka<br>password: 454bb5cb<br>账号<br>17315813369<br>@Z94y9397<br><strong>博客园</strong><br>安xy<br>z94y9397</p>
+<p><a href="mailto:&#x61;&#x6e;&#115;&#104;&#101;&#110;&#x67;&#x39;&#52;&#x39;&#x33;&#x40;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#46;&#x63;&#111;&#x6d;">&#x61;&#x6e;&#115;&#104;&#101;&#110;&#x67;&#x39;&#52;&#x39;&#x33;&#x40;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#46;&#x63;&#111;&#x6d;</a><br>Z94y9397</p>
+<h1 id="人工智能"><a href="#人工智能" class="headerlink" title="人工智能"></a>人工智能</h1><p>pyhton基础 每天一个半小时，一周内结束掉</p>
+<p>数据分析基础（爬虫以及三剑客python的库Numpy、Pandas和Matplotlib）1h</p>
+<p>机器学习 2h</p>
+<p>深度学习</p>
+<p>cv</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/2023/03/28/%E8%AE%B0%E5%BD%95/%E8%AE%B0%E5%BD%95/" title="记录" target="_blank" rel="external">http://example.com/2023/03/28/记录/记录/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/limingqian17" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/limingqian17" target="_blank"><span class="text-dark">安xy</span><small class="ml-1x">安_blog</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2023/04/11/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" title="机器学习"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2023/03/17/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/" title="项目开发"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/limingqian17" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+
+
+
+
+
+
+</body>
+</html>
