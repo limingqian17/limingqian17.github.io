@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>Hexo</title>
+  <meta name="description" content="日常9.129-12   mysql必知必会看完2.30-4  核心技术4+54.30-5.30普通话准备6.30-8.30数据结构：过基础+刷题8.30-10.30计组10.30-11.30课程  9.139-11.30   普通话：1. 10篇命题11.30-1吃饭+休息1.30-5  核心技术4+55.30-6.30普通话  词表（1小时）   10篇命题（1小时） 20篇朗读（1小时）6.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2023/08/0bb587f95395.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="日常9.129-12   mysql必知必会看完2.30-4  核心技术4+54.30-5.30普通话准备6.30-8.30数据结构：过基础+刷题8.30-10.30计组10.30-11.30课程  9.139-11.30   普通话：1. 10篇命题11.30-1吃饭+休息1.30-5  核心技术4+55.30-6.30普通话  词表（1小时）   10篇命题（1小时） 20篇朗读（1小时）6.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="file:///C:/Users/Administrator/AppData/Roaming/Tencent/QQTempSys[5UQ[BL(6~BS2JV6W%7DN6[%S.png">
+<meta property="og:image" content="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202309112246152.png">
+<meta property="article:published_time" content="2023-08-02T09:38:24.937Z">
+<meta property="article:modified_time" content="2023-09-20T08:42:18.828Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="file:///C:/Users/Administrator/AppData/Roaming/Tencent/QQTempSys[5UQ[BL(6~BS2JV6W%7DN6[%S.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://example.com/2023/08/0bb587f95395.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/limingqian17" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">安xy</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">安_blog</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/limingqian17" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>go on!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 13px;">-算法</a> <a href="/tags/C/" style="font-size: 13px;">C++</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 13px;">算法</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/">culitivate</a><span class="category-list-count">18</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/408/">408</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/408/%E7%AE%97%E6%B3%95/">算法</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/C/">C++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/PHP/">PHP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/Python/">Python</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/Python/%E7%88%AC%E8%99%AB/">爬虫</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/">java技术栈</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/java/">java</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/mysql/">mysql</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/vue/">vue</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/other/">other</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/other/CTF/">CTF</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/other/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E7%AC%94%E8%AE%B0/">数学建模笔记</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/other/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><span class="category-list-count">2</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/plan/">plan</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/project/">project</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/project/2023%E6%9A%91%E6%9C%9F%E9%A1%B9%E7%9B%AEhealth/">2023暑期项目health</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E8%AE%B0%E5%BD%95/">工具记录</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E8%AE%B0%E5%BD%95/vim/">vim</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E8%AE%B0%E5%BD%95/%E5%BB%BA%E7%AB%99/">建站</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E8%AE%B0%E5%BD%95/%E6%99%AE%E9%80%9A%E8%AF%9D/">普通话</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">课程笔记</a><span class="category-list-count">19</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/R/">R</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/R/%E5%AE%9E%E9%AA%8C%E4%B8%80/">实验一</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/python/">python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C/">复杂网络</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C/%E5%B0%8F%E5%AE%9E%E9%AA%8C1/">小实验1</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E5%AD%A6%E8%AF%AD%E6%96%87/">大学语文</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%AE%89%E5%8D%93%E8%AE%BA%E6%96%87/">安卓论文</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/">数据挖掘</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E4%BD%9C%E4%B8%9A/">作业</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/">实验报告</a><span class="category-list-count">7</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E7%90%86%E9%80%BB%E8%BE%91/">数理逻辑</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%9F%BA%E7%A1%80/">软件工程基础</a><span class="category-list-count">1</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">九月 2023</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">八月 2023</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">七月 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">六月 2023</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">五月 2023</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">四月 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">三月 2023</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">九月 2022</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-plan/安排" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2023/08/0bb587f95395.html" class="article-date">
+	  <time datetime="2023-08-02T09:38:24.937Z" itemprop="datePublished">2023-08-02</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/plan/">plan</a>
+  </span>
+
+        
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2023/08/0bb587f95395.html#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2.3k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 8(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="日常"><a href="#日常" class="headerlink" title="日常"></a>日常</h1><h2 id="9-12"><a href="#9-12" class="headerlink" title="9.12"></a>9.12</h2><p>9-12</p>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> mysql必知必会看完<br>2.30-4</li>
+<li><input checked="" disabled="" type="checkbox"> 核心技术4+5<br>4.30-5.30<br>普通话准备<br>6.30-8.30<br>数据结构：过基础+刷题<br>8.30-10.30<br>计组<br>10.30-11.30<br>课程</li>
+</ul>
+<h2 id="9-13"><a href="#9-13" class="headerlink" title="9.13"></a>9.13</h2><p>9-11.30</p>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 普通话：1. 10篇命题<br>11.30-1<br>吃饭+休息<br>1.30-5</li>
+<li><input checked="" disabled="" type="checkbox"> 核心技术4+5<br>5.30-6.30<br>普通话</li>
+<li><input checked="" disabled="" type="checkbox"> 词表（1小时）</li>
+</ul>
+<ol start="2">
+<li>10篇命题（1小时）</li>
+<li>20篇朗读（1小时）<br>6.30-9<br>数据结构<br>10-11<br>计组</li>
+</ol>
+<h2 id="9-14"><a href="#9-14" class="headerlink" title="9.14"></a>9.14</h2><p>3-5<br>核心技术6+7<br>6-8<br>数据结构<br>8-10<br>普通话</p>
+<h2 id="9-15"><a href="#9-15" class="headerlink" title="9.15"></a>9.15</h2><p>2-4<br>20篇6分钟一篇<br>4-4.30<br>熟练3篇<br>5.30-10.30<br>熟练27篇</p>
+<h1 id="9-19"><a href="#9-19" class="headerlink" title="9.19"></a>9.19</h1><p>核心技术6+7<br>数学建模<br>数据结构<br>计组<br>项目&#x2F;数学&#x2F;课程</p>
+<h1 id="9-20"><a href="#9-20" class="headerlink" title="9.20"></a>9.20</h1><p>4-5<br>核心技术7<br>5.30-6.30<br>核心技术8<br>6.30-9<br>核心技术6</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/405628414">2023 年计算机基础最全自学指南！ - 知乎 (zhihu.com)</a><br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/453747985/answer/2206341893?utm_id=0">(9 封私信 &#x2F; 9 条消息) 数据结构，计算机网络，数据库，计算机组成原理，操作系统有哪些好的网课值得推荐? - 知乎 (zhihu.com)</a>】</p>
+<p>书籍：<br><a target="_blank" rel="noopener" href="https://tanqingbo.cn/CSBook001/#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86">计算机专业电子书下载_程序员免费高清PDF书籍_IT类相关书籍汇总  |  IT码农 (tanqingbo.cn)</a></p>
+<h1 id="计算机基础"><a href="#计算机基础" class="headerlink" title="计算机基础"></a>计算机基础</h1><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/413239856?utm_source=weibo&utm_medium=social&utm_oi=1038888831738679296&utm_content=snapshot">计算机考研408专业课130+经验分享 - 知乎 (zhihu.com)</a></p>
+<h2 id="数据结构与算法"><a href="#数据结构与算法" class="headerlink" title="数据结构与算法"></a>数据结构与算法</h2><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzA5NDIwNTk2Mw==&mid=2247484603&idx=1&sn=1b1796e8446da0263a69310bf9de3d2d&source=41#wechat_redirect">实战中总结的125道面试高频算法题！再也不怕手撕代码了！ (qq.com)</a></p>
+<p>《数据结构（C语言版）》 严蔚敏<br>《数据结构考研复习指导》王道<br><img src="file:///C:\Users\Administrator\AppData\Roaming\Tencent\QQTempSys[5UQ[BL(6~BS2JV6W}N6[%S.png"><a target="_blank" rel="noopener" href="https://www.zhihu.com/answer/3189783945">https://www.zhihu.com/answer/3189783945</a>  </p>
+<h3 id="第一轮-基础-20天-9-7-9-27"><a href="#第一轮-基础-20天-9-7-9-27" class="headerlink" title="第一轮 基础(20天) 9.7-9.27"></a>第一轮 基础(20天) 9.7-9.27</h3><p>基础理论(算法，20天系统过一遍)  </p>
+<h3 id="第二轮-提升-两个月"><a href="#第二轮-提升-两个月" class="headerlink" title="第二轮 提升(两个月)"></a>第二轮 提升(两个月)</h3><p>根据刷题册刷leetcode  （120）<br><a target="_blank" rel="noopener" href="https://www.uoffer.com/workblog/86">LeetCode刷题顺序，按标签分类刷题 - Uoffer</a></p>
+<h3 id="第三轮-强化-三个月"><a href="#第三轮-强化-三个月" class="headerlink" title="第三轮 强化(三个月)"></a>第三轮 强化(三个月)</h3><p><a target="_blank" rel="noopener" href="https://www.ngui.cc/el/3055468.html?action=onClick">Leetcode、剑指offer、笔试题刷题清单 (ngui.cc)</a><br>剑指offer(66，一天3题25天)<br>力扣刷题hot100(40天)<br>leetcode前200(80天)</p>
+<h3 id="第四轮-面试题（持续）"><a href="#第四轮-面试题（持续）" class="headerlink" title="第四轮 面试题（持续）"></a>第四轮 面试题（持续）</h3><h2 id="第一轮（三月9-7-12-7）"><a href="#第一轮（三月9-7-12-7）" class="headerlink" title="第一轮（三月9.7-12.7）"></a>第一轮（三月9.7-12.7）</h2><p>看完书本每一章节,再看对应的王道的章节,做笔记，再做王道对应习题。</p>
+<h3 id="计算机组成原理（21天）"><a href="#计算机组成原理（21天）" class="headerlink" title="计算机组成原理（21天）"></a>计算机组成原理（21天）</h3><p>唐书+王道讲义+（刘、王道视频）<br>《计算机组成原理》唐朔飞<br>《计算机系统基础 》袁春风</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">袁春风老师的《计算机系统基础》这本书与王道《组成原理》的对应关系大致为：《系统基础》第1章对应“王道”第1章，《系统基础》第2章对应“王道”第2章，《系统基础》第3、4章对应“王道”第4章，《系统基础》第5章对应“王道”第5章，《系统基础》第6章对应“王道”第3章，《系统基础》第7、8章对应“王道”第6、7章（注：看完《系统基础》7、8章，再看王道6、7章）。</span><br></pre></td></tr></table></figure>
+<p>《计算机组成原理考研复习指导》王道</p>
+<h3 id="操作系统（48天）"><a href="#操作系统（48天）" class="headerlink" title="操作系统（48天）"></a>操作系统（48天）</h3><p>《计算机操作系统(第四版)》汤小丹<br>《深入理解计算机系统》<br>《现代操作系统》<br>《计算机操作系统考研复习指导》王道</p>
+<h3 id="计算机网络（24天）"><a href="#计算机网络（24天）" class="headerlink" title="计算机网络（24天）"></a>计算机网络（24天）</h3><p>《计算机网络(第 7 版)》谢希仁<br>《计算机网络 自顶向下》<br>《计算机网络考研复习指导》王道</p>
+<h2 id="第二轮（12-10-1-25）"><a href="#第二轮（12-10-1-25）" class="headerlink" title="第二轮（12.10-1.25）"></a>第二轮（12.10-1.25）</h2><p>刷一遍自己以及王道笔记+书上错题真题，结合教材，巩固。</p>
+<h3 id="计组-操作系统交叉复习（一个月）"><a href="#计组-操作系统交叉复习（一个月）" class="headerlink" title="计组+操作系统交叉复习（一个月）"></a>计组+操作系统交叉复习（一个月）</h3><p>组原1-&gt;操作系统1-&gt;组原2-&gt;组原3-&gt;操作系统3-&gt;组原4-&gt;组原5-&gt;操作系统2-&gt;组原6-&gt;组原7-&gt;操作系统4、5。</p>
+<h3 id="计算机网络（15天）"><a href="#计算机网络（15天）" class="headerlink" title="计算机网络（15天）"></a>计算机网络（15天）</h3><h2 id="第三轮（一月2-1-3-1）"><a href="#第三轮（一月2-1-3-1）" class="headerlink" title="第三轮（一月2.1-3.1）"></a>第三轮（一月2.1-3.1）</h2><p>成套做真题，并且查漏补缺<br>二十套左右</p>
+<h2 id="第四轮（一月3-1-4-1）"><a href="#第四轮（一月3-1-4-1）" class="headerlink" title="第四轮（一月3.1-4.1）"></a>第四轮（一月3.1-4.1）</h2><p>刷第三轮中的错题<br>二十套左右</p>
+<h1 id="秋招"><a href="#秋招" class="headerlink" title="秋招"></a>秋招</h1><p>java技术栈<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/530358326?utm_id=0">2022Java岗最全面试攻略，吃透25个技术栈Offer拿到手软 - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/604117403">2023年最新互联网Java面试八股文出炉（附大厂P5-P8技术栈） - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/379041500?utm_medium=social&utm_oi=747569970526834688&utm_id=0">Github 标星 120k！2023 最新Java 学习线路图重磅来袭| JavaGuide - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv6395168/">2023年Java学习路线【超详细超实用】 - 哔哩哔哩 (bilibili.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/457978687">2022超详细的Java学习路线总结 - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://javabetter.cn/xuexiluxian/java/yitiaolong.html#_2-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F">2023最新超详细Java学习路线一条龙版（建议收藏🔥） | 二哥的Java进阶之路 (javabetter.cn)</a></p>
+<h2 id="一、JAVA基础（30天）"><a href="#一、JAVA基础（30天）" class="headerlink" title="一、JAVA基础（30天）"></a>一、JAVA基础（30天）</h2><h3 id="1-1基础-30天-9-7-10-7"><a href="#1-1基础-30天-9-7-10-7" class="headerlink" title="1.1基础(30天)9.7-10.7"></a>1.1基础(30天)9.7-10.7</h3><p>《java核心技术 卷1》</p>
+<ul>
+<li>基本语法、基本数据类型</li>
+<li>对象、类、接口</li>
+<li>继承、泛型</li>
+<li>方法</li>
+<li>异常、断言</li>
+<li>集合</li>
+<li>容器</li>
+<li>IO</li>
+</ul>
+<h3 id="1-2多线程-amp-并发"><a href="#1-2多线程-amp-并发" class="headerlink" title="1.2多线程&amp;并发"></a>1.2多线程&amp;并发</h3><p>《java并发编程之美》<br>《java并发编程实战》<br>《实战java高并发程序设计》<br><a target="_blank" rel="noopener" href="https://redspider.gitbook.io/concurrent/di-yi-pian-ji-chu-pian">第一篇：基础篇 - 深入浅出Java多线程 (gitbook.io)</a></p>
+<h3 id="1-3JVM"><a href="#1-3JVM" class="headerlink" title="1.3JVM"></a>1.3JVM</h3><p>《深入理解java虚拟机》</p>
+<h3 id="1-4-JDK8"><a href="#1-4-JDK8" class="headerlink" title="1.4 JDK8"></a>1.4 JDK8</h3><h2 id="二、数据库（7天）9-7-9-14"><a href="#二、数据库（7天）9-7-9-14" class="headerlink" title="二、数据库（7天）9.7-9.14"></a>二、数据库（7天）9.7-9.14</h2><h3 id="2-1mysql"><a href="#2-1mysql" class="headerlink" title="2.1mysql"></a>2.1mysql</h3><p>《mysql必知必会》<br>《高性能MySQL》<br>《MySQL技术内幕》</p>
+<h2 id="三、javaweb（15天）"><a href="#三、javaweb（15天）" class="headerlink" title="三、javaweb（15天）"></a>三、javaweb（15天）</h2><p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/586455716/answer/3105974384?utm_id=0">(9 封私信 &#x2F; 13 条消息) 2023年，求适合小白的JavaWeb学习路线图，求分享？ - 知乎 (zhihu.com)</a></p>
+<h3 id="3-1html，css，JavaScript，vue"><a href="#3-1html，css，JavaScript，vue" class="headerlink" title="3.1html，css，JavaScript，vue"></a>3.1html，css，JavaScript，vue</h3><h3 id="3-2ajax"><a href="#3-2ajax" class="headerlink" title="3.2ajax"></a>3.2ajax</h3><h3 id="3-3服务器容器Tomcat-amp-HTTP协议"><a href="#3-3服务器容器Tomcat-amp-HTTP协议" class="headerlink" title="3.3服务器容器Tomcat&amp;HTTP协议"></a>3.3服务器容器Tomcat&amp;HTTP协议</h3><h3 id="3-4jdbc（可省）"><a href="#3-4jdbc（可省）" class="headerlink" title="3.4jdbc（可省）"></a>3.4jdbc（可省）</h3><h3 id="3-5动态网页开发技术Serviet-amp-Jsp（可省）"><a href="#3-5动态网页开发技术Serviet-amp-Jsp（可省）" class="headerlink" title="3.5动态网页开发技术Serviet&amp;Jsp（可省）"></a>3.5动态网页开发技术Serviet&amp;Jsp（可省）</h3><h3 id="3-6会话技术"><a href="#3-6会话技术" class="headerlink" title="3.6会话技术"></a>3.6会话技术</h3><h3 id="3-7xml（可省）"><a href="#3-7xml（可省）" class="headerlink" title="3.7xml（可省）"></a>3.7xml（可省）</h3><h2 id="四、java开发框架（75天）"><a href="#四、java开发框架（75天）" class="headerlink" title="四、java开发框架（75天）"></a>四、java开发框架（75天）</h2><h3 id="4-1常用工具（几天熟悉一下）"><a href="#4-1常用工具（几天熟悉一下）" class="headerlink" title="4.1常用工具（几天熟悉一下）"></a>4.1常用工具（几天熟悉一下）</h3><h4 id="4-1-1项目构建Maven"><a href="#4-1-1项目构建Maven" class="headerlink" title="4.1.1项目构建Maven"></a>4.1.1项目构建Maven</h4><h4 id="4-1-2版本控制Git"><a href="#4-1-2版本控制Git" class="headerlink" title="4.1.2版本控制Git"></a>4.1.2版本控制Git</h4><h4 id="4-1-2Docker"><a href="#4-1-2Docker" class="headerlink" title="4.1.2Docker"></a>4.1.2Docker</h4><h3 id="4-2SSM"><a href="#4-2SSM" class="headerlink" title="4.2SSM"></a>4.2SSM</h3><h4 id="4-2-1Spring"><a href="#4-2-1Spring" class="headerlink" title="4.2.1Spring"></a>4.2.1Spring</h4><h4 id="4-2-2Spring-MVC"><a href="#4-2-2Spring-MVC" class="headerlink" title="4.2.2Spring MVC"></a>4.2.2Spring MVC</h4><h4 id="4-2-3MyBatis-MyBatis-Plus"><a href="#4-2-3MyBatis-MyBatis-Plus" class="headerlink" title="4.2.3MyBatis\MyBatis-Plus"></a>4.2.3MyBatis\MyBatis-Plus</h4><h3 id="4-3SpringBoot"><a href="#4-3SpringBoot" class="headerlink" title="4.3SpringBoot"></a>4.3SpringBoot</h3><h3 id="4-4Linux（10天）"><a href="#4-4Linux（10天）" class="headerlink" title="4.4Linux（10天）"></a>4.4Linux（10天）</h3><h2 id="项目实战"><a href="#项目实战" class="headerlink" title="项目实战"></a>项目实战</h2><h2 id="五、分布式中间件（60天）"><a href="#五、分布式中间件（60天）" class="headerlink" title="五、分布式中间件（60天）"></a>五、分布式中间件（60天）</h2><h3 id="5-1Nginx"><a href="#5-1Nginx" class="headerlink" title="5.1Nginx"></a>5.1Nginx</h3><h3 id="5-2Redis"><a href="#5-2Redis" class="headerlink" title="5.2Redis"></a>5.2Redis</h3><h3 id="5-3RocketMQ（Message-Queue）"><a href="#5-3RocketMQ（Message-Queue）" class="headerlink" title="5.3RocketMQ（Message Queue）"></a>5.3RocketMQ（Message Queue）</h3><h3 id="5-4Elasticsearch"><a href="#5-4Elasticsearch" class="headerlink" title="5.4Elasticsearch"></a>5.4Elasticsearch</h3><h3 id="5-5Docker"><a href="#5-5Docker" class="headerlink" title="5.5Docker"></a>5.5Docker</h3><h2 id="面试八股文"><a href="#面试八股文" class="headerlink" title="面试八股文"></a>面试八股文</h2><h2 id="六、微服务和分布式（60天）"><a href="#六、微服务和分布式（60天）" class="headerlink" title="六、微服务和分布式（60天）"></a>六、微服务和分布式（60天）</h2><h3 id="6-1Spring-Cloud"><a href="#6-1Spring-Cloud" class="headerlink" title="6.1Spring Cloud"></a>6.1Spring Cloud</h3><h3 id="6-2Dubbo"><a href="#6-2Dubbo" class="headerlink" title="6.2Dubbo"></a>6.2Dubbo</h3><h3 id="6-3ZooKeeper"><a href="#6-3ZooKeeper" class="headerlink" title="6.3ZooKeeper"></a>6.3ZooKeeper</h3><h1 id="考研"><a href="#考研" class="headerlink" title="考研"></a>考研</h1><p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/576564108/answer/2828650317">(9 封私信 &#x2F; 13 条消息) 660和880什么阶段做? - 知乎 (zhihu.com)</a></p>
+<h2 id="数学"><a href="#数学" class="headerlink" title="数学"></a>数学</h2><p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/585985972/answer/2993386943?utm_id=0">(9 封私信 &#x2F; 13 条消息) 24考研数学一，基础比较薄弱，330、660、880、1000、1800这些习题集建议做哪几本呢？ - 知乎 (zhihu.com)</a>  </p>
+<p><a href="%5Bhttps://app.bestzixue.com/module%5D(https://app.bestzixue.com/module)">知能行考研数学 - App (bestzixue.com)</a>  </p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/373715443/answer/2873563189">(9 封私信 &#x2F; 17 条消息) 考研数学做题是汤家凤1800好，还是张宇1000题好？ - 知乎 (zhihu.com)</a></p>
+<h3 id="题型分布"><a href="#题型分布" class="headerlink" title="题型分布"></a>题型分布</h3><p>一、试卷内容结构<br>高等教学约60% 线性代数约20% 概率论与数理统计约20%<br>二、试卷题型结构<br>单选题10小题，每小题5分，共50分 填空题6小题，每小题5分，共30分 解答题（包括证明题）6小题，共70分<br>三、具体<br>1、微积分：函数、极限、连续、一元函数微积分学、多元函数微积分学、无穷级数、常微分方程与差分方程; 　　<br>2、线性代数：行列式、矩阵、向量、线性方程组、矩阵的特征值和特征向量、二次型; 　　<br>3、概率论与数理统计：随机事件和概率、随机变量及其概率分布、随机变量的联合概率分布、随机变量的数字特征、大数定律和中心极限定理、数理统计的基本概念、参数估计、假设检验。</p>
+<h3 id="第一轮（2个月）9-7-11-7"><a href="#第一轮（2个月）9-7-11-7" class="headerlink" title="第一轮（2个月）9.7-11.7"></a>第一轮（2个月）9.7-11.7</h3><pre><code>    - 高数、线代和概率论
+    - 跟着以往笔记复习一遍（搞个讲义 张宇18讲+李永乐 ），刷知能行(汤家凤1800+张宇1000（难，选部分）)打基础
+</code></pre>
+<h3 id="第二轮（三个月）11-7-2-7"><a href="#第二轮（三个月）11-7-2-7" class="headerlink" title="第二轮（三个月）11.7-2.7"></a>第二轮（三个月）11.7-2.7</h3><pre><code>    - 刷知能行(660（选择填空难度大）+330（大题看情况）+880（难度接近真题）+108)强化基础
+</code></pre>
+<h3 id="第三轮（两个月）2-7-4-7"><a href="#第三轮（两个月）2-7-4-7" class="headerlink" title="第三轮（两个月）2.7-4.7"></a>第三轮（两个月）2.7-4.7</h3><pre><code>    - 真题+模拟 
+</code></pre>
+<h3 id="第四轮（一个月）4-7-5-7"><a href="#第四轮（一个月）4-7-5-7" class="headerlink" title="第四轮（一个月）4.7-5.7"></a>第四轮（一个月）4.7-5.7</h3><pre><code>    - 真题错题+专题训练+知识点回顾
+</code></pre>
+<h2 id="英语"><a href="#英语" class="headerlink" title="英语"></a>英语</h2><p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/391177262/answer/2862977684">(9 封私信 &#x2F; 17 条消息) 考研英语应该怎么复习？时间怎么安排？ - 知乎 (zhihu.com)</a></p>
+<h3 id="题型分布-1"><a href="#题型分布-1" class="headerlink" title="题型分布"></a>题型分布</h3><ul>
+<li><img src="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202309112246152.png" alt="image.png"></li>
+</ul>
+<h3 id="第一轮-（三个月）9-10-12-10"><a href="#第一轮-（三个月）9-10-12-10" class="headerlink" title="第一轮 （三个月）9.10-12.10"></a>第一轮 （三个月）9.10-12.10</h3><pre><code>- 一轮背单词（一个月）
+    
+    - 《考研词汇闪过》
+        
+- 二轮背单词+学语法（两个月）
+    
+- 做真题加强单词熟悉度（一个月）
+    
+- 任务:本阶段重点为英语单词、考研语法。具体任务为: 1.背诵5500大纲单词，第-轮大概花费30天时间,第-遍在单词书上背,后续可以用碎片化时间 在手机上 2.选择一个考研语法网课， 在5月前将课程看- 遍, 并记笔记。 3.做2002-2008年真题阅读部分,把不认识的单词都标记出来，在语境中重复单词会记得更牢。
+    
+</code></pre>
+<h3 id="第二轮（两个月）12-10-2-10"><a href="#第二轮（两个月）12-10-2-10" class="headerlink" title="第二轮（两个月）12.10-2.10"></a>第二轮（两个月）12.10-2.10</h3><pre><code>- 真题训练（两个月）
+    
+    - 2009-2019共11套真题
+        
+- 任务:本阶段重点为英语真题，辅助英语单词背诵。 1.英语真题训练，提前留出2020-2024年的真题作为冲刺阶段考前模拟。剩下年份的真题以周为单 位，保持一周一套英语真题的速度。除大小作文之外都要做. 2.每周一套英语真题，要做到: . ●标记出每一个不认识的单词; ●画咄出长难句句子结构并分析; ●通篇阅读文章感受行文逻辑; ●分析题目理解错误原因,并总结做题技巧;
+</code></pre>
+<h3 id="第三轮（两个月）2-10-4-10"><a href="#第三轮（两个月）2-10-4-10" class="headerlink" title="第三轮（两个月）2.10-4.10"></a>第三轮（两个月）2.10-4.10</h3><pre><code>- 任务: 1.总结英语大小作文写作框架，背诵优质句子充实作文语料库。 2.完整模拟近5年英语真题(含大小作文) ,严格控制做题时间训练答题速度,在模拟中训练做题 技巧，最后进行查漏补缺。 3.回顾复习近20年真题和选项。
+</code></pre>
+<h2 id="政治"><a href="#政治" class="headerlink" title="政治"></a>政治</h2>
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/2023/08/0bb587f95395.html" title="" target="_blank" rel="external">http://example.com/2023/08/0bb587f95395.html</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/limingqian17" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/limingqian17" target="_blank"><span class="text-dark">安xy</span><small class="ml-1x">安_blog</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2023/08/aac36af29990.html" title="(no title)"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2023/08/44c50b79138d.html" title="(no title)"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/limingqian17" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+
+
+
+
+
+
+</body>
+</html>

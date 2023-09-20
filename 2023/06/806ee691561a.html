@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>Hexo</title>
+  <meta name="description" content="第一章  思考题1. 按照科学进化论的观点，从古至今经历了哪些阶段，请简单介绍答：（1）17世纪之前：经验科学。        人们根据经验，总结归纳出可能的因果关系的结论，但内部的逻辑不一定清晰。（2）17-20世纪50年代: 理论科学。        每个学科都有很大的发展，形成了理论模型，帮助人们更好地认识世界。（3）20世纪50s-90s:计算机科学。        由于计算机与关系型数据">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2023/06/806ee691561a.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="第一章  思考题1. 按照科学进化论的观点，从古至今经历了哪些阶段，请简单介绍答：（1）17世纪之前：经验科学。        人们根据经验，总结归纳出可能的因果关系的结论，但内部的逻辑不一定清晰。（2）17-20世纪50年代: 理论科学。        每个学科都有很大的发展，形成了理论模型，帮助人们更好地认识世界。（3）20世纪50s-90s:计算机科学。        由于计算机与关系型数据">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306022236756.png">
+<meta property="article:published_time" content="2023-06-02T04:56:53.271Z">
+<meta property="article:modified_time" content="2023-09-20T08:42:18.847Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306022236756.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://example.com/2023/06/806ee691561a.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/limingqian17" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">安xy</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">安_blog</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/limingqian17" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>go on!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 13px;">-算法</a> <a href="/tags/C/" style="font-size: 13px;">C++</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 13px;">算法</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/">culitivate</a><span class="category-list-count">18</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/408/">408</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/408/%E7%AE%97%E6%B3%95/">算法</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/C/">C++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/PHP/">PHP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/Python/">Python</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/Python/%E7%88%AC%E8%99%AB/">爬虫</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/">java技术栈</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/java/">java</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/mysql/">mysql</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/vue/">vue</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/other/">other</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/other/CTF/">CTF</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/other/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E7%AC%94%E8%AE%B0/">数学建模笔记</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/other/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><span class="category-list-count">2</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/plan/">plan</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/project/">project</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/project/2023%E6%9A%91%E6%9C%9F%E9%A1%B9%E7%9B%AEhealth/">2023暑期项目health</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E8%AE%B0%E5%BD%95/">工具记录</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E8%AE%B0%E5%BD%95/vim/">vim</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E8%AE%B0%E5%BD%95/%E5%BB%BA%E7%AB%99/">建站</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E8%AE%B0%E5%BD%95/%E6%99%AE%E9%80%9A%E8%AF%9D/">普通话</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">课程笔记</a><span class="category-list-count">19</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/R/">R</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/R/%E5%AE%9E%E9%AA%8C%E4%B8%80/">实验一</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/python/">python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C/">复杂网络</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C/%E5%B0%8F%E5%AE%9E%E9%AA%8C1/">小实验1</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E5%AD%A6%E8%AF%AD%E6%96%87/">大学语文</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%AE%89%E5%8D%93%E8%AE%BA%E6%96%87/">安卓论文</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/">数据挖掘</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E4%BD%9C%E4%B8%9A/">作业</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/">实验报告</a><span class="category-list-count">7</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E7%90%86%E9%80%BB%E8%BE%91/">数理逻辑</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%9F%BA%E7%A1%80/">软件工程基础</a><span class="category-list-count">1</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">九月 2023</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">八月 2023</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">七月 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">六月 2023</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">五月 2023</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">四月 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">三月 2023</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">九月 2022</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-课程笔记/数据挖掘/作业/电子版作业汇总" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2023/06/806ee691561a.html" class="article-date">
+	  <time datetime="2023-06-02T04:56:53.271Z" itemprop="datePublished">2023-06-02</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">课程笔记</a>►<a class="article-category-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/">数据挖掘</a>►<a class="article-category-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E4%BD%9C%E4%B8%9A/">作业</a>
+  </span>
+
+        
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2023/06/806ee691561a.html#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 4.7k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 19(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="第一章-思考题"><a href="#第一章-思考题" class="headerlink" title="第一章  思考题"></a>第一章  思考题</h1><h2 id="1-按照科学进化论的观点，从古至今经历了哪些阶段，请简单介绍"><a href="#1-按照科学进化论的观点，从古至今经历了哪些阶段，请简单介绍" class="headerlink" title="1. 按照科学进化论的观点，从古至今经历了哪些阶段，请简单介绍"></a>1. 按照科学进化论的观点，从古至今经历了哪些阶段，请简单介绍</h2><p>答：<br>（1）17世纪之前：经验科学。<br>        人们根据经验，总结归纳出可能的因果关系的结论，但内部的逻辑不一定清晰。<br>（2）17-20世纪50年代: 理论科学。<br>        每个学科都有很大的发展，形成了理论模型，帮助人们更好地认识世界。<br>（3）20世纪50s-90s:计算机科学。<br>        由于计算机与关系型数据库、结构化查询语言的发展，人们可以更好地管理、查询与处理分析数据。<br>（4）20世纪90年代至今：数据科学。<br>        因高级数据仓库、数据算法等技术的发展，能够有效地管理分析大数据，能够从数据中获取知识，甚至预测数据。</p>
+<h2 id="2-知识发现分哪些步骤，请简单介绍各步骤的主要功能"><a href="#2-知识发现分哪些步骤，请简单介绍各步骤的主要功能" class="headerlink" title="2. 知识发现分哪些步骤，请简单介绍各步骤的主要功能"></a>2. 知识发现分哪些步骤，请简单介绍各步骤的主要功能</h2><p>答：<br>1.数据清理：消除数据中的噪声和删除不一致的数据<br>2.数据集成：将不同来源的数据组合在一起<br>3.数据选择：从数据库中提取、分析与任务相关的数据<br>4.数据变换：通过汇总或聚集操作，把数据变换和统一成适合挖掘的形式<br>5.数据挖掘：使用智能方法提取数据模式<br>6.模式评估：根据某种兴趣度度量，识别代表知识的真正的有趣的模式<br>7.知识表示：将挖掘到的知识用可视化的技术表示出来，使用可视化和知识表示技术，向用户提供挖掘的知识</p>
+<h2 id="3-数据挖掘为什么会涉及到许多学科？请给出理由"><a href="#3-数据挖掘为什么会涉及到许多学科？请给出理由" class="headerlink" title="3. 数据挖掘为什么会涉及到许多学科？请给出理由"></a>3. 数据挖掘为什么会涉及到许多学科？请给出理由</h2><p>答：<br>数据挖掘之所以涉及到许多学科，与数据挖掘的步骤息息相关。在数据集成、变换、选择等阶段，不仅仅需要计算机学科的知识来获取大量数据，还需要统计学的知识来提取分析数据，以及机器学习等学科来提取数据模式。</p>
+<h1 id="第二章-思考题"><a href="#第二章-思考题" class="headerlink" title="第二章  思考题"></a>第二章  思考题</h1><h2 id="1-请解释并举例说明什么是标称属性，什么是二元属性，什么是序数属性"><a href="#1-请解释并举例说明什么是标称属性，什么是二元属性，什么是序数属性" class="headerlink" title="1. 请解释并举例说明什么是标称属性，什么是二元属性，什么是序数属性"></a>1. 请解释并举例说明什么是标称属性，什么是二元属性，什么是序数属性</h2><p>答：<br>标称属性的值是一些符号或事物的名称，每个值代表某种类别、编码或状态，可以看成是用于分类、枚举的。<br>例子：性别属性：男、女；头发颜色属性</p>
+<p>二元属性是一种只有两种状态（0或1）的标称属性，有对称的二元属性（两种状态同样重要）与非对称二元属性（重要性不相等）之分。<br>例子：对称二元属性：性别；非对称二元属性：医学检测的阴性与阳性</p>
+<p>序数属性其可能的值之间具有有意义的序或秩评定，但是相继值之间的差是未知的。<br>例子：杯子的型号属性：小、中、大</p>
+<h2 id="2-数据的中心趋势测度有哪几个参数，请解释它们各自的含义"><a href="#2-数据的中心趋势测度有哪几个参数，请解释它们各自的含义" class="headerlink" title="2. 数据的中心趋势测度有哪几个参数，请解释它们各自的含义"></a>2. 数据的中心趋势测度有哪几个参数，请解释它们各自的含义</h2><p>答：<br>有均值、中位数、众数这三个参数。</p>
+<p>均值：数据集的平均值$$ $\bar{x}&#x3D;\frac{\sum\limits_{i&#x3D;1}^{n}x_i}{n}$$均值又有加权平均$$\bar{x}&#x3D;\frac{\sum_{i&#x3D;1}^{n}w_{i}x_{i}}{\sum_{i&#x3D;1}^{n}w_i}$$以及截尾均值：丢弃高低极端值后的均值</p>
+<p>中位数：有序数据值的中间值</p>
+<p>众数：集合中出现最频繁的值</p>
+<h2 id="3-盒图有哪几个数据点构成？请解释各个点的含义"><a href="#3-盒图有哪几个数据点构成？请解释各个点的含义" class="headerlink" title="3. 盒图有哪几个数据点构成？请解释各个点的含义"></a>3. 盒图有哪几个数据点构成？请解释各个点的含义</h2><p>答：<br>由Minimun,Q1,Median,Q3,Maximun，离群点五个数据点构成</p>
+<p>Mininum:数据集的最小值<br>Q1：数据集的第一个百分位<br>Median:中位数<br>Q3：第三个百分位<br>Maximum:数据集中的最大值<br>离群点：超出指定的值，单独标记</p>
+<h2 id="4-直方图的横坐标和纵坐标分别表示什么，它可以用来观察数据的什么情况"><a href="#4-直方图的横坐标和纵坐标分别表示什么，它可以用来观察数据的什么情况" class="headerlink" title="4. 直方图的横坐标和纵坐标分别表示什么，它可以用来观察数据的什么情况"></a>4. 直方图的横坐标和纵坐标分别表示什么，它可以用来观察数据的什么情况</h2><p>答：<br>横坐标表示值，纵坐标表示频数</p>
+<p>用来观察数据的不同值的频率发布情况</p>
+<h2 id="5-散点图是由什么构成的，有什么作用"><a href="#5-散点图是由什么构成的，有什么作用" class="headerlink" title="5. 散点图是由什么构成的，有什么作用"></a>5. 散点图是由什么构成的，有什么作用</h2><p>答：<br>是由代数坐标对在坐标轴中形成的的散点构成。<br><strong>作用</strong>：<br>用于确定两个数值变量之间看上去是否存在联系、模式、或趋势。</p>
+<h2 id="6-什么是对称二元标称属性，什么是非对称二元标称属性？计算它们之间的距离有什么不同？"><a href="#6-什么是对称二元标称属性，什么是非对称二元标称属性？计算它们之间的距离有什么不同？" class="headerlink" title="6. 什么是对称二元标称属性，什么是非对称二元标称属性？计算它们之间的距离有什么不同？"></a>6. 什么是对称二元标称属性，什么是非对称二元标称属性？计算它们之间的距离有什么不同？</h2><p>答：<br>对称二元属性：两种状态同样重要<br>非对称二元属性：两种状态重要性不相等</p>
+<p>对称二元属性的距离测度考虑两个实体属性同时取0的情况；<br>而非对称二元属性的距离测度则忽略，两个实体属性同时取0的情况，不参与计算。</p>
+<h2 id="7-Minkowski-距离有哪些性质？L1-norm，L2-norm和-L-infty-norm分别表示什么情况下的取值？"><a href="#7-Minkowski-距离有哪些性质？L1-norm，L2-norm和-L-infty-norm分别表示什么情况下的取值？" class="headerlink" title="7. Minkowski 距离有哪些性质？L1 norm，L2 norm和$L_{\infty}$ norm分别表示什么情况下的取值？"></a>7. Minkowski 距离有哪些性质？L1 norm，L2 norm和$L_{\infty}$ norm分别表示什么情况下的取值？</h2><p>答：<br><strong>性质</strong>：</p>
+<ol>
+<li>$d(i, j) &gt; 0$  if  $i ≠ j, and d(i, i) &#x3D; 0$（正定性）</li>
+<li>$d(i,j)&#x3D;d(j,i)$（对称性）</li>
+<li>$d(i,j)\leq d(i,k)+d(k,j)$（三角不等式）</li>
+</ol>
+<p>L1 norm：h&#x3D;1，哈曼顿距离（直线距离）<br>L2 norm：h&#x3D;2，欧几里得距离<br>$L_{\infty}$ norm：h-&gt;无穷，切比雪夫距离</p>
+<h1 id="第三章-思考题"><a href="#第三章-思考题" class="headerlink" title="第三章  思考题"></a>第三章  思考题</h1><h2 id="1-衡量数据质量主要考察哪些方面？"><a href="#1-衡量数据质量主要考察哪些方面？" class="headerlink" title="1. 衡量数据质量主要考察哪些方面？"></a>1. 衡量数据质量主要考察哪些方面？</h2><p>答：<br>主要考察数据的精确度、完整性、一致性、时效性、可行性、可解释性</p>
+<h2 id="2-数据预处理主要有哪些工作？"><a href="#2-数据预处理主要有哪些工作？" class="headerlink" title="2. 数据预处理主要有哪些工作？"></a>2. 数据预处理主要有哪些工作？</h2><p>答：<br>数据清洗、数据集成、数据规约、数据转换和离散</p>
+<h2 id="3-自动填充缺失数据主要包含哪些方法？请解释其适用范围"><a href="#3-自动填充缺失数据主要包含哪些方法？请解释其适用范围" class="headerlink" title="3. 自动填充缺失数据主要包含哪些方法？请解释其适用范围"></a>3. 自动填充缺失数据主要包含哪些方法？请解释其适用范围</h2><p>答：<br>方法：<br>（1）用一个全局常量替代<br>（2）用属性的均值来填充<br>（3）属于同一类的所有样本的属性均值<br>（4）最可能值：基于贝叶斯公式或决策树的推断<br>适用范围：<br>（1）数据集属性分布比较均匀，缺失数据比较少。<br>（2）属性之间的关系比较简单，缺失数据的影响不会对数据分析和建模产生较大影响。<br>（3）缺失数据随机分布，没有明显的规律和模式。<br>（4）数据集的规模较大，数据质量较好，可以保证填充缺失数据的准确性和可靠性。<br>（5）对于特定的数据类型和应用场景，存在合适的自动填充缺失数据的方法。</p>
+<h2 id="4．处理噪声数据主要有哪些方法，请介绍各方法的思路"><a href="#4．处理噪声数据主要有哪些方法，请介绍各方法的思路" class="headerlink" title="4．处理噪声数据主要有哪些方法，请介绍各方法的思路"></a>4．处理噪声数据主要有哪些方法，请介绍各方法的思路</h2><p>答：<br>（1）分箱<br>        思路：首先将数据排序并划分到等频的箱中；然后用箱的均值&#x2F;中位数&#x2F;边界等光滑箱中数据<br>（2）回归<br>        思路：用一个函数拟合数据来光滑数据<br>（3）离群点分析&#x2F;聚类<br>        思路：将类似的值组织成群或“簇”。落在簇集合之外的值被视为离群点<br>（4）组合方法<br>        思路：检测可疑值并由人工检查（例如，处理可能的异常值）</p>
+<h2 id="5-标称数据的相关性分析可以采用什么方法，请叙述其具体步骤"><a href="#5-标称数据的相关性分析可以采用什么方法，请叙述其具体步骤" class="headerlink" title="5. 标称数据的相关性分析可以采用什么方法，请叙述其具体步骤"></a>5. 标称数据的相关性分析可以采用什么方法，请叙述其具体步骤</h2><p>答：<br>采用卡方分析（检验）<br><strong>具体步骤</strong>：<br>对于要分析的两个属性，先计算不同取值下对应的期望频率，再将观测频率代入卡方分析公式<br>$$\chi^{2}&#x3D;\sum\frac{(Observed-Expected)^2}{Expected}$$<br>计算出$\chi^{2}$，$\chi^{2}$值越大，两属性越可能相关</p>
+<h1 id="第四章-思考题"><a href="#第四章-思考题" class="headerlink" title="第四章  思考题"></a>第四章  思考题</h1><h2 id="1-请解释W-H-Inmon所定义的数据仓库是面向主题的，集成的，时变得，非易失的数据集合的含义"><a href="#1-请解释W-H-Inmon所定义的数据仓库是面向主题的，集成的，时变得，非易失的数据集合的含义" class="headerlink" title="1.  请解释W. H. Inmon所定义的数据仓库是面向主题的，集成的，时变得，非易失的数据集合的含义"></a>1.  请解释W. H. Inmon所定义的数据仓库是面向主题的，集成的，时变得，非易失的数据集合的含义</h2><p>答：<br><strong>面向主题的</strong>：数据仓库中的数据围绕一些重要主题。数据仓库关注决策者的数据建模与分析，排除对于决策无用的数据，提供特定主题的简明视图。</p>
+<p><strong>集成的</strong>：构造数据仓库是将多个异构数据源集成在一起，通过数据清理和数据集成技术，确保命名约定、编码结构、属性度量等的一致性。</p>
+<p><strong>时变的</strong>：数据存储从历史的角度提供信息，时间跨度大。数据仓库中的关键结构都隐式或显示地包含时间元素。</p>
+<p><strong>非易失的</strong>：数据仓库总是物理地分离存放数据。数据仓库不需要事务处理、恢复和并发控制机制。通常只需要两种数据访问操作：数据的初始化装入和数据访问。</p>
+<h2 id="2-数据仓库的概念模型有哪些？请予以解释它们之间的异同"><a href="#2-数据仓库的概念模型有哪些？请予以解释它们之间的异同" class="headerlink" title="2. 数据仓库的概念模型有哪些？请予以解释它们之间的异同"></a>2. 数据仓库的概念模型有哪些？请予以解释它们之间的异同</h2><p>答：<br>有星型模式、雪花模式、事实星座模式</p>
+<p>异同如下：<br><strong>星型模式</strong>：<br>只有一个大的中心表（事实表）和一组小的维表（附属表），每维只有一个维度表，事实表和维度表之间是一对多的关系。<br>查询速度快、易于理解，但可能会存在数据冗余</p>
+<p><strong>雪花模式</strong>：<br>是星型模式的变种，在其基础上进一步规范化，通过拆分某些维度表中的属性将其转化为单独的表，以便减少冗余。<br>具有更高的数据质量和更高规范化程度，但查询需要更多的连接操作，降低查询效率。</p>
+<p><strong>事实星座模式</strong>：<br>具有多个事实表，并且可能共享维表，可以看做星型模式的汇集。<br>查询速度较快，但维护复杂度相对较高。</p>
+<h2 id="3-数据立方体度量有哪些？count-avg-median-各分别属于哪一种？"><a href="#3-数据立方体度量有哪些？count-avg-median-各分别属于哪一种？" class="headerlink" title="3. 数据立方体度量有哪些？count(), avg(), median()各分别属于哪一种？"></a>3. 数据立方体度量有哪些？count(), avg(), median()各分别属于哪一种？</h2><p>答：<br>有分布的、代数的和整体的<br>count():分布的<br>avg():代数的<br>median():整体的</p>
+<h1 id="第五章-思考题"><a href="#第五章-思考题" class="headerlink" title="第五章  思考题"></a>第五章  思考题</h1><h2 id="1-什么是模式？满足什么条件的模式称之为频繁模式？"><a href="#1-什么是模式？满足什么条件的模式称之为频繁模式？" class="headerlink" title="1. 什么是模式？满足什么条件的模式称之为频繁模式？"></a>1. 什么是模式？满足什么条件的模式称之为频繁模式？</h2><p>答：<br><strong>模式</strong>：出现在数据集中的项集、子序列或子结构<br><strong>频繁模式</strong>：满足最小支持度阈值的模式</p>
+<h2 id="2-有如表1所示的事务数据库，设minsup-x3D-50-minconf-x3D-50"><a href="#2-有如表1所示的事务数据库，设minsup-x3D-50-minconf-x3D-50" class="headerlink" title="2. 有如表1所示的事务数据库，设minsup&#x3D;50%,minconf&#x3D;50%."></a>2. 有如表1所示的事务数据库，设minsup&#x3D;50%,minconf&#x3D;50%.</h2><p>表1 事务数据库</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Id</td>
+<td>Items bought</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Beer, Nuts, Diaper</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Beer, Coffee, Diaper</td>
+</tr>
+<tr>
+<td>30</td>
+<td>Beer, Diaper, Eggs</td>
+</tr>
+<tr>
+<td>40</td>
+<td>Nuts, Eggs, Milk</td>
+</tr>
+<tr>
+<td>50</td>
+<td>Nuts, Coffee, Diaper, Eggs, Milk</td>
+</tr>
+</tbody></table>
+<h3 id="（1）请查询得出所有的频繁项集"><a href="#（1）请查询得出所有的频繁项集" class="headerlink" title="（1）请查询得出所有的频繁项集"></a>（1）请查询得出所有的频繁项集</h3><p>频繁1项集：{Beer},{Nuts},{Diaper},{Eggs}<br>频繁2项集：{Beer,Diaper}</p>
+<h3 id="（2）计算下面两个关联规则的支持度和置信度"><a href="#（2）计算下面两个关联规则的支持度和置信度" class="headerlink" title="（2）计算下面两个关联规则的支持度和置信度"></a>（2）计算下面两个关联规则的支持度和置信度</h3><p>Beer-&gt;Diaper<br>支持度：60%；置信度：100%<br>Diaper-&gt;Beer<br>支持度：60%；置信度：75%</p>
+<h2 id="3-什么是闭模式？什么是极大模式？"><a href="#3-什么是闭模式？什么是极大模式？" class="headerlink" title="3.什么是闭模式？什么是极大模式？"></a>3.什么是闭模式？什么是极大模式？</h2><p>现有DB &#x3D; {&lt;a1, …, a100&gt;, &lt; a1, …, a50&gt;}<br>设min_sup &#x3D; 1.。试分析：&lt;a1, …, a100&gt;和&lt; a1, …, a50&gt;，哪些是闭模式，哪些是极大模式，说明原因<br>答：<br><strong>闭模式</strong>：X是闭模式，则X本身是频繁项集且不存在真超项集使得真超项集与其在数据集中具有相同的支持度计数。<br><strong>极大模式</strong>：X是极大频繁项集，则如果X是频繁的且不存在频繁的真超项集。</p>
+<p>&lt;a1, …, a100&gt;和&lt; a1, …, a50&gt;都是闭模式，因为首先他们都是频繁项集，最小支持度大于等于1，其次不存在真超项集与其具有相同的支持度计数。<br>&lt; a1, …, a100&gt;是极大模式，因为其本身是频繁的，其次不存在真超项集，更不用说存在是频繁的真超项集。</p>
+<h2 id="4．一个频繁项集的子集是否一定是频繁的？一个频繁项集的超集是否一定是频繁的？一个非频繁项集的子集是否一定是非频繁的？一个非频繁项集的超集是否一定是非频繁的？"><a href="#4．一个频繁项集的子集是否一定是频繁的？一个频繁项集的超集是否一定是频繁的？一个非频繁项集的子集是否一定是非频繁的？一个非频繁项集的超集是否一定是非频繁的？" class="headerlink" title="4．一个频繁项集的子集是否一定是频繁的？一个频繁项集的超集是否一定是频繁的？一个非频繁项集的子集是否一定是非频繁的？一个非频繁项集的超集是否一定是非频繁的？"></a>4．一个频繁项集的子集是否一定是频繁的？一个频繁项集的超集是否一定是频繁的？一个非频繁项集的子集是否一定是非频繁的？一个非频繁项集的超集是否一定是非频繁的？</h2><p>答：<br>（1）一定（2）不一定（3）不一定（4）一定</p>
+<h2 id="5-掌握Apriori挖掘频繁项集的算法。"><a href="#5-掌握Apriori挖掘频繁项集的算法。" class="headerlink" title="5. 掌握Apriori挖掘频繁项集的算法。"></a>5. 掌握Apriori挖掘频繁项集的算法。</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Ck:Candidate itemset of size k</span><br><span class="line"></span><br><span class="line">Lk:frequent itemset of size k</span><br><span class="line"></span><br><span class="line">L1=&#123;frequent items&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(k=<span class="number">1</span>;Lk!=空集;k++)<span class="keyword">do</span> begin</span><br><span class="line"></span><br><span class="line">       Ck+<span class="number">1</span>=candidates generated form Lk;</span><br><span class="line"></span><br><span class="line">       For each transaction t in database <span class="keyword">do</span></span><br><span class="line"></span><br><span class="line">              Increment the count of all candidates in Ck+<span class="number">1</span> that are contained in t;</span><br><span class="line"></span><br><span class="line">       Lk+<span class="number">1</span>=candidates in Ck+<span class="number">1</span> with min_suppor;</span><br><span class="line"></span><br><span class="line">       End</span><br><span class="line"></span><br><span class="line">Return U Lk；(并上所有Lk)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="6-什么是单调约束条件？什么是反单调约束条件？试分析下面的约束哪些是单调的，哪些是反单调的，说明原因：（S是项集）"><a href="#6-什么是单调约束条件？什么是反单调约束条件？试分析下面的约束哪些是单调的，哪些是反单调的，说明原因：（S是项集）" class="headerlink" title="6. 什么是单调约束条件？什么是反单调约束条件？试分析下面的约束哪些是单调的，哪些是反单调的，说明原因：（S是项集）"></a>6. 什么是单调约束条件？什么是反单调约束条件？试分析下面的约束哪些是单调的，哪些是反单调的，说明原因：（S是项集）</h2><p>  （1）sum(S.price)&lt;&#x3D;100 （2）range(S.profit)&lt;&#x3D;20 </p>
+<p>  （3）sum(S.Price)&gt;&#x3D;100   （4）min(S.Price)&lt;&#x3D;15<br>答：<br><strong>单调约束</strong>：对满足约束的项集，向此项集中添加更多的项，但总满足约束，因此在此项集上检查该约束是多余的。即如果项集满足这个规则约束，则它的所有超集也满足。如果一个约束规则具有这种性质则称它是单调的。</p>
+<p><strong>反单调约束</strong>：对于已经违反约束的项集，向此项集内添加更多的项不可能满足这些约束，此时应该直接丢弃此项集。即如果项集违反规则约束，则它的所有超集也违反。如果一个约束规则具有这种性质则称它是反单调的。</p>
+<p>（1）、（4）是反单调的。因为一旦项集和已经超过价格约束再添加任何一件商品其价格总和必将增加，必违反约束。即其超项集是违反约束的。</p>
+<p>（3）是单调的。因为一旦项集的总价满足约束（大于100）再添加任何项只会使总价增加，即其超项集是满足约束的。</p>
+<p>（2）既不是单调也不是反单调的。因为利润可能为负值。项集的利润和并不随着项集中项的个数增加而增加。</p>
+<h1 id="第六章-思考题"><a href="#第六章-思考题" class="headerlink" title="第六章  思考题"></a>第六章  思考题</h1><p>表1 购买记录</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>age</td>
+<td>income</td>
+<td>student</td>
+<td>credit_rating</td>
+<td>buys_computer</td>
+</tr>
+<tr>
+<td>&lt;&#x3D;30</td>
+<td>high</td>
+<td>no</td>
+<td>fair</td>
+<td>no</td>
+</tr>
+<tr>
+<td>&lt;&#x3D;30</td>
+<td>high</td>
+<td>no</td>
+<td>excellent</td>
+<td>no</td>
+</tr>
+<tr>
+<td>31…40</td>
+<td>high</td>
+<td>no</td>
+<td>fair</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>&gt;40</td>
+<td>medium</td>
+<td>no</td>
+<td>fair</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>&gt;40</td>
+<td>low</td>
+<td>yes</td>
+<td>fair</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>&gt;40</td>
+<td>low</td>
+<td>yes</td>
+<td>excellent</td>
+<td>no</td>
+</tr>
+<tr>
+<td>31…40</td>
+<td>low</td>
+<td>yes</td>
+<td>excellent</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>&lt;&#x3D;30</td>
+<td>medium</td>
+<td>no</td>
+<td>fair</td>
+<td>no</td>
+</tr>
+<tr>
+<td>&lt;&#x3D;30</td>
+<td>low</td>
+<td>yes</td>
+<td>fair</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>&gt;40</td>
+<td>medium</td>
+<td>yes</td>
+<td>fair</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>&lt;&#x3D;30</td>
+<td>medium</td>
+<td>yes</td>
+<td>excellent</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>31…40</td>
+<td>medium</td>
+<td>no</td>
+<td>excellent</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>31…40</td>
+<td>high</td>
+<td>yes</td>
+<td>fair</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>&gt;40</td>
+<td>medium</td>
+<td>no</td>
+<td>excellent</td>
+<td>no</td>
+</tr>
+</tbody></table>
+<h2 id="1-购买记录如表1所示，"><a href="#1-购买记录如表1所示，" class="headerlink" title="1.购买记录如表1所示，"></a>1.购买记录如表1所示，</h2><h3 id="1-用信息增益法建立一棵完整的决策树"><a href="#1-用信息增益法建立一棵完整的决策树" class="headerlink" title="(1)用信息增益法建立一棵完整的决策树"></a>(1)用信息增益法建立一棵完整的决策树</h3><p>$$Info(D)&#x3D;-\frac{9}{14}\log_2^{\frac{9}{14}}-\frac{5}{14}\log_2^{\frac{5}{14}}&#x3D;0.940$$<br>$$Info_{age}(D)&#x3D;\frac{5}{14}<em>(-\frac{2}{5}\log_2^{\frac{2}{5}}-\frac{3}{5}\log_2^{\frac{3}{5}})+\frac{4}{14}</em>(-\frac{4}{4}\log_2^{\frac{4}{4}}-\frac{0}{4}\log_2^{\frac{0}{4}})+\frac{5}{14}*(-\frac{3}{5}\log_2^{\frac{3}{5}}-\frac{2}{5}\log_2^{\frac{2}{5}})&#x3D;0.694$$<br>$$Gain(age)&#x3D;Info(D)-Info_{age}(D)&#x3D;0.940-0.694&#x3D;0.264$$<br>同理可计算得<br>$$Gain(income)&#x3D;0.029;Gain(student)&#x3D;0.151;Gain(credit_-rating)&#x3D;0.048$$<br>综上，age在属性中有最大信息增益，所以被选作划分属性：根节点用age标记，以age属性的三种属性值生长出对应分支。由于age属性值为31…40的分支buys_Computer属性值全为yes，所以直接用yes标记该叶节点。</p>
+<p>接着，对age取&lt;&#x3D;30与&gt;40分别进行上述计算。<br>对于age取&lt;&#x3D;30分支：<br>$$Info(D_1)&#x3D;-\frac{2}{5}\log_2^{\frac{2}{5}}-\frac{3}{5}\log_2^{\frac{3}{5}}&#x3D;0.529+0.442&#x3D;0.971$$<br>$$Info_{income}(D_1)&#x3D;\frac{2}{5}<em>(-\frac{2}{2}\log_2^{\frac{2}{2}}-\frac{0}{2}\log_2^{\frac{0}{2}})+\frac{2}{5}</em>(-\frac{1}{2}\log_2^{\frac{1}{2}}-\frac{1}{2}\log_2^{\frac{1}{2}})+\frac{1}{5}<em>(-\frac{1}{1}\log_2^{\frac{1}{1}}-\frac{0}{1}\log_2^{\frac{0}{1}})&#x3D;0+0.4+0&#x3D;0.4$$<br>$$Gain(income)&#x3D;Info(D_1)-Info_{income}(D_1)&#x3D;0.971-0.4&#x3D;0.571$$<br>同理可计算得<br>$$Info_{student}(D_1)&#x3D;\frac{3}{5}</em>(-\frac{3}{3}\log_2^{\frac{3}{3}}-\frac{0}{3}\log_2^{\frac{0}{3}})+\frac{2}{5}<em>(-\frac{2}{2}\log_2^{\frac{2}{2}}-\frac{0}{2}\log_2^{\frac{0}{2}})&#x3D;0$$<br>$$Gain(student)&#x3D;Info(D_1)-Info_{income}(D_1)&#x3D;0.971$$<br>$$Info_{student}(D_1)&#x3D;\frac{3}{5}</em>(-\frac{2}{3}\log_2^{\frac{2}{3}}-\frac{1}{3}\log_2^{\frac{1}{3}})+\frac{2}{5}*(-\frac{1}{2}\log_2^{\frac{1}{2}}-\frac{1}{2}\log_2^{\frac{1}{2}})&#x3D;0.951$$<br>$$Gain(credit_-rating)&#x3D;Info(D_1)-Info_{credit_-rating}(D_1)&#x3D;0.020$$<br>综上，student属性具有最大信息增益，所以选取其为划分属性。又属性值no分支下类标记全为no，所以用no类标签标记该叶节点；同理，属性值yes分支下类标记全为yes，所以用yes类标签标记该叶节点。</p>
+<p>对于age取&gt;40分支：<br>$$Info(D_2)&#x3D;-\frac{3}{5}\log_2^{\frac{3}{5}}-\frac{2}{5}\log_2^{\frac{2}{5}}&#x3D;0.971$$<br>$$Info_{credit_-rating}(D_2)&#x3D;\frac{3}{5}<em>(-\frac{3}{3}\log_2^{\frac{3}{3}}-\frac{0}{3}\log_2^{\frac{0}{3}})+\frac{2}{5}</em>(-\frac{2}{2}\log_2^{\frac{2}{2}}-\frac{0}{2}\log_2^{\frac{0}{2}})&#x3D;0$$<br>$$Gain(credit_-rating)&#x3D;Info(D_2)-Info_{credit_-rating}(D_2)&#x3D;0.971$$<br>所以，credit_rating属性具有最大信息增益，所以选取其为划分属性。又属性值fair分支下类标记全为yes，所以用yes类标签标记该叶节点；同理，属性值excellent分支下类标记全为no，所以用no类标签标记该叶节点。<br>最终所得决策树如下图：<br><img src="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306022236756.png" alt="image.png"></p>
+<h3 id="2-用Bayes分类法判断X-x3D-age-lt-x3D-30-income-x3D-medium-student-x3D-yes-credit-rating-x3D-Fair-是否购买电脑"><a href="#2-用Bayes分类法判断X-x3D-age-lt-x3D-30-income-x3D-medium-student-x3D-yes-credit-rating-x3D-Fair-是否购买电脑" class="headerlink" title="(2)用Bayes分类法判断X &#x3D; (age &lt;&#x3D;30, income &#x3D;medium, student &#x3D; yes, credit_rating &#x3D; Fair)是否购买电脑"></a>(2)用Bayes分类法判断X &#x3D; (age &lt;&#x3D;30, income &#x3D;medium, student &#x3D; yes, credit_rating &#x3D; Fair)是否购买电脑</h3><p>P(Ci): <br>P(buys_computer &#x3D; “yes”) &#x3D; 9&#x2F;14 &#x3D; 0.643 <br>P(buys_computer &#x3D; “no”) &#x3D; 5&#x2F;14&#x3D; 0.357<br>Compute P(X|Ci) for each class <br>P(age &#x3D; “&lt;&#x3D;30” | buys_computer &#x3D; “yes”) &#x3D; 2&#x2F;9 &#x3D; 0.222<br>P(age &#x3D; “&lt;&#x3D; 30” | buys_computer &#x3D; “no”) &#x3D; 3&#x2F;5 &#x3D; 0.6<br>P(income &#x3D; “medium” | buys_computer &#x3D; “yes”) &#x3D; 4&#x2F;9 &#x3D; 0.444 <br>P(income &#x3D; “medium” | buys_computer &#x3D; “no”) &#x3D; 2&#x2F;5 &#x3D; 0.4 <br>P(student &#x3D; “yes” | buys_computer &#x3D; “yes) &#x3D; 6&#x2F;9 &#x3D; 0.667 <br>P(student &#x3D; “yes” | buys_computer &#x3D; “no”) &#x3D; 1&#x2F;5 &#x3D; 0.2 <br>P(credit_rating &#x3D; “fair” | buys_computer &#x3D; “yes”) &#x3D; 6&#x2F;9 &#x3D; 0.667 <br>P(credit_rating &#x3D; “fair” | buys_computer &#x3D; “no”) &#x3D; 2&#x2F;5 &#x3D; 0.4<br>X &#x3D; (age &lt;&#x3D; 30 , income &#x3D; medium, student &#x3D; yes, credit_rating &#x3D; fair)<br>P(X|Ci) : <br>P(X|buys_computer &#x3D; “yes”) &#x3D; 0.222 x 0.444 x 0.667 x 0.667 &#x3D; 0.044 <br>P(X|buys_computer &#x3D; “no”) &#x3D; 0.6 x 0.4 x 0.2 x 0.4 &#x3D; 0.019 <br>P(X|Ci)*P(Ci) : <br>P(X|buys_computer &#x3D; “yes”) * P(buys_computer &#x3D; “yes”) &#x3D; 0.028 <br>P(X|buys_computer &#x3D; “no”) * P(buys_computer &#x3D; “no”)&#x3D;0.007<br>因此，X&#x3D;(age &lt;&#x3D;30, income &#x3D;medium, student &#x3D; yes, credit_rating &#x3D; Fair)购买电脑。</p>
+<h2 id="2-已知混淆矩阵如表2所示，完成下列工作："><a href="#2-已知混淆矩阵如表2所示，完成下列工作：" class="headerlink" title="2. 已知混淆矩阵如表2所示，完成下列工作："></a>2. 已知混淆矩阵如表2所示，完成下列工作：</h2><h3 id="1-解释表格中100、12、10和90分别表示什么含义"><a href="#1-解释表格中100、12、10和90分别表示什么含义" class="headerlink" title="(1)解释表格中100、12、10和90分别表示什么含义"></a>(1)解释表格中100、12、10和90分别表示什么含义</h3><p>100：被正确分类的正例数目<br>12：被错误标记为负例的正例数目<br>10：被错误标记为正例的负例数目<br>90：被正确分类的负例数目</p>
+<h3 id="2-分别计算混淆矩阵中的准确率（accuracy）、灵敏性（sensitivity）和特指性（specificity）的值"><a href="#2-分别计算混淆矩阵中的准确率（accuracy）、灵敏性（sensitivity）和特指性（specificity）的值" class="headerlink" title="(2)分别计算混淆矩阵中的准确率（accuracy）、灵敏性（sensitivity）和特指性（specificity）的值"></a>(2)分别计算混淆矩阵中的准确率（accuracy）、灵敏性（sensitivity）和特指性（specificity）的值</h3><p>                            表2 混合矩阵</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>actual class &#x2F;prediction class</td>
+<td>buy_computer&#x3D;yes</td>
+<td>buy-computer&#x3D;no</td>
+<td>total</td>
+</tr>
+<tr>
+<td>buy_computer&#x3D;yes</td>
+<td>100</td>
+<td>12</td>
+<td>112</td>
+</tr>
+<tr>
+<td>buy-computer&#x3D;no</td>
+<td>10</td>
+<td>90</td>
+<td>100</td>
+</tr>
+<tr>
+<td>total</td>
+<td>110</td>
+<td>102</td>
+<td>212</td>
+</tr>
+<tr>
+<td>accuracy:</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>$$accuracy&#x3D;\frac{TP+TN}{P+N}&#x3D;\frac{100+90}{212}&#x3D;0.896$$</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>sensitivity:</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>$$sensitivity&#x3D;\frac{TP}{P}&#x3D;\frac{100}{112}&#x3D;0.893$$</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>specificity:</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>$$specificity&#x3D;\frac{TN}{N}&#x3D;\frac{90}{100}&#x3D;0.900$$</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/2023/06/806ee691561a.html" title="" target="_blank" rel="external">http://example.com/2023/06/806ee691561a.html</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/limingqian17" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/limingqian17" target="_blank"><span class="text-dark">安xy</span><small class="ml-1x">安_blog</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2023/06/611c274db787.html" title="(no title)"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2023/05/2a01fc38f096.html" title="(no title)"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/limingqian17" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+
+
+
+
+
+
+</body>
+</html>

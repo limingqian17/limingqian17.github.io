@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>Hexo</title>
+  <meta name="description" content="一、实验目的(1) 编写程序，实现心脏病的预测模型的建立。(2) 对多个模型，依据混淆矩阵进行评估度量。(3) 写出实验报告。 二、实验原理(1)数据预处理：首先，对心脏病数据集进行数据预处理，包括特征选择、缺失值处理、数据标准化等操作，以准备数据集用于模型训练和测试。  (2)模型训练：选择了多个机器学习算法，包括SVM、朴素贝叶斯、逻辑回归、决策树、随机森林、LightGBM和XGBoost。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2023/06/4c83db3bac28.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一、实验目的(1) 编写程序，实现心脏病的预测模型的建立。(2) 对多个模型，依据混淆矩阵进行评估度量。(3) 写出实验报告。 二、实验原理(1)数据预处理：首先，对心脏病数据集进行数据预处理，包括特征选择、缺失值处理、数据标准化等操作，以准备数据集用于模型训练和测试。  (2)模型训练：选择了多个机器学习算法，包括SVM、朴素贝叶斯、逻辑回归、决策树、随机森林、LightGBM和XGBoost。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306041529195.png">
+<meta property="og:image" content="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306041535081.png">
+<meta property="og:image" content="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306041537017.png">
+<meta property="og:image" content="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306041552306.png">
+<meta property="article:published_time" content="2023-06-04T07:23:43.350Z">
+<meta property="article:modified_time" content="2023-09-20T08:42:18.847Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306041529195.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://example.com/2023/06/4c83db3bac28.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/limingqian17" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">安xy</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">安_blog</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/limingqian17" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>go on!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 13px;">-算法</a> <a href="/tags/C/" style="font-size: 13px;">C++</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 13px;">算法</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/">culitivate</a><span class="category-list-count">18</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/408/">408</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/408/%E7%AE%97%E6%B3%95/">算法</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/C/">C++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/PHP/">PHP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/Python/">Python</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/Python/%E7%88%AC%E8%99%AB/">爬虫</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/">java技术栈</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/java/">java</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/mysql/">mysql</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/vue/">vue</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/other/">other</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/other/CTF/">CTF</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/other/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E7%AC%94%E8%AE%B0/">数学建模笔记</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/other/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><span class="category-list-count">2</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/plan/">plan</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/project/">project</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/project/2023%E6%9A%91%E6%9C%9F%E9%A1%B9%E7%9B%AEhealth/">2023暑期项目health</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E8%AE%B0%E5%BD%95/">工具记录</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E8%AE%B0%E5%BD%95/vim/">vim</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E8%AE%B0%E5%BD%95/%E5%BB%BA%E7%AB%99/">建站</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E8%AE%B0%E5%BD%95/%E6%99%AE%E9%80%9A%E8%AF%9D/">普通话</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">课程笔记</a><span class="category-list-count">19</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/R/">R</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/R/%E5%AE%9E%E9%AA%8C%E4%B8%80/">实验一</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/python/">python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C/">复杂网络</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C/%E5%B0%8F%E5%AE%9E%E9%AA%8C1/">小实验1</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E5%AD%A6%E8%AF%AD%E6%96%87/">大学语文</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%AE%89%E5%8D%93%E8%AE%BA%E6%96%87/">安卓论文</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/">数据挖掘</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E4%BD%9C%E4%B8%9A/">作业</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/">实验报告</a><span class="category-list-count">7</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E7%90%86%E9%80%BB%E8%BE%91/">数理逻辑</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%9F%BA%E7%A1%80/">软件工程基础</a><span class="category-list-count">1</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">九月 2023</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">八月 2023</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">七月 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">六月 2023</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">五月 2023</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">四月 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">三月 2023</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">九月 2022</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-课程笔记/数据挖掘/实验报告/实验三 心脏病预测（Smart Health Disease）朴素贝叶斯" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2023/06/4c83db3bac28.html" class="article-date">
+	  <time datetime="2023-06-04T07:23:43.350Z" itemprop="datePublished">2023-06-04</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">课程笔记</a>►<a class="article-category-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/">数据挖掘</a>►<a class="article-category-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/">实验报告</a>
+  </span>
+
+        
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2023/06/4c83db3bac28.html#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 4.5k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 19(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="一、实验目的"><a href="#一、实验目的" class="headerlink" title="一、实验目的"></a>一、实验目的</h1><p>(1) 编写程序，实现心脏病的预测模型的建立。<br>(2) 对多个模型，依据混淆矩阵进行评估度量。<br>(3) 写出实验报告。</p>
+<h1 id="二、实验原理"><a href="#二、实验原理" class="headerlink" title="二、实验原理"></a>二、实验原理</h1><p>(1)数据预处理：首先，对心脏病数据集进行数据预处理，包括特征选择、缺失值处理、数据标准化等操作，以准备数据集用于模型训练和测试。 </p>
+<p>(2)模型训练：选择了多个机器学习算法，包括SVM、朴素贝叶斯、逻辑回归、决策树、随机森林、LightGBM和XGBoost。对于每个算法，使用训练集对模型进行训练，调整算法参数以获得最佳性能。  </p>
+<p>(3)模型评估：使用测试集对训练好的模型进行预测，并计算评估指标：混淆矩阵。  </p>
+<p>(4)结果分析：根据实验结果，对不同算法的预测性能进行比较和分析，以确定哪种算法在心脏病预测任务中表现最好</p>
+<h1 id="三、实验内容和步骤"><a href="#三、实验内容和步骤" class="headerlink" title="三、实验内容和步骤"></a>三、实验内容和步骤</h1><h2 id="1-实验内容"><a href="#1-实验内容" class="headerlink" title="(1)实验内容"></a>(1)实验内容</h2><ol>
+<li>数据预处理：对心脏病数据集进行特征选择、缺失值处理、数据标准化等预处理操作。</li>
+<li>模型训练：使用SVM、朴素贝叶斯、逻辑回归、决策树、随机森林、LightGBM和XGBoost等算法进行模型训练。</li>
+<li>模型评估：使用测试集对训练好的模型进行预测，并计算评估指标，混淆矩阵。</li>
+<li>结果比较和分析：对不同算法的预测性能进行比较和分析，以确定最佳的模型。</li>
+<li>结论：总结实验结果，给出针对心脏病预测任务的最佳模型选择和建议。</li>
+</ol>
+<h2 id="2-实验步骤"><a href="#2-实验步骤" class="headerlink" title="(2)实验步骤"></a>(2)实验步骤</h2><ol>
+<li>导入数据并判断是否有缺省值</li>
+<li>数据预处理</li>
+<li>模型训练与评估</li>
+</ol>
+<p>具体步骤：</p>
+<h3 id="1-导入数据并判断是否有缺省值"><a href="#1-导入数据并判断是否有缺省值" class="headerlink" title="1. 导入数据并判断是否有缺省值"></a>1. 导入数据并判断是否有缺省值</h3><p>具体代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="comment"># import warnings filter</span></span><br><span class="line"><span class="keyword">from</span> warnings <span class="keyword">import</span> simplefilter</span><br><span class="line"><span class="comment"># ignore all future warnings</span></span><br><span class="line">simplefilter(action=<span class="string">&#x27;ignore&#x27;</span>, category = FutureWarning)</span><br><span class="line"><span class="comment"># import warnings filter</span></span><br><span class="line"><span class="keyword">from</span> warnings <span class="keyword">import</span> simplefilter</span><br><span class="line"><span class="comment"># ignore all future warnings</span></span><br><span class="line">simplefilter(action=<span class="string">&#x27;ignore&#x27;</span>, category = FutureWarning)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">df = pd.read_csv(<span class="string">&#x27;cleveland.csv&#x27;</span>, header = <span class="literal">None</span>)</span><br><span class="line"></span><br><span class="line">df.columns = [<span class="string">&#x27;age&#x27;</span>, <span class="string">&#x27;sex&#x27;</span>, <span class="string">&#x27;cp&#x27;</span>, <span class="string">&#x27;trestbps&#x27;</span>, <span class="string">&#x27;chol&#x27;</span>,</span><br><span class="line">              <span class="string">&#x27;fbs&#x27;</span>, <span class="string">&#x27;restecg&#x27;</span>, <span class="string">&#x27;thalach&#x27;</span>, <span class="string">&#x27;exang&#x27;</span>,</span><br><span class="line">              <span class="string">&#x27;oldpeak&#x27;</span>, <span class="string">&#x27;slope&#x27;</span>, <span class="string">&#x27;ca&#x27;</span>, <span class="string">&#x27;thal&#x27;</span>, <span class="string">&#x27;target&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">### 1 = male, 0 = female</span></span><br><span class="line">df.isnull().<span class="built_in">sum</span>()</span><br></pre></td></tr></table></figure>
+<p>输出结果：<br><img src="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306041529195.png" alt="image.png"></p>
+<p>查看每个目标阶层的年龄和性别分布<br>具体代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">&#x27;target&#x27;</span>] = df.target.<span class="built_in">map</span>(&#123;<span class="number">0</span>: <span class="number">0</span>, <span class="number">1</span>: <span class="number">1</span>, <span class="number">2</span>: <span class="number">1</span>, <span class="number">3</span>: <span class="number">1</span>, <span class="number">4</span>: <span class="number">1</span>&#125;)</span><br><span class="line">df[<span class="string">&#x27;sex&#x27;</span>] = df.sex.<span class="built_in">map</span>(&#123;<span class="number">0</span>: <span class="string">&#x27;female&#x27;</span>, <span class="number">1</span>: <span class="string">&#x27;male&#x27;</span>&#125;)</span><br><span class="line">df[<span class="string">&#x27;thal&#x27;</span>] = df.thal.fillna(df.thal.mean())</span><br><span class="line">df[<span class="string">&#x27;ca&#x27;</span>] = df.ca.fillna(df.ca.mean())</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"></span><br><span class="line"><span class="comment"># distribution of target vs age</span></span><br><span class="line">sns.set_context(<span class="string">&quot;paper&quot;</span>, font_scale = <span class="number">2</span>, rc = &#123;<span class="string">&quot;font.size&quot;</span>: <span class="number">20</span>,<span class="string">&quot;axes.titlesize&quot;</span>: <span class="number">25</span>,<span class="string">&quot;axes.labelsize&quot;</span>: <span class="number">20</span>&#125;) </span><br><span class="line">sns.catplot(kind = <span class="string">&#x27;count&#x27;</span>, data = df, x = <span class="string">&#x27;age&#x27;</span>, hue = <span class="string">&#x27;target&#x27;</span>, order = df[<span class="string">&#x27;age&#x27;</span>].sort_values().unique())</span><br><span class="line">plt.title(<span class="string">&#x27;Variation of Age for each target class&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>输出结果：<br><img src="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306041535081.png" alt="image.png"></p>
+<p>具体代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># barplot of age vs sex with hue = target</span></span><br><span class="line">sns.catplot(kind = <span class="string">&#x27;bar&#x27;</span>, data = df, y = <span class="string">&#x27;age&#x27;</span>, x = <span class="string">&#x27;sex&#x27;</span>, hue = <span class="string">&#x27;target&#x27;</span>)</span><br><span class="line">plt.title(<span class="string">&#x27;Distribution of age vs sex with the target class&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>输出结果：<br><img src="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306041537017.png" alt="image.png"></p>
+<h3 id="2-数据预处理"><a href="#2-数据预处理" class="headerlink" title="2. 数据预处理"></a>2. 数据预处理</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">################################## data preprocessing</span></span><br><span class="line">X = df.iloc[:, :-<span class="number">1</span>].values</span><br><span class="line">y = df.iloc[:, -<span class="number">1</span>].values</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = <span class="number">0.2</span>, random_state = <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler <span class="keyword">as</span> ss</span><br><span class="line">sc = ss()</span><br><span class="line">X_train = sc.fit_transform(X_train)</span><br><span class="line">X_test = sc.transform(X_test)</span><br></pre></td></tr></table></figure>
+<p><strong>代码解析：</strong></p>
+<ol>
+<li><p>数据划分：使用<code>train_test_split</code>函数将数据集<code>df</code>划分为训练集和测试集。<code>X</code>是除了最后一列外的所有特征，<code>y</code>是最后一列的目标变量。通过设置<code>test_size</code>参数为0.2，将数据集划分为80%的训练集和20%的测试集。<code>random_state</code>参数用于设定随机种子，以确保每次划分结果的一致性。</p>
+</li>
+<li><p>特征缩放：使用<code>StandardScaler</code>类进行特征缩放。<code>sc</code>对象是<code>StandardScaler</code>的实例。首先，<code>fit_transform</code>方法在训练集上进行拟合和转换，计算每个特征的均值和标准差，并将训练集进行标准化处理。然后，使用<code>transform</code>方法将测试集按照相同的均值和标准差进行标准化处理。</p>
+</li>
+</ol>
+<p>通过数据划分和特征缩放，可以将原始数据集划分为训练集和测试集，并对特征进行标准化处理，以便在后续的模型训练和评估中使用。这些步骤有助于确保模型在相同的数据范围内进行训练和测试，提高模型的性能和泛化能力。</p>
+<h3 id="3-模型训练与评估"><a href="#3-模型训练与评估" class="headerlink" title="3. 模型训练与评估"></a>3. 模型训练与评估</h3><p>应用以下模型进行训练，并且使用混淆矩阵进行模型评估与度量<br>以下模型将具体使用<br>$$accuracy&#x3D;\frac{TP+TN}{TP+TN+FP+FN}$$<br>作为模型的评估度量<br>混淆矩阵如下图所示：<br><img src="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306041552306.png" alt="image.png"></p>
+<h4 id="3-1-SVM-支持向量机"><a href="#3-1-SVM-支持向量机" class="headerlink" title="3.1 SVM(支持向量机)"></a>3.1 SVM(支持向量机)</h4><p><strong>代码解析：</strong></p>
+<ol>
+<li>模型训练：使用<code>SVC</code>类创建一个SVM分类器对象。<code>kernel=&#39;rbf&#39;</code>参数指定了使用径向基函数作为核函数。然后，使用<code>fit</code>方法将训练集的特征<code>X_train</code>和标签<code>y_train</code>作为输入，对分类器进行训练。</li>
+<li>预测测试集结果：使用训练好的分类器对测试集的特征<code>X_test</code>进行预测，使用<code>predict</code>方法得到预测的类别标签<code>y_pred</code>。</li>
+<li>混淆矩阵：使用<code>confusion_matrix</code>函数计算测试集预测结果的混淆矩阵。</li>
+<li>预测训练集结果和混淆矩阵：类似地，使用训练好的分类器对训练集的特征<code>X_train</code>进行预测，得到预测的类别标签<code>y_pred_train</code>。然后使用<code>confusion_matrix</code>函数计算训练集预测结果的混淆矩阵。</li>
+</ol>
+<p>具体代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#########################################   SVM   #############################################################</span></span><br><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVC</span><br><span class="line">classifier = SVC(kernel = <span class="string">&#x27;rbf&#x27;</span>)</span><br><span class="line">classifier.fit(X_train, y_train)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Predicting the Test set results</span></span><br><span class="line">y_pred = classifier.predict(X_test)</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> confusion_matrix</span><br><span class="line">cm_test = confusion_matrix(y_pred, y_test)</span><br><span class="line"></span><br><span class="line">y_pred_train = classifier.predict(X_train)</span><br><span class="line">cm_train = confusion_matrix(y_pred_train, y_train)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Accuracy for training set for svm = &#123;&#125;&#x27;</span>.<span class="built_in">format</span>((cm_train[<span class="number">0</span>][<span class="number">0</span>] + cm_train[<span class="number">1</span>][<span class="number">1</span>])/<span class="built_in">len</span>(y_train)))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Accuracy for test set for svm = &#123;&#125;&#x27;</span>.<span class="built_in">format</span>((cm_test[<span class="number">0</span>][<span class="number">0</span>] + cm_test[<span class="number">1</span>][<span class="number">1</span>])/<span class="built_in">len</span>(y_test)))</span><br></pre></td></tr></table></figure>
+<p>输出结果：<br><code>Accuracy for training set for svm = 0.9256198347107438 </code><br><code>Accuracy for test set for svm = 0.8032786885245902</code></p>
+<h4 id="3-2-Naive-Bayes-朴素贝叶斯"><a href="#3-2-Naive-Bayes-朴素贝叶斯" class="headerlink" title="3.2 Naive Bayes(朴素贝叶斯)"></a>3.2 Naive Bayes(朴素贝叶斯)</h4><p><strong>代码解析：</strong></p>
+<ol>
+<li>数据准备：使用<code>df.iloc[:, :-1].values</code>将数据集中除了最后一列之外的所有特征赋值给<code>X</code>，将最后一列的标签赋值给<code>y</code>。</li>
+<li>数据划分：使用<code>train_test_split</code>函数将数据集划分为训练集和测试集。通过设置<code>test_size</code>参数为0.2，将数据集划分为80%的训练集和20%的测试集。<code>random_state</code>参数用于设定随机种子，以确保每次划分结果的一致性。划分后的训练集特征赋值给<code>X_train</code>，训练集标签赋值给<code>y_train</code>，测试集特征赋值给<code>X_test</code>，测试集标签赋值给<code>y_test</code>。</li>
+<li>模型训练：使用<code>GaussianNB</code>类创建一个朴素贝叶斯分类器对象，即高斯朴素贝叶斯分类器。然后，使用<code>fit</code>方法将训练集的特征<code>X_train</code>和标签<code>y_train</code>作为输入，对分类器进行训练。</li>
+<li>预测测试集结果：使用训练好的分类器对测试集的特征<code>X_test</code>进行预测，使用<code>predict</code>方法得到预测的类别标签<code>y_pred</code>。</li>
+<li>混淆矩阵：使用<code>confusion_matrix</code>函数计算测试集预测结果的混淆矩阵。</li>
+<li>预测训练集结果和混淆矩阵：类似地，使用训练好的分类器对训练集的特征<code>X_train</code>进行预测，得到预测的类别标签<code>y_pred_train</code>。然后使用<code>confusion_matrix</code>函数计算训练集预测结果的混淆矩阵。</li>
+</ol>
+<p>具体代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#########################################   Naive Bayes  #############################################################</span></span><br><span class="line">X = df.iloc[:, :-<span class="number">1</span>].values</span><br><span class="line">y = df.iloc[:, -<span class="number">1</span>].values</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = <span class="number">0.2</span>, random_state = <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.naive_bayes <span class="keyword">import</span> GaussianNB</span><br><span class="line">classifier = GaussianNB()</span><br><span class="line">classifier.fit(X_train, y_train)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Predicting the Test set results</span></span><br><span class="line">y_pred = classifier.predict(X_test)</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> confusion_matrix</span><br><span class="line">cm_test = confusion_matrix(y_pred, y_test)</span><br><span class="line"></span><br><span class="line">y_pred_train = classifier.predict(X_train)</span><br><span class="line">cm_train = confusion_matrix(y_pred_train, y_train)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Accuracy for training set for Naive Bayes = &#123;&#125;&#x27;</span>.<span class="built_in">format</span>((cm_train[<span class="number">0</span>][<span class="number">0</span>] + cm_train[<span class="number">1</span>][<span class="number">1</span>])/<span class="built_in">len</span>(y_train)))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Accuracy for test set for Naive Bayes = &#123;&#125;&#x27;</span>.<span class="built_in">format</span>((cm_test[<span class="number">0</span>][<span class="number">0</span>] + cm_test[<span class="number">1</span>][<span class="number">1</span>])/<span class="built_in">len</span>(y_test)))</span><br><span class="line"></span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+<p>输出结果：<br><code>Accuracy for training set for Naive Bayes = 0.8677685950413223</code><br><code>Accuracy for test set for Naive Bayes = 0.7868852459016393</code></p>
+<h4 id="3-3-Logistic-Regression-逻辑回归"><a href="#3-3-Logistic-Regression-逻辑回归" class="headerlink" title="3.3 Logistic Regression(逻辑回归)"></a>3.3 Logistic Regression(逻辑回归)</h4><p><strong>代码解析：</strong></p>
+<ol>
+<li>数据准备：使用<code>df.iloc[:, :-1].values</code>将数据集中除了最后一列之外的所有特征赋值给<code>X</code>，将最后一列的标签赋值给<code>y</code>。</li>
+<li>数据划分：使用<code>train_test_split</code>函数将数据集划分为训练集和测试集。通过设置<code>test_size</code>参数为0.2，将数据集划分为80%的训练集和20%的测试集。<code>random_state</code>参数用于设定随机种子，以确保每次划分结果的一致性。划分后的训练集特征赋值给<code>X_train</code>，训练集标签赋值给<code>y_train</code>，测试集特征赋值给<code>X_test</code>，测试集标签赋值给<code>y_test</code>。</li>
+<li>模型训练：使用<code>LogisticRegression</code>类创建一个逻辑回归分类器对象。然后，使用<code>fit</code>方法将训练集的特征<code>X_train</code>和标签<code>y_train</code>作为输入，对分类器进行训练。</li>
+<li>预测测试集结果：使用训练好的分类器对测试集的特征<code>X_test</code>进行预测，使用<code>predict</code>方法得到预测的类别标签<code>y_pred</code>。</li>
+<li>混淆矩阵：使用<code>confusion_matrix</code>函数计算测试集预测结果的混淆矩阵。</li>
+<li>预测训练集结果和混淆矩阵：类似地，使用训练好的分类器对训练集的特征<code>X_train</code>进行预测，得到预测的类别标签<code>y_pred_train</code>。然后使用<code>confusion_matrix</code>函数计算训练集预测结果的混淆矩阵。</li>
+</ol>
+<p>具体代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#########################################   Logistic Regression  #############################################################</span></span><br><span class="line">X = df.iloc[:, :-<span class="number">1</span>].values</span><br><span class="line">y = df.iloc[:, -<span class="number">1</span>].values</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = <span class="number">0.2</span>, random_state = <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line">classifier = LogisticRegression()</span><br><span class="line">classifier.fit(X_train, y_train)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Predicting the Test set results</span></span><br><span class="line">y_pred = classifier.predict(X_test)</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> confusion_matrix</span><br><span class="line">cm_test = confusion_matrix(y_pred, y_test)</span><br><span class="line"></span><br><span class="line">y_pred_train = classifier.predict(X_train)</span><br><span class="line">cm_train = confusion_matrix(y_pred_train, y_train)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Accuracy for training set for Logistic Regression = &#123;&#125;&#x27;</span>.<span class="built_in">format</span>((cm_train[<span class="number">0</span>][<span class="number">0</span>] + cm_train[<span class="number">1</span>][<span class="number">1</span>])/<span class="built_in">len</span>(y_train)))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Accuracy for test set for Logistic Regression = &#123;&#125;&#x27;</span>.<span class="built_in">format</span>((cm_test[<span class="number">0</span>][<span class="number">0</span>] + cm_test[<span class="number">1</span>][<span class="number">1</span>])/<span class="built_in">len</span>(y_test)))</span><br><span class="line"></span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+<p>输出结果：<br><code>Accuracy for training set for Logistic Regression = 0.8677685950413223</code><br><code>Accuracy for test set for Logistic Regression = 0.8032786885245902</code></p>
+<h4 id="3-4-Decision-Tree-决策树"><a href="#3-4-Decision-Tree-决策树" class="headerlink" title="3.4 Decision Tree(决策树)"></a>3.4 Decision Tree(决策树)</h4><p><strong>代码解析：</strong></p>
+<ol>
+<li>数据准备：使用<code>df.iloc[:, :-1].values</code>将数据集中除了最后一列之外的所有特征赋值给<code>X</code>，将最后一列的标签赋值给<code>y</code>。</li>
+<li>数据划分：使用<code>train_test_split</code>函数将数据集划分为训练集和测试集。通过设置<code>test_size</code>参数为0.2，将数据集划分为80%的训练集和20%的测试集。<code>random_state</code>参数用于设定随机种子，以确保每次划分结果的一致性。划分后的训练集特征赋值给<code>X_train</code>，训练集标签赋值给<code>y_train</code>，测试集特征赋值给<code>X_test</code>，测试集标签赋值给<code>y_test</code>。</li>
+<li>模型训练：使用<code>DecisionTreeClassifier</code>类创建一个决策树分类器对象。然后，使用<code>fit</code>方法将训练集的特征<code>X_train</code>和标签<code>y_train</code>作为输入，对分类器进行训练。</li>
+<li>预测测试集结果：使用训练好的分类器对测试集的特征<code>X_test</code>进行预测，使用<code>predict</code>方法得到预测的类别标签<code>y_pred</code>。</li>
+<li>混淆矩阵：使用<code>confusion_matrix</code>函数计算测试集预测结果的混淆矩阵。</li>
+<li>预测训练集结果和混淆矩阵：类似地，使用训练好的分类器对训练集的特征<code>X_train</code>进行预测，得到预测的类别标签<code>y_pred_train</code>。然后使用<code>confusion_matrix</code>函数计算训练集预测结果的混淆矩阵。</li>
+</ol>
+<p>具体代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#########################################   Decision Tree  #############################################################</span></span><br><span class="line">X = df.iloc[:, :-<span class="number">1</span>].values</span><br><span class="line">y = df.iloc[:, -<span class="number">1</span>].values</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = <span class="number">0.2</span>, random_state = <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line">classifier = DecisionTreeClassifier()</span><br><span class="line">classifier.fit(X_train, y_train)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Predicting the Test set results</span></span><br><span class="line">y_pred = classifier.predict(X_test)</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> confusion_matrix</span><br><span class="line">cm_test = confusion_matrix(y_pred, y_test)</span><br><span class="line"></span><br><span class="line">y_pred_train = classifier.predict(X_train)</span><br><span class="line">cm_train = confusion_matrix(y_pred_train, y_train)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Accuracy for training set for Decision Tree = &#123;&#125;&#x27;</span>.<span class="built_in">format</span>((cm_train[<span class="number">0</span>][<span class="number">0</span>] + cm_train[<span class="number">1</span>][<span class="number">1</span>])/<span class="built_in">len</span>(y_train)))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Accuracy for test set for Decision Tree = &#123;&#125;&#x27;</span>.<span class="built_in">format</span>((cm_test[<span class="number">0</span>][<span class="number">0</span>] + cm_test[<span class="number">1</span>][<span class="number">1</span>])/<span class="built_in">len</span>(y_test)))</span><br><span class="line"></span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+<p>输出结果：<br><code>Accuracy for training set for Decision Tree = 1.0</code><br><code>Accuracy for test set for Decision Tree = 0.8032786885245902</code></p>
+<h4 id="3-5-Random-Forest-随机森林"><a href="#3-5-Random-Forest-随机森林" class="headerlink" title="3.5 Random Forest(随机森林)"></a>3.5 Random Forest(随机森林)</h4><p><strong>代码解析：</strong></p>
+<ol>
+<li>数据准备：使用<code>df.iloc[:, :-1].values</code>将数据集中除了最后一列之外的所有特征赋值给<code>X</code>，将最后一列的标签赋值给<code>y</code>。</li>
+<li>数据划分：使用<code>train_test_split</code>函数将数据集划分为训练集和测试集。通过设置<code>test_size</code>参数为0.2，将数据集划分为80%的训练集和20%的测试集。<code>random_state</code>参数用于设定随机种子，以确保每次划分结果的一致性。划分后的训练集特征赋值给<code>X_train</code>，训练集标签赋值给<code>y_train</code>，测试集特征赋值给<code>X_test</code>，测试集标签赋值给<code>y_test</code>。</li>
+<li>模型训练：使用<code>RandomForestClassifier</code>类创建一个随机森林分类器对象。通过设置<code>n_estimators</code>参数为10，指定随机森林中树的数量为10。然后，使用<code>fit</code>方法将训练集的特征<code>X_train</code>和标签<code>y_train</code>作为输入，对分类器进行训练。</li>
+<li>预测测试集结果：使用训练好的分类器对测试集的特征<code>X_test</code>进行预测，使用<code>predict</code>方法得到预测的类别标签<code>y_pred</code>。</li>
+<li>混淆矩阵：使用<code>confusion_matrix</code>函数计算测试集预测结果的混淆矩阵。</li>
+<li>预测训练集结果和混淆矩阵：类似地，使用训练好的分类器对训练集的特征<code>X_train</code>进行预测，得到预测的类别标签<code>y_pred_train</code>。然后使用<code>confusion_matrix</code>函数计算训练集预测结果的混淆矩阵。</li>
+</ol>
+<p>具体代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#########################################  Random Forest  #############################################################</span></span><br><span class="line">X = df.iloc[:, :-<span class="number">1</span>].values</span><br><span class="line">y = df.iloc[:, -<span class="number">1</span>].values</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = <span class="number">0.2</span>, random_state = <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestClassifier</span><br><span class="line">classifier = RandomForestClassifier(n_estimators = <span class="number">10</span>)</span><br><span class="line">classifier.fit(X_train, y_train)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Predicting the Test set results</span></span><br><span class="line">y_pred = classifier.predict(X_test)</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> confusion_matrix</span><br><span class="line">cm_test = confusion_matrix(y_pred, y_test)</span><br><span class="line"></span><br><span class="line">y_pred_train = classifier.predict(X_train)</span><br><span class="line">cm_train = confusion_matrix(y_pred_train, y_train)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Accuracy for training set for Random Forest = &#123;&#125;&#x27;</span>.<span class="built_in">format</span>((cm_train[<span class="number">0</span>][<span class="number">0</span>] + cm_train[<span class="number">1</span>][<span class="number">1</span>])/<span class="built_in">len</span>(y_train)))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Accuracy for test set for Random Forest = &#123;&#125;&#x27;</span>.<span class="built_in">format</span>((cm_test[<span class="number">0</span>][<span class="number">0</span>] + cm_test[<span class="number">1</span>][<span class="number">1</span>])/<span class="built_in">len</span>(y_test)))</span><br><span class="line"></span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+<p>输出结果：<br><code>Accuracy for training set for Random Forest = 0.9834710743801653</code><br><code>Accuracy for test set for Random Forest = 0.7049180327868853</code></p>
+<h4 id="3-6-LightGBM"><a href="#3-6-LightGBM" class="headerlink" title="3.6 LightGBM"></a>3.6 LightGBM</h4><p><strong>代码解析：</strong></p>
+<ol>
+<li>数据准备：使用<code>lgb.Dataset</code>函数将训练集的特征<code>X_train</code>和标签<code>y_train</code>组成LightGBM需要的数据集对象<code>d_train</code>。</li>
+<li>参数设置：定义一个空字典<code>params</code>用于设置LightGBM的参数。</li>
+<li>模型训练：使用<code>lgb.train</code>函数训练LightGBM模型。传入参数<code>params</code>表示模型的参数设置，<code>d_train</code>表示训练数据集，<code>100</code>表示训练的轮数（迭代次数）。</li>
+<li>预测测试集结果：使用训练好的模型对测试集的特征<code>X_test</code>进行预测，得到预测的概率值<code>y_pred</code>。</li>
+<li>二值化处理：根据设定的阈值（0.5），将概率值转换为二进制的类别标签。概率值大于等于0.5的被划分为类别1，小于0.5的被划分为类别0。</li>
+<li>混淆矩阵：使用<code>confusion_matrix</code>函数计算测试集预测结果的混淆矩阵。</li>
+<li>预测训练集结果和混淆矩阵：类似地，使用训练好的模型对训练集的特征<code>X_train</code>进行预测，得到预测的概率值<code>y_pred_train</code>。然后使用<code>confusion_matrix</code>函数计算训练集预测结果的混淆矩阵。</li>
+</ol>
+<p>具体代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">###############################################################################</span></span><br><span class="line"><span class="comment"># applying lightGBM</span></span><br><span class="line"><span class="keyword">import</span> lightgbm <span class="keyword">as</span> lgb</span><br><span class="line"></span><br><span class="line">d_train = lgb.Dataset(X_train, label = y_train)</span><br><span class="line">params = &#123;&#125;</span><br><span class="line"></span><br><span class="line">clf = lgb.train(params, d_train, <span class="number">100</span>)</span><br><span class="line"><span class="comment">#Prediction</span></span><br><span class="line">y_pred = clf.predict(X_test)</span><br><span class="line"><span class="comment">#convert into binary values</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="built_in">len</span>(y_pred)):</span><br><span class="line">    <span class="keyword">if</span> y_pred[i]&gt;= <span class="number">0.5</span>:       <span class="comment"># setting threshold to .5</span></span><br><span class="line">       y_pred[i]=<span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:  </span><br><span class="line">       y_pred[i]=<span class="number">0</span></span><br><span class="line">       </span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> confusion_matrix</span><br><span class="line">cm_test = confusion_matrix(y_pred, y_test)</span><br><span class="line"></span><br><span class="line">y_pred_train = clf.predict(X_train)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="built_in">len</span>(y_pred_train)):</span><br><span class="line">    <span class="keyword">if</span> y_pred_train[i]&gt;= <span class="number">0.5</span>:       <span class="comment"># setting threshold to .5</span></span><br><span class="line">       y_pred_train[i]=<span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:  </span><br><span class="line">       y_pred_train[i]=<span class="number">0</span></span><br><span class="line">       </span><br><span class="line">cm_train = confusion_matrix(y_pred_train, y_train)</span><br><span class="line"><span class="built_in">print</span>()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Accuracy for training set for LightGBM = &#123;&#125;&#x27;</span>.<span class="built_in">format</span>((cm_train[<span class="number">0</span>][<span class="number">0</span>] + cm_train[<span class="number">1</span>][<span class="number">1</span>])/<span class="built_in">len</span>(y_train)))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Accuracy for test set for LightGBM = &#123;&#125;&#x27;</span>.<span class="built_in">format</span>((cm_test[<span class="number">0</span>][<span class="number">0</span>] + cm_test[<span class="number">1</span>][<span class="number">1</span>])/<span class="built_in">len</span>(y_test)))</span><br><span class="line"></span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+<p>输出结果：<br><code>Accuracy for training set for LightGBN = 0.9958677685950413</code><br><code>Accuracy for test set for LightGBN = 0.7704918032786885</code></p>
+<h4 id="3-7-XGBoost"><a href="#3-7-XGBoost" class="headerlink" title="3.7 XGBoost"></a>3.7 XGBoost</h4><p><strong>代码解析：</strong></p>
+<ol>
+<li>模型训练：使用<code>XGBClassifier</code>类创建一个XGBoost分类器对象<code>xg</code>。然后，使用<code>fit</code>方法将训练集的特征<code>X_train</code>和标签<code>y_train</code>作为输入，对分类器进行训练。</li>
+<li>预测测试集结果：使用训练好的分类器对测试集的特征<code>X_test</code>进行预测，得到预测的类别标签<code>y_pred</code>。</li>
+<li>混淆矩阵：使用<code>confusion_matrix</code>函数计算测试集预测结果的混淆矩阵。</li>
+<li>预测训练集结果和混淆矩阵：类似地，使用训练好的分类器对训练集的特征<code>X_train</code>进行预测，得到预测的类别标签<code>y_pred_train</code>。然后使用<code>confusion_matrix</code>函数计算训练集预测结果的混淆矩阵。</li>
+</ol>
+<p>具体代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">###############################################################################</span></span><br><span class="line"><span class="comment"># applying XGBoost</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#from sklearn.model_selection import train_test_split</span></span><br><span class="line"><span class="comment">#X_train, X_test, y_train, y_test = train_test_split(X, target, test_size = 0.20, random_state = 0)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> xgboost <span class="keyword">import</span> XGBClassifier</span><br><span class="line">xg = XGBClassifier()</span><br><span class="line">xg.fit(X_train, y_train)</span><br><span class="line">y_pred = xg.predict(X_test)</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> confusion_matrix</span><br><span class="line">cm_test = confusion_matrix(y_pred, y_test)</span><br><span class="line"></span><br><span class="line">y_pred_train = xg.predict(X_train)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="built_in">len</span>(y_pred_train)):</span><br><span class="line">    <span class="keyword">if</span> y_pred_train[i]&gt;= <span class="number">0.5</span>:       <span class="comment"># setting threshold to .5</span></span><br><span class="line">       y_pred_train[i]=<span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:  </span><br><span class="line">       y_pred_train[i]=<span class="number">0</span></span><br><span class="line"></span><br><span class="line">cm_train = confusion_matrix(y_pred_train, y_train)</span><br><span class="line"><span class="built_in">print</span>()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Accuracy for training set for XGBoost = &#123;&#125;&#x27;</span>.<span class="built_in">format</span>((cm_train[<span class="number">0</span>][<span class="number">0</span>] + cm_train[<span class="number">1</span>][<span class="number">1</span>])/<span class="built_in">len</span>(y_train)))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Accuracy for test set for XGBoost = &#123;&#125;&#x27;</span>.<span class="built_in">format</span>((cm_test[<span class="number">0</span>][<span class="number">0</span>] + cm_test[<span class="number">1</span>][<span class="number">1</span>])/<span class="built_in">len</span>(y_test)))</span><br><span class="line"></span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+<p>输出结果：<br><code>Accuracy for training set for XGBoost = 0.987603305785124 </code>Accuracy for test set for XGBoost &#x3D; 0.7540983606557377&#96;</p>
+<h1 id="四、实验结果"><a href="#四、实验结果" class="headerlink" title="四、实验结果"></a>四、实验结果</h1><p>通过对上述七个模型进行混淆矩阵评估度量，得到以下实验结果：<br><code>Accuracy for training set for svm = 0.9256198347107438 </code><br><code>Accuracy for test set for svm = 0.8032786885245902</code></p>
+<p><code>Accuracy for training set for Naive Bayes = 0.8677685950413223</code><br><code>Accuracy for test set for Naive Bayes = 0.7868852459016393</code></p>
+<p><code>Accuracy for training set for Logistic Regression = 0.8677685950413223</code><br><code>Accuracy for test set for Logistic Regression = 0.8032786885245902</code></p>
+<p><code>Accuracy for training set for Decision Tree = 1.0</code><br><code>Accuracy for test set for Decision Tree = 0.8032786885245902</code></p>
+<p><code>Accuracy for training set for Random Forest = 0.9834710743801653</code><br><code>Accuracy for test set for Random Forest = 0.7049180327868853</code></p>
+<p><code>Accuracy for training set for LightGBN = 0.9958677685950413</code><br><code>Accuracy for test set for LightGBN = 0.7704918032786885</code></p>
+<p><code>Accuracy for training set for XGBoost = 0.987603305785124 </code>Accuracy for test set for XGBoost &#x3D; 0.7540983606557377&#96;<br>由此可得，在训练集上Decision Tree具有最高的Accuracy；而在测试集上SVM、Logistic Regression、Decision Tree具有最高的Accuracy。</p>
+<h1 id="五、实验分析"><a href="#五、实验分析" class="headerlink" title="五、实验分析"></a>五、实验分析</h1><p>此次实验，在多个模型上进行了优劣对比，但在模型的评估度量上只使用了混淆矩阵中的Accuracy，往后可以考虑用更多评估度量标准来对模型进行评估，评估模型的性能和可靠性。以此获得更加全面准确的模型报告。</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/2023/06/4c83db3bac28.html" title="" target="_blank" rel="external">http://example.com/2023/06/4c83db3bac28.html</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/limingqian17" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/limingqian17" target="_blank"><span class="text-dark">安xy</span><small class="ml-1x">安_blog</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2023/06/60d9fd126048.html" title="(no title)"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2023/06/6f49b06c6fae.html" title="(no title)"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/limingqian17" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+
+
+
+
+
+
+</body>
+</html>

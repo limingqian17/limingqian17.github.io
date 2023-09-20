@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>Hexo</title>
+  <meta name="description" content="1.networkx+gephi安装2.snap数据集网站，收集数据   3.用networkx构建网络，并且计算  n节点数   m边数   m占最大可能边数的比例   Diameter: 17 average path length k:度 &lt;\k&gt;:平均度 clustering4.导入gephi，实现可视化   ppt10页  word实验报告networkx和gephi相互验证">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2023/09/68d61741a7b3.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1.networkx+gephi安装2.snap数据集网站，收集数据   3.用networkx构建网络，并且计算  n节点数   m边数   m占最大可能边数的比例   Diameter: 17 average path length k:度 &lt;\k&gt;:平均度 clustering4.导入gephi，实现可视化   ppt10页  word实验报告networkx和gephi相互验证">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-09-09T02:51:21.450Z">
+<meta property="article:modified_time" content="2023-09-20T08:42:18.847Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://example.com/2023/09/68d61741a7b3.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/limingqian17" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">安xy</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">安_blog</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/limingqian17" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>go on!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 13px;">-算法</a> <a href="/tags/C/" style="font-size: 13px;">C++</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 13px;">算法</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/">culitivate</a><span class="category-list-count">18</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/408/">408</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/408/%E7%AE%97%E6%B3%95/">算法</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/C/">C++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/PHP/">PHP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/Python/">Python</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/Python/%E7%88%AC%E8%99%AB/">爬虫</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/">java技术栈</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/java/">java</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/mysql/">mysql</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/vue/">vue</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/other/">other</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/other/CTF/">CTF</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/other/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E7%AC%94%E8%AE%B0/">数学建模笔记</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/other/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><span class="category-list-count">2</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/plan/">plan</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/project/">project</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/project/2023%E6%9A%91%E6%9C%9F%E9%A1%B9%E7%9B%AEhealth/">2023暑期项目health</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E8%AE%B0%E5%BD%95/">工具记录</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E8%AE%B0%E5%BD%95/vim/">vim</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E8%AE%B0%E5%BD%95/%E5%BB%BA%E7%AB%99/">建站</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E8%AE%B0%E5%BD%95/%E6%99%AE%E9%80%9A%E8%AF%9D/">普通话</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">课程笔记</a><span class="category-list-count">19</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/R/">R</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/R/%E5%AE%9E%E9%AA%8C%E4%B8%80/">实验一</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/python/">python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C/">复杂网络</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C/%E5%B0%8F%E5%AE%9E%E9%AA%8C1/">小实验1</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E5%AD%A6%E8%AF%AD%E6%96%87/">大学语文</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%AE%89%E5%8D%93%E8%AE%BA%E6%96%87/">安卓论文</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/">数据挖掘</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E4%BD%9C%E4%B8%9A/">作业</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/">实验报告</a><span class="category-list-count">7</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E7%90%86%E9%80%BB%E8%BE%91/">数理逻辑</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%9F%BA%E7%A1%80/">软件工程基础</a><span class="category-list-count">1</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">九月 2023</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">八月 2023</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">七月 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">六月 2023</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">五月 2023</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">四月 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">三月 2023</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">九月 2022</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-课程笔记/复杂网络/小实验1/task" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2023/09/68d61741a7b3.html" class="article-date">
+	  <time datetime="2023-09-09T02:51:21.450Z" itemprop="datePublished">2023-09-09</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">课程笔记</a>►<a class="article-category-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C/">复杂网络</a>►<a class="article-category-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C/%E5%B0%8F%E5%AE%9E%E9%AA%8C1/">小实验1</a>
+  </span>
+
+        
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2023/09/68d61741a7b3.html#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1.5k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 5(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>1.networkx+gephi安装<br>2.snap数据集网站，收集数据  </p>
+<p>3.用networkx构建网络，并且计算</p>
+<ul>
+<li>n节点数  </li>
+<li>m边数  </li>
+<li>m占最大可能边数的比例  </li>
+<li>Diameter: 17</li>
+<li>average path length</li>
+<li>k:度</li>
+<li>&lt;\k&gt;:平均度</li>
+<li>clustering<br>4.导入gephi，实现可视化</li>
+</ul>
+<ol start="5">
+<li>ppt<br>10页</li>
+</ol>
+<p>word实验报告<br>networkx和gephi相互验证<br>networkx度分布曲线，python画出与gephi对比<br>gephi官方文档，filter优化显示部分节点，导出svg,布局算法介绍选择<br>一共有多少科学家，连边是什么样的<br>任意两个科学家最短最大值，直径<br>平均路径长度<br>每个科学家平均邻居即平均度<br>科学家的聚集情况，聚集系数，宏观微观<br>某个科学家的度<br>max clique<br>入度出度相关性</p>
+<h1 id="数据集介绍"><a href="#数据集介绍" class="headerlink" title="数据集介绍"></a>数据集介绍</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/ksearch/article/details/18269621">【复杂网络系列】SNAP（Stanford Large Network Dataset Collection）实验数据集_snap数据集_sina微博_SNS程飞的博客-CSDN博客</a><br>选择了ca-GrQc数据集，是一个Collaboration network of Arxiv General Relativity（Arxiv文献中广义相对论的合作网络），无向图</p>
+<h1 id="数据处理流程"><a href="#数据处理流程" class="headerlink" title="数据处理流程"></a>数据处理流程</h1><ol>
+<li>使用pandas库将网络中边数据的txt格式文件，读取为dataFrame格式</li>
+<li>使用networkx库中的Graph()方法初始化网络</li>
+<li>使用networkx库中的add_edges_from()初始化图的边信息</li>
+<li>降低数据量<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> networkx <span class="keyword">as</span> nx</span><br><span class="line"><span class="keyword">from</span> pylab <span class="keyword">import</span> show</span><br><span class="line"><span class="comment"># 读取 txt 文件</span></span><br><span class="line">txt_path = <span class="string">&quot;E:/blog/first/source/_posts/课程笔记/复杂网络/小实验1/data/CA-GrQc.txt&quot;</span></span><br><span class="line"><span class="comment"># csv_path = &quot;E:/blog/first/source/_posts/课程笔记/复杂网络/小实验1/CA-GrQc.csv&quot;</span></span><br><span class="line"><span class="comment"># sep 利用正则表达式，以空白符进行分隔</span></span><br><span class="line">df = pd.read_csv(txt_path,sep=<span class="string">&#x27;\s+&#x27;</span>)</span><br><span class="line"><span class="comment"># encoding 为 uft_8_sig，防止某些情况下，中文出现乱码</span></span><br><span class="line"><span class="comment"># 讲txt转为csv</span></span><br><span class="line"><span class="comment"># df.to_csv(csv_path, encoding=&#x27;utf_8_sig&#x27;, index=False)</span></span><br><span class="line"><span class="comment"># 初始化图的边</span></span><br><span class="line">G=nx.Graph()</span><br><span class="line">edges = [edge <span class="keyword">for</span> edge <span class="keyword">in</span> <span class="built_in">zip</span>(df[<span class="string">&#x27;source&#x27;</span>], df[<span class="string">&#x27;target&#x27;</span>])]</span><br><span class="line">G.add_edges_from(edges)</span><br><span class="line"><span class="comment"># 统计图相关信息</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;该图的相关信息:&quot;</span>,G,<span class="built_in">len</span>(G),<span class="built_in">len</span>(G.nodes),<span class="built_in">len</span>(G.edges))</span><br><span class="line"><span class="comment"># 计算最大可能边</span></span><br><span class="line">nodescnt=<span class="built_in">len</span>(G.nodes)</span><br><span class="line">maxmcnt=nodescnt*(nodescnt-<span class="number">1</span>)/<span class="number">2</span></span><br><span class="line">re=<span class="built_in">len</span>(G.edges)/maxmcnt</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;m占最大可能边数的比例:&quot;</span>,re*<span class="number">100</span>,<span class="string">&quot;%&quot;</span>)</span><br><span class="line"><span class="comment"># 图的可视化</span></span><br><span class="line">nx.draw(G)</span><br><span class="line"><span class="comment"># show()</span></span><br><span class="line"></span><br><span class="line">该图的相关信息: Graph <span class="keyword">with</span> <span class="number">5242</span> nodes <span class="keyword">and</span> <span class="number">14496</span> edges <span class="number">5242</span> <span class="number">5242</span> <span class="number">14496</span></span><br><span class="line">m占最大可能边数的比例: <span class="number">0.10552782805079051</span> %</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="网络统计属性"><a href="#网络统计属性" class="headerlink" title="网络统计属性"></a>网络统计属性</h1><p>基于networkx：</p>
+<ol>
+<li>节点数：len(G.nodes)&#x3D;5242</li>
+<li>边数：len(G.edges)&#x3D;14496</li>
+<li>就算m占最大可能边数的比例<ol>
+<li>最大可能边数max&#x3D;len(G.nodes)*(len(G.nodes)-1)&#x2F;2</li>
+<li>re&#x3D;len(G.edges)&#x2F;max&#x3D; 0.0010552782805079051</li>
+</ol>
+</li>
+</ol>
+<p>基于gephi的统计：</p>
+<ol>
+<li>Diameter: 17 （最大直径）</li>
+<li>average path length 6.049 （平均路径长度）</li>
+<li>k:度 </li>
+<li>&lt;\k&gt;:平均度 5.531</li>
+<li>clustering （聚集）：0.687 平均聚集系数</li>
+</ol>
+<p>最大团 最大独立集<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wsl-lld/p/14502518.html">图论学习——最大团与最大独立集 - wsl_lld - 博客园 (cnblogs.com)</a></p>
+<h1 id="可视化结果"><a href="#可视化结果" class="headerlink" title="可视化结果"></a>可视化结果</h1><h2 id="可视乎结果"><a href="#可视乎结果" class="headerlink" title="可视乎结果"></a>可视乎结果</h2><h2 id="采用的布局算法介绍"><a href="#采用的布局算法介绍" class="headerlink" title="采用的布局算法介绍"></a>采用的布局算法介绍</h2><p><a target="_blank" rel="noopener" href="https://www.rstk.cn/news/236889.html?action=onClick">Gephi教程——外观和布局 (rstk.cn)</a><br><strong>Force Atlas布局</strong><br>Force Atlas布局使图更紧凑、可读性强，Force Atlas布局部分参数的作用如下：</p>
+<ul>
+<li>惯性：值愈大，图的摇摆幅度越大。</li>
+<li>斥力强度：每个节点排斥其他节点的强度，值越大，节点的距离越大。</li>
+<li>吸引强度：连接节点之间的吸引力的强度，值越大，有连接的节点越被拉近。</li>
+<li>重力：值越小，图越分散；值越大，图越压缩。</li>
+<li>速度：布局运动的速度，值越大，图的布局速度越快。</li>
+</ul>
+<p><strong>Force Atlas 2布局</strong><br>Force Atlas 2是改进的Force Atlas算法，速度更快。Force Atlas 2布局部分参数的作用如下。</p>
+<ul>
+<li>缩放：节点的斥力强度，值越大，斥力越大，图越稀疏。</li>
+<li>更强的重力：一个已经定义好的较强的重力。</li>
+<li>重力：自定义的重力值，可以比“更强的重力”更强。</li>
+<li>劝阻Hubs：只有输入的边会被推到边缘。</li>
+<li>LinLog模式：线性和对数模式的切换。</li>
+<li>防止重叠：可以把重叠的节点展开。</li>
+<li>容差（速度）：布局速度的选取，较小的数值速度较慢，但精度更高。</li>
+</ul>
+<p><strong>Fruchterman Reingold布局</strong><br>Fruchterman Reingold布局简称FR布局，FR布局基于再次改进的弹性模型，该布局算法遵循两个简单的原则，即有连接的节点互相靠近和无连接的节点互相排斥。<br>Fruchterman Reingold布局部分参数的作用如下：</p>
+<ul>
+<li>区：定义图形的幅度，值越大图越大，也越稀疏。</li>
+<li>重力：定义重力值，值越大重力越强，节点越被中心吸引。</li>
+<li>速度：定义布局的速度，值越大布局速度越快，但也越不精确。</li>
+</ul>
+<p><strong>Yifan Hu布局</strong><br>Yifan Hu布局也是力引导布局的改进版，由胡一凡在2005年提出，在多层级力引导算法中引入了超节点的概念。在这个布局算法中，将一个节点与它远处一簇节点之间的斥力当作此节点与一个超节点间的斥力来计算，从而大大减少了计算量，使得总计算复杂度下降。该布局可以处理几十万个节点规模的图。<br>Yifan Hu布局部分参数的作用如下。</p>
+<ul>
+<li>最佳距离：值越大，整个图的尺寸越大。</li>
+<li>相对强度：值越大，节点越稀疏；值越小，节点越紧密。</li>
+</ul>
+<p><strong>Yifan Hu比例布局</strong><br>Yifan Hu比例布局的参数与Yifan Hu布局的参数相同，实际上这两个布局所起到的作用是相同的，扩展&#x2F;收缩布局的参数只有比例因子，比例因子的设置方法如下。</p>
+<ul>
+<li>如果比例因子为1，那么图不会放大也不会缩小。</li>
+<li>如果比例因子大于1，那么图会放大，且值越大，放大的比例越大。</li>
+<li>如果比例因子小于1，那么图会缩小，且值越小，缩小的比例越大。</li>
+<li>如果比例因子为负数，那么在放大或缩小的同时，也会从上下、左右两个方面颠倒图形。</li>
+</ul>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/2023/09/68d61741a7b3.html" title="" target="_blank" rel="external">http://example.com/2023/09/68d61741a7b3.html</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/limingqian17" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/limingqian17" target="_blank"><span class="text-dark">安xy</span><small class="ml-1x">安_blog</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2023/09/a304d705bde4.html" title="(no title)"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2023/09/d9e801080cc4.html" title="(no title)"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/limingqian17" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>Hexo</title>
+  <meta name="description" content="一、实验目的(1) 编写程序，实现对图片上颜色的检测。(2) 写出实验报告。 二、实验原理(1)导入所需的库：代码中导入了 pandas 和 cv2 库。pandas 用于读取颜色名称数据集，cv2 用于处理图像。  (2)读取图像和颜色名称数据集：使用 cv2.imread() 函数读取图像文件，并使用 pandas 的 read_csv() 函数读取颜色名称数据集。  (3)定义函数获取颜色名">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2023/06/60d9fd126048.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一、实验目的(1) 编写程序，实现对图片上颜色的检测。(2) 写出实验报告。 二、实验原理(1)导入所需的库：代码中导入了 pandas 和 cv2 库。pandas 用于读取颜色名称数据集，cv2 用于处理图像。  (2)读取图像和颜色名称数据集：使用 cv2.imread() 函数读取图像文件，并使用 pandas 的 read_csv() 函数读取颜色名称数据集。  (3)定义函数获取颜色名">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306041826484.png">
+<meta property="og:image" content="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306041828833.png">
+<meta property="article:published_time" content="2023-06-04T08:36:03.176Z">
+<meta property="article:modified_time" content="2023-09-20T08:42:18.847Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306041826484.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://example.com/2023/06/60d9fd126048.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/limingqian17" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">安xy</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">安_blog</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/limingqian17" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>go on!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 13px;">-算法</a> <a href="/tags/C/" style="font-size: 13px;">C++</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 13px;">算法</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/">culitivate</a><span class="category-list-count">18</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/408/">408</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/408/%E7%AE%97%E6%B3%95/">算法</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/C/">C++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/PHP/">PHP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/Python/">Python</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/Python/%E7%88%AC%E8%99%AB/">爬虫</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/">java技术栈</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/java/">java</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/mysql/">mysql</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/vue/">vue</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/other/">other</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/other/CTF/">CTF</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/other/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E7%AC%94%E8%AE%B0/">数学建模笔记</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/other/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><span class="category-list-count">2</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/plan/">plan</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/project/">project</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/project/2023%E6%9A%91%E6%9C%9F%E9%A1%B9%E7%9B%AEhealth/">2023暑期项目health</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E8%AE%B0%E5%BD%95/">工具记录</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E8%AE%B0%E5%BD%95/vim/">vim</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E8%AE%B0%E5%BD%95/%E5%BB%BA%E7%AB%99/">建站</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E8%AE%B0%E5%BD%95/%E6%99%AE%E9%80%9A%E8%AF%9D/">普通话</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">课程笔记</a><span class="category-list-count">19</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/R/">R</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/R/%E5%AE%9E%E9%AA%8C%E4%B8%80/">实验一</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/python/">python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C/">复杂网络</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C/%E5%B0%8F%E5%AE%9E%E9%AA%8C1/">小实验1</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E5%AD%A6%E8%AF%AD%E6%96%87/">大学语文</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%AE%89%E5%8D%93%E8%AE%BA%E6%96%87/">安卓论文</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/">数据挖掘</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E4%BD%9C%E4%B8%9A/">作业</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/">实验报告</a><span class="category-list-count">7</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E7%90%86%E9%80%BB%E8%BE%91/">数理逻辑</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%9F%BA%E7%A1%80/">软件工程基础</a><span class="category-list-count">1</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">九月 2023</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">八月 2023</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">七月 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">六月 2023</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">五月 2023</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">四月 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">三月 2023</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">九月 2022</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-课程笔记/数据挖掘/实验报告/实验四 颜色检测实验_Color Detection" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2023/06/60d9fd126048.html" class="article-date">
+	  <time datetime="2023-06-04T08:36:03.176Z" itemprop="datePublished">2023-06-04</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">课程笔记</a>►<a class="article-category-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/">数据挖掘</a>►<a class="article-category-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/">实验报告</a>
+  </span>
+
+        
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2023/06/60d9fd126048.html#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 8(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="一、实验目的"><a href="#一、实验目的" class="headerlink" title="一、实验目的"></a>一、实验目的</h1><p>(1) 编写程序，实现对图片上颜色的检测。<br>(2) 写出实验报告。</p>
+<h1 id="二、实验原理"><a href="#二、实验原理" class="headerlink" title="二、实验原理"></a>二、实验原理</h1><p>(1)导入所需的库：代码中导入了 pandas 和 cv2 库。pandas 用于读取颜色名称数据集，cv2 用于处理图像。 </p>
+<p>(2)读取图像和颜色名称数据集：使用 cv2.imread() 函数读取图像文件，并使用 pandas 的 read_csv() 函数读取颜色名称数据集。 </p>
+<p>(3)定义函数获取颜色名称：定义了一个名为 getColorName() 的函数，用于根据 RGB 值获取对应的颜色名称。该函数通过计算 RGB 值与数据集中每个颜色的差异来确定最匹配的颜色名称。</p>
+<p>(4)定义鼠标回调函数：定义了一个名为 draw_function() 的回调函数，用于处理鼠标事件。当用户双击鼠标左键时，该函数会获取鼠标点击位置的 RGB 值，并将其保存到全局变量中。</p>
+<p>(5)主循环：在主循环中，首先检查是否有点击事件发生。如果发生点击事件，则在图像上绘制矩形框和显示颜色名称。然后，根据颜色的亮度值，选择合适的文本颜色来显示颜色名称。循环将继续运行，直到用户按下键盘上的 Esc 键。  </p>
+<p>(7)显示图像和关闭窗口：使用 cv2.imshow() 函数显示带有颜色信息的图像，并使用 cv2.destroyAllWindows() 函数关闭窗口。</p>
+<h1 id="三、实验内容和步骤"><a href="#三、实验内容和步骤" class="headerlink" title="三、实验内容和步骤"></a>三、实验内容和步骤</h1><h2 id="1-实验内容"><a href="#1-实验内容" class="headerlink" title="(1)实验内容"></a>(1)实验内容</h2><ol>
+<li>用python编写程序，实现颜色检测的程序：读取一张图片，当用户在图片上双击鼠标左键时，程序会提取该位置的像素颜色，并根据颜色的RGB值在图片上显示颜色名称。</li>
+<li>测试程序</li>
+</ol>
+<h2 id="2-实验步骤"><a href="#2-实验步骤" class="headerlink" title="(2)实验步骤"></a>(2)实验步骤</h2><ol>
+<li>导入库</li>
+<li>定义变量和函数</li>
+<li>主函数</li>
+</ol>
+<p>具体步骤：</p>
+<h3 id="1-导入库"><a href="#1-导入库" class="headerlink" title="1. 导入库"></a>1. 导入库</h3><p><code>pandas</code>用于读取颜色名称数据，<code>cv2</code>用于图像处理。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> cv2</span><br></pre></td></tr></table></figure>
+<h3 id="2-定义变量和函数"><a href="#2-定义变量和函数" class="headerlink" title="2. 定义变量和函数"></a>2. 定义变量和函数</h3><ul>
+<li><code>imageUrl</code>：指定要读取的图片路径。</li>
+<li><code>clicked</code>：记录是否有鼠标双击事件发生。</li>
+<li><code>redValue</code>、<code>greenValue</code>、<code>blueValue</code>：记录选定位置的像素颜色的RGB值。</li>
+<li><code>xPosition</code>、<code>yPosition</code>：记录鼠标双击位置的坐标。</li>
+<li><code>colorNameDataFrame</code>：使用<code>pandas</code>读取颜色名称数据，并进行必要的处理。</li>
+<li><code>getColorName()</code>函数：根据给定的RGB值，从颜色名称数据中找到最接近的颜色名称。</li>
+<li><code>draw_function()</code>函数：处理鼠标双击事件的回调函数，记录选定位置的像素颜色的RGB值。<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">imageUrl = <span class="string">&#x27;E:\image.png&#x27;</span></span><br><span class="line">clicked = <span class="literal">False</span></span><br><span class="line">redValue = <span class="number">0</span></span><br><span class="line">greenValue = <span class="number">0</span></span><br><span class="line">blueValue = <span class="number">0</span></span><br><span class="line">xPosition = <span class="number">0</span></span><br><span class="line">yPosition = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">colorNameDataFrame = pd.read_csv(<span class="string">&#x27;数据挖掘\数据挖掘_实验部分\实验6：颜色检测实验_Color Detection\Dataset\wikipedia_color_names.csv&#x27;</span>)</span><br><span class="line">colorNameDataFrame.drop(colorNameDataFrame.iloc[:,<span class="number">5</span>:<span class="number">8</span>], inplace=<span class="literal">True</span>, axis=<span class="number">1</span>)</span><br><span class="line">colorNameDataFrame.rename(columns=&#123;<span class="string">&#x27;Hex (24 bit)&#x27;</span>:<span class="string">&#x27;Hex&#x27;</span>, <span class="string">&#x27;Red (8 bit)&#x27;</span>:<span class="string">&#x27;Red&#x27;</span>, <span class="string">&#x27;Green (8 bit)&#x27;</span>:<span class="string">&#x27;Green&#x27;</span>, <span class="string">&#x27;Blue (8 bit)&#x27;</span>:<span class="string">&#x27;Blue&#x27;</span>&#125;, inplace=<span class="literal">True</span>)</span><br><span class="line">image = cv2.imread(imageUrl)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">getColorName</span>(<span class="params">red,green,blue</span>):</span><br><span class="line">    minimumValue = <span class="number">10000</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(colorNameDataFrame)):</span><br><span class="line">        rgbValue = <span class="built_in">abs</span>(red- <span class="built_in">int</span>(colorNameDataFrame.loc[i,<span class="string">&quot;Red&quot;</span>])) + <span class="built_in">abs</span>(green- <span class="built_in">int</span>(colorNameDataFrame.loc[i,<span class="string">&quot;Green&quot;</span>]))+ <span class="built_in">abs</span>(blue- <span class="built_in">int</span>(colorNameDataFrame.loc[i,<span class="string">&quot;Blue&quot;</span>]))</span><br><span class="line">        <span class="keyword">if</span>(rgbValue &lt;= minimumValue):</span><br><span class="line">            minimumValue = rgbValue</span><br><span class="line">            colorName = colorNameDataFrame.loc[i,<span class="string">&quot;Name&quot;</span>]</span><br><span class="line">    <span class="keyword">return</span> colorName</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">draw_function</span>(<span class="params">event, x,y, flags, param</span>):</span><br><span class="line">    <span class="keyword">if</span> event == cv2.EVENT_LBUTTONDBLCLK:</span><br><span class="line">        <span class="keyword">global</span> blueValue, greenValue, redValue, xPosition, yPosition, clicked</span><br><span class="line">        clicked = <span class="literal">True</span></span><br><span class="line">        xPosition = x</span><br><span class="line">        yPosition = y</span><br><span class="line">        blueValue, greenValue, redValue = image[yPosition, xPosition]</span><br><span class="line">        blueValue = <span class="built_in">int</span>(blueValue)</span><br><span class="line">        greenValue = <span class="built_in">int</span>(greenValue)</span><br><span class="line">        redValue = <span class="built_in">int</span>(redValue)</span><br></pre></td></tr></table></figure>
+<strong>代码解析：</strong></li>
+</ul>
+<ol>
+<li><code>getColorName()</code>函数：<ol>
+<li>初始化变量：将 <code>minimumValue</code> 初始化为一个较大的值，以便在比较过程中更新最小差异值。初始化 <code>colorName</code> 为空字符串，用于保存最匹配的颜色名称。    </li>
+<li>遍历颜色名称数据集：使用 <code>for</code> 循环遍历颜色名称数据集的每一行。</li>
+<li>计算差异值：对于每一行，将给定的 RGB 值与数据集中对应的 RGB 值进行差值计算。差值计算使用绝对值函数 <code>abs()</code> 来确保计算结果为正数。</li>
+<li>更新最小差异值和颜色名称：如果计算得到的差异值小于等于当前的最小差异值 <code>minimumValue</code>，则更新最小差异值为当前差异值，并将对应的颜色名称保存到 <code>colorName</code> 中。</li>
+<li>返回颜色名称：完成遍历后，返回最匹配的颜色名称</li>
+</ol>
+</li>
+<li><code>draw_function()</code>函数：<ol>
+<li>检查事件类型：通过判断 <code>event</code> 是否等于 <code>cv2.EVENT_LBUTTONDBLCLK</code>，确定当前事件是否为鼠标双击事件。</li>
+<li>更新全局变量：如果是鼠标双击事件，将全局变量 <code>clicked</code> 设置为 <code>True</code>，表示鼠标已被点击。同时更新全局变量 <code>xPosition</code> 和 <code>yPosition</code>，记录鼠标点击位置的坐标。</li>
+<li>获取像素值：通过访问图像 <code>image</code> 的像素值，获取鼠标点击位置 <code>(xPosition, yPosition)</code> 处的 RGB 值，并将其保存到全局变量 <code>blueValue</code>、<code>greenValue</code> 和 <code>redValue</code> 中。</li>
+<li>转换数据类型：将获取的 RGB 值转换为整数类型，以便后续处理。</li>
+</ol>
+</li>
+</ol>
+<h3 id="3-主函数"><a href="#3-主函数" class="headerlink" title="3. 主函数"></a>3. 主函数</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line"></span><br><span class="line">    cv2.namedWindow(<span class="string">&#x27;Color Name&#x27;</span>)</span><br><span class="line">    cv2.setMouseCallback(<span class="string">&#x27;Color Name&#x27;</span>, draw_function)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>):        </span><br><span class="line">        <span class="keyword">if</span> (clicked):            </span><br><span class="line">            cv2.rectangle(image, (<span class="number">20</span>, <span class="number">20</span>), (<span class="number">950</span>, <span class="number">60</span>), (blueValue, greenValue, redValue), -<span class="number">1</span>)</span><br><span class="line">            colorName = <span class="string">&#x27;Selected color name is:-&#x27;</span> + getColorName(redValue, greenValue, blueValue)</span><br><span class="line">            cv2.putText(image, colorName, (<span class="number">50</span>, <span class="number">50</span>), <span class="number">2</span>, <span class="number">0.75</span>, (<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>), <span class="number">1</span>, cv2.FONT_ITALIC)</span><br><span class="line">            minimumValue = <span class="built_in">abs</span>(redValue + greenValue + blueValue)</span><br><span class="line">            <span class="keyword">if</span> (minimumValue &gt;= <span class="number">600</span>):</span><br><span class="line">                cv2.putText(image, colorName, (<span class="number">50</span>, <span class="number">50</span>), <span class="number">2</span>, <span class="number">0.75</span>, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">1</span>, cv2.FONT_ITALIC)</span><br><span class="line">            clicked = <span class="literal">False</span></span><br><span class="line">        cv2.imshow(<span class="string">&quot;Color Name&quot;</span>, image)</span><br><span class="line">        <span class="comment"># Break the loop when user hits &#x27;esc&#x27; key</span></span><br><span class="line">        <span class="keyword">if</span> cv2.waitKey(<span class="number">20</span>) &amp; <span class="number">0xFF</span> == <span class="number">27</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+<p><strong>代码解析：</strong></p>
+<ol>
+<li>创建窗口和绑定鼠标回调函数：<ul>
+<li>使用<code>cv2.namedWindow()</code>创建名为”Color Name”的窗口。</li>
+<li>使用<code>cv2.setMouseCallback()</code>绑定鼠标回调函数。</li>
+</ul>
+</li>
+<li>进入循环：<ul>
+<li>如果发生了鼠标双击事件（<code>clicked</code>为True），根据选定位置的RGB值在图片上绘制矩形和颜色名称。</li>
+<li>调用<code>getColorName()</code>函数获取选定颜色的名称，并在图片上显示。</li>
+<li>如果颜色的RGB值的绝对值之和大于等于600，将颜色名称的文字颜色设置为黑色。</li>
+<li>将处理后的图片显示在窗口中。</li>
+<li>如果用户按下了ESC键，退出循环</li>
+</ul>
+</li>
+</ol>
+<h2 id="3-完整程序代码"><a href="#3-完整程序代码" class="headerlink" title="(3)完整程序代码"></a>(3)完整程序代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line">imageUrl = <span class="string">&#x27;E:\image.png&#x27;</span></span><br><span class="line">clicked = <span class="literal">False</span></span><br><span class="line">redValue = <span class="number">0</span></span><br><span class="line">greenValue = <span class="number">0</span></span><br><span class="line">blueValue = <span class="number">0</span></span><br><span class="line">xPosition = <span class="number">0</span></span><br><span class="line">yPosition = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">colorNameDataFrame = pd.read_csv(<span class="string">&#x27;数据挖掘\数据挖掘_实验部分\实验6：颜色检测实验_Color Detection\Dataset\wikipedia_color_names.csv&#x27;</span>)</span><br><span class="line">colorNameDataFrame.drop(colorNameDataFrame.iloc[:,<span class="number">5</span>:<span class="number">8</span>], inplace=<span class="literal">True</span>, axis=<span class="number">1</span>)</span><br><span class="line">colorNameDataFrame.rename(columns=&#123;<span class="string">&#x27;Hex (24 bit)&#x27;</span>:<span class="string">&#x27;Hex&#x27;</span>, <span class="string">&#x27;Red (8 bit)&#x27;</span>:<span class="string">&#x27;Red&#x27;</span>, <span class="string">&#x27;Green (8 bit)&#x27;</span>:<span class="string">&#x27;Green&#x27;</span>, <span class="string">&#x27;Blue (8 bit)&#x27;</span>:<span class="string">&#x27;Blue&#x27;</span>&#125;, inplace=<span class="literal">True</span>)</span><br><span class="line">image = cv2.imread(imageUrl)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">getColorName</span>(<span class="params">red,green,blue</span>):</span><br><span class="line">    minimumValue = <span class="number">10000</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(colorNameDataFrame)):</span><br><span class="line">        rgbValue = <span class="built_in">abs</span>(red- <span class="built_in">int</span>(colorNameDataFrame.loc[i,<span class="string">&quot;Red&quot;</span>])) + <span class="built_in">abs</span>(green- <span class="built_in">int</span>(colorNameDataFrame.loc[i,<span class="string">&quot;Green&quot;</span>]))+ <span class="built_in">abs</span>(blue- <span class="built_in">int</span>(colorNameDataFrame.loc[i,<span class="string">&quot;Blue&quot;</span>]))</span><br><span class="line">        <span class="keyword">if</span>(rgbValue &lt;= minimumValue):</span><br><span class="line">            minimumValue = rgbValue</span><br><span class="line">            colorName = colorNameDataFrame.loc[i,<span class="string">&quot;Name&quot;</span>]</span><br><span class="line">    <span class="keyword">return</span> colorName</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">draw_function</span>(<span class="params">event, x,y, flags, param</span>):</span><br><span class="line">    <span class="keyword">if</span> event == cv2.EVENT_LBUTTONDBLCLK:</span><br><span class="line">        <span class="keyword">global</span> blueValue, greenValue, redValue, xPosition, yPosition, clicked</span><br><span class="line">        clicked = <span class="literal">True</span></span><br><span class="line">        xPosition = x</span><br><span class="line">        yPosition = y</span><br><span class="line">        blueValue, greenValue, redValue = image[yPosition, xPosition]</span><br><span class="line">        blueValue = <span class="built_in">int</span>(blueValue)</span><br><span class="line">        greenValue = <span class="built_in">int</span>(greenValue)</span><br><span class="line">        redValue = <span class="built_in">int</span>(redValue)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line"></span><br><span class="line">    cv2.namedWindow(<span class="string">&#x27;Color Name&#x27;</span>)</span><br><span class="line">    cv2.setMouseCallback(<span class="string">&#x27;Color Name&#x27;</span>, draw_function)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>):        </span><br><span class="line">        <span class="keyword">if</span> (clicked):            </span><br><span class="line">            cv2.rectangle(image, (<span class="number">20</span>, <span class="number">20</span>), (<span class="number">950</span>, <span class="number">60</span>), (blueValue, greenValue, redValue), -<span class="number">1</span>)</span><br><span class="line">            colorName = <span class="string">&#x27;Selected color name is:-&#x27;</span> + getColorName(redValue, greenValue, blueValue)</span><br><span class="line">            cv2.putText(image, colorName, (<span class="number">50</span>, <span class="number">50</span>), <span class="number">2</span>, <span class="number">0.75</span>, (<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>), <span class="number">1</span>, cv2.FONT_ITALIC)</span><br><span class="line">            minimumValue = <span class="built_in">abs</span>(redValue + greenValue + blueValue)</span><br><span class="line">            <span class="keyword">if</span> (minimumValue &gt;= <span class="number">600</span>):</span><br><span class="line">                cv2.putText(image, colorName, (<span class="number">50</span>, <span class="number">50</span>), <span class="number">2</span>, <span class="number">0.75</span>, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">1</span>, cv2.FONT_ITALIC)</span><br><span class="line">            clicked = <span class="literal">False</span></span><br><span class="line">        cv2.imshow(<span class="string">&quot;Color Name&quot;</span>, image)</span><br><span class="line">        <span class="comment"># Break the loop when user hits &#x27;esc&#x27; key</span></span><br><span class="line">        <span class="keyword">if</span> cv2.waitKey(<span class="number">20</span>) &amp; <span class="number">0xFF</span> == <span class="number">27</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="四、实验结果"><a href="#四、实验结果" class="headerlink" title="四、实验结果"></a>四、实验结果</h1><p>程序的运行结果与演示如下图所示：<br><img src="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306041826484.png" alt="image.png"><br>可以看到，输入的图片是vscode界面，当双击蓝色部分时，程序左上角出现了以蓝色为背景的文字“Selected color name is:-St. Patrick’s blue”。<br>而下方双击绿色部分，则显示绿色背景的文字“Selected color name is:-Old moss green”。<br><img src="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306041828833.png" alt="image.png"></p>
+<h1 id="五、实验分析"><a href="#五、实验分析" class="headerlink" title="五、实验分析"></a>五、实验分析</h1><p>该程序的稳定性较强，但在用户体验方面仍有改进之处：可以把双击某部分改成鼠标停留在哪就显示该处颜色。这样在用户体验上可能会更好。</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/2023/06/60d9fd126048.html" title="" target="_blank" rel="external">http://example.com/2023/06/60d9fd126048.html</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/limingqian17" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/limingqian17" target="_blank"><span class="text-dark">安xy</span><small class="ml-1x">安_blog</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2023/06/d3cad4e9c8fb.html" title="(no title)"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2023/06/4c83db3bac28.html" title="(no title)"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/limingqian17" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+
+
+
+
+
+
+</body>
+</html>

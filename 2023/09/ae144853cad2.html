@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>Hexo</title>
+  <meta name="description" content="第一章 软件工程概述1.1软件工程的发展历程1.1.1软件危机软件危机指在计算机软件的开发和维护工程中所遇到的一系列严重问题严重问题表现方面:  软件开发进度和成本难以控制 软件产品难以满足用户需求 软件质量难以得到保证 软件产品难以进行维护 软件的文档资料难以管理 软件产品的生产效率难以得到提高  1.1.2软件危机原因 对软件开发缺乏正确的理论指导 软件人员与用户缺乏充分的交流 对软件开发过程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2023/09/ae144853cad2.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="第一章 软件工程概述1.1软件工程的发展历程1.1.1软件危机软件危机指在计算机软件的开发和维护工程中所遇到的一系列严重问题严重问题表现方面:  软件开发进度和成本难以控制 软件产品难以满足用户需求 软件质量难以得到保证 软件产品难以进行维护 软件的文档资料难以管理 软件产品的生产效率难以得到提高  1.1.2软件危机原因 对软件开发缺乏正确的理论指导 软件人员与用户缺乏充分的交流 对软件开发过程">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202309111236414.png">
+<meta property="article:published_time" content="2023-09-18T06:17:45.982Z">
+<meta property="article:modified_time" content="2023-09-20T08:42:18.828Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202309111236414.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://example.com/2023/09/ae144853cad2.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/limingqian17" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">安xy</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">安_blog</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/limingqian17" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>go on!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 13px;">-算法</a> <a href="/tags/C/" style="font-size: 13px;">C++</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 13px;">算法</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/">culitivate</a><span class="category-list-count">18</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/408/">408</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/408/%E7%AE%97%E6%B3%95/">算法</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/C/">C++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/PHP/">PHP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/Python/">Python</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/Python/%E7%88%AC%E8%99%AB/">爬虫</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/">java技术栈</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/java/">java</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/mysql/">mysql</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/vue/">vue</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/other/">other</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/other/CTF/">CTF</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/other/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E7%AC%94%E8%AE%B0/">数学建模笔记</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/other/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><span class="category-list-count">2</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/plan/">plan</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/project/">project</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/project/2023%E6%9A%91%E6%9C%9F%E9%A1%B9%E7%9B%AEhealth/">2023暑期项目health</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E8%AE%B0%E5%BD%95/">工具记录</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E8%AE%B0%E5%BD%95/vim/">vim</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E8%AE%B0%E5%BD%95/%E5%BB%BA%E7%AB%99/">建站</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E8%AE%B0%E5%BD%95/%E6%99%AE%E9%80%9A%E8%AF%9D/">普通话</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">课程笔记</a><span class="category-list-count">19</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/R/">R</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/R/%E5%AE%9E%E9%AA%8C%E4%B8%80/">实验一</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/python/">python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C/">复杂网络</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C/%E5%B0%8F%E5%AE%9E%E9%AA%8C1/">小实验1</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E5%AD%A6%E8%AF%AD%E6%96%87/">大学语文</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%AE%89%E5%8D%93%E8%AE%BA%E6%96%87/">安卓论文</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/">数据挖掘</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E4%BD%9C%E4%B8%9A/">作业</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/">实验报告</a><span class="category-list-count">7</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E7%90%86%E9%80%BB%E8%BE%91/">数理逻辑</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%9F%BA%E7%A1%80/">软件工程基础</a><span class="category-list-count">1</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">九月 2023</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">八月 2023</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">七月 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">六月 2023</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">五月 2023</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">四月 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">三月 2023</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">九月 2022</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-工具记录/软件工程基础" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2023/09/ae144853cad2.html" class="article-date">
+	  <time datetime="2023-09-18T06:17:45.982Z" itemprop="datePublished">2023-09-18</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7%E8%AE%B0%E5%BD%95/">工具记录</a>
+  </span>
+
+        
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2023/09/ae144853cad2.html#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2.8k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 9(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="第一章-软件工程概述"><a href="#第一章-软件工程概述" class="headerlink" title="第一章 软件工程概述"></a>第一章 软件工程概述</h1><h2 id="1-1软件工程的发展历程"><a href="#1-1软件工程的发展历程" class="headerlink" title="1.1软件工程的发展历程"></a>1.1软件工程的发展历程</h2><h3 id="1-1-1软件危机"><a href="#1-1-1软件危机" class="headerlink" title="1.1.1软件危机"></a>1.1.1软件危机</h3><p>软件危机指在计算机软件的开发和维护工程中所遇到的一系列严重问题<br>严重问题表现方面:</p>
+<ol>
+<li>软件开发进度和成本难以控制</li>
+<li>软件产品难以满足用户需求</li>
+<li>软件质量难以得到保证</li>
+<li>软件产品难以进行维护</li>
+<li>软件的文档资料难以管理</li>
+<li>软件产品的生产效率难以得到提高</li>
+</ol>
+<h3 id="1-1-2软件危机原因"><a href="#1-1-2软件危机原因" class="headerlink" title="1.1.2软件危机原因"></a>1.1.2软件危机原因</h3><ol>
+<li>对软件开发缺乏正确的理论指导</li>
+<li>软件人员与用户缺乏充分的交流</li>
+<li>对软件开发过程缺乏整体认识</li>
+<li>对软件产品缺乏有效一致的质量评价</li>
+</ol>
+<h3 id="1-1-3-软件的本质特性"><a href="#1-1-3-软件的本质特性" class="headerlink" title="1.1.3 软件的本质特性"></a>1.1.3 软件的本质特性</h3><ol>
+<li>复杂性</li>
+<li>一致性</li>
+<li>可变性</li>
+<li>不可见性</li>
+</ol>
+<h2 id="1-2-软件工程的概念"><a href="#1-2-软件工程的概念" class="headerlink" title="1.2 软件工程的概念"></a>1.2 软件工程的概念</h2><h3 id="1-2-1-软件工程的定义"><a href="#1-2-1-软件工程的定义" class="headerlink" title="1.2.1 软件工程的定义"></a>1.2.1 软件工程的定义</h3><p>专注于规划、设计、开发、测试、维护和管理软件系统的过程<br>实现满足用户要求的软件产品的定义、开发、发布和维护的过程或进行研究的学科</p>
+<h3 id="1-2-2-软件工程的目标"><a href="#1-2-2-软件工程的目标" class="headerlink" title="1.2.2 软件工程的目标"></a>1.2.2 软件工程的目标</h3><ol>
+<li>降低开发成本</li>
+<li>完成需求中各项功能与性能指标</li>
+<li>软件易于修改，软件机构易于理解</li>
+<li>降低维护费用</li>
+<li>按时完成开发与交付</li>
+</ol>
+<h3 id="1-2-4-软件工程的基本原理"><a href="#1-2-4-软件工程的基本原理" class="headerlink" title="1.2.4 软件工程的基本原理"></a>1.2.4 软件工程的基本原理</h3><ol>
+<li>用分阶段的生命周期计划严格管理</li>
+<li>坚持进行阶段评审</li>
+<li>执行严格的产品质量控制</li>
+<li>采用现代化程序设计技术</li>
+<li>结果应能清楚地审查</li>
+<li>开发人员应少而精</li>
+<li>承认不断改进软件工程的必要性</li>
+</ol>
+<h2 id="1-3-软件与软件过程"><a href="#1-3-软件与软件过程" class="headerlink" title="1.3 软件与软件过程"></a>1.3 软件与软件过程</h2><h3 id="1-3-1-软件的概念"><a href="#1-3-1-软件的概念" class="headerlink" title="1.3.1 软件的概念"></a>1.3.1 软件的概念</h3><p>软件的定义:程序，数据和文档的有机组合<br>软件的实现是一个从现实问题域（输入）到信息域（输出）的过程，此过程包括程序、数据、文档以及他们之间的联系。</p>
+<p><strong>软件的特点:</strong></p>
+<ol>
+<li>软件是逻辑实体而非物理实体</li>
+<li>软件是智力产品，生产的过程主要集中在研发上</li>
+<li>软件永不磨损，但它会退化，直至被弃用</li>
+<li>软件开发远未达到软件工程目标提及的产业化生产</li>
+<li>软件越来越复杂，今后将会更加复杂</li>
+</ol>
+<h3 id="1-3-3-软件生命周期"><a href="#1-3-3-软件生命周期" class="headerlink" title="1.3.3 软件生命周期"></a>1.3.3 软件生命周期</h3><ol>
+<li>可行性分析与计划阶段</li>
+<li>需求分析阶段</li>
+<li>设计阶段</li>
+<li>实现阶段</li>
+<li>测试阶段</li>
+<li>运行和维护阶段</li>
+</ol>
+<h2 id="1-4软件过程模型"><a href="#1-4软件过程模型" class="headerlink" title="1.4软件过程模型"></a>1.4软件过程模型</h2><h3 id="1-4-1瀑布模型"><a href="#1-4-1瀑布模型" class="headerlink" title="1.4.1瀑布模型"></a>1.4.1瀑布模型</h3><p>瀑布模型，也称软件生存周期模型。<br>优点：<br>（1）在软件工程中占有重要地位，它提供了软件开发的基本框架，这比依靠“个人技艺”开发软件好得多。<br>（2）有利于大型软件开发过程中人员的组织、管理，有利于软件开发方法和工具的研究与使用，从而提高了大型软件项目开发的质量和效率。<br>缺点：<br>（1）阶段的划分完全固定，阶段之间产生大量的文档，极大地增加了工作量；<br>（2）由于开发模型是线性的用户只有等到整个过程的末期才能见到开发成果，从而增加了开发的风险；<br>（3）早期的错误可能要等到开发后期的测试阶段才能发现，进而带来严重后果。<br>适用：<br>（1）在开发时间内需求没有或很少变化；<br>（2）分析设计人员应对应用领域很熟悉；<br>（3）低风险项目（对目标、环境很熟悉）；<br>（4）用户使用环境很稳定；用户除提出需求以外，很少参与开发工作。</p>
+<h3 id="1-4-2原型模型"><a href="#1-4-2原型模型" class="headerlink" title="1.4.2原型模型"></a>1.4.2原型模型</h3><p>优点：<br>（1）可以得到比较良好的需求定义，容易适应需求的变化；<br>（2）有利于开发与培训的同步；<br>（3）开发费用低、开发周期短且对用户更友好。<br>缺点：<br>（1）客户与开发者对原型理解不同；<br>（2） 准确的原型设计比较困难；<br>（3） 不利于开发人员的创新。<br>适用：<br>（1）对所开发的领域比较熟悉而且有快速的原型开发工具；<br>（2）项目招投标时，可以以原型模型作为软件的开发模型；<br>（3）进行产品移植或升级时，或对已有产品原型进行客户化工作时，原型模型是非常适合的。</p>
+<h3 id="1-4-3增量模型"><a href="#1-4-3增量模型" class="headerlink" title="1.4.3增量模型"></a>1.4.3增量模型</h3><p>优点：<br>（1）采用增量模型的优点是人员分配灵活，刚开始不用投入大量人力资源；<br>（2）如果核心产品很受欢迎，则可增加人力实现下一个增量；<br>（3）可先发布部分功能给客户，对客户起到镇静剂的作用。<br>缺点：<br>（1）并行开发构件有可能遇到不能集成的风险，软件必须具备开放式的体系结构；<br>（2）增量模型的灵活性可以使其适应这种变化的能力大大优于瀑布模型和快速原型模型，但也很容易退化为边做边改模型，从而是软件过程的控制失去整体性。<br>适用：<br>（1）进行已有产品升级或新版本开发，增量模型是非常适合的；<br>（2）对完成期限严格要求的产品，可以使用增量模型；<br>（3）对所开发的领域比较熟悉而且已有原型系统，增量模型也是非常适合的。</p>
+<h3 id="1-4-4螺旋模型"><a href="#1-4-4螺旋模型" class="headerlink" title="1.4.4螺旋模型"></a>1.4.4螺旋模型</h3><p>优点：<br>（1）设计上的灵活性,可以在项目的各个阶段进行变更；<br>（2）以小的分段来构建大型系统,使成本计算变得简单容易；<br>（3）客户始终参与每个阶段的开发,保证了项目不偏离正确方向以及项目的可控性；<br>（4） 随着项目推进,客户始终掌握项目的最新信息 , 从而他或她能够和管理层有效地交互。<br>缺点：<br>（1）采用螺旋模型需要具有相当丰富的风险评估经验和专门知识，在风险较大的项目开发中，如果未能够及时标识风险，势必造成重大损失；<br>（2）过多的迭代次数会增加开发成本，延迟提交时间。 适用： 只适合于大规模的软件项目</p>
+<h3 id="1-4-5喷泉模型"><a href="#1-4-5喷泉模型" class="headerlink" title="1.4.5喷泉模型"></a>1.4.5喷泉模型</h3><p>优点：</p>
+<ol>
+<li>喷泉模型允许灵活的人员分配，起初不需要投入大量人力资源。</li>
+<li>如果核心产品概念受欢迎，可以增加人力资源以实现下一个喷泉。</li>
+<li>具有开放式的体系结构，允许并行开发构件。<br>缺点：</li>
+<li>并行开发构件可能面临无法集成的风险，需要具备开放式体系结构。</li>
+<li>喷泉模型的灵活性可能导致软件过程的控制失去整体性，可能退化为边做边改模型。<br>适用：</li>
+<li>适用于已有产品的升级或新版本开发。</li>
+<li>对于有严格完成期限要求的产品，可以采用喷泉模型。</li>
+<li>在开发领域相对熟悉且已有原型系统的情况下，也适用于喷泉模型。</li>
+</ol>
+<h3 id="1-4-6敏捷过程模型"><a href="#1-4-6敏捷过程模型" class="headerlink" title="1.4.6敏捷过程模型"></a>1.4.6敏捷过程模型</h3><p>优点：</p>
+<ol>
+<li>敏捷过程模型强调快速交付和响应变化，适应性强。</li>
+<li>可以根据需求不断迭代和改进产品，满足客户的实际需求。</li>
+<li>高度合作和沟通，促进团队协作和客户参与。<br>缺点：</li>
+<li>对于某些大型项目或要求高度规范的项目，敏捷过程可能不够适用。</li>
+<li>需要客户积极参与和不断提供反馈，否则可能导致项目进展不稳定。</li>
+<li>需要团队具备高度的自组织和自管理能力。<br>适用：</li>
+<li>适用于需要快速交付和频繁变更的项目。</li>
+<li>对于客户需求不断演化的项目，敏捷过程模型是非常适合的选择。</li>
+<li>需要高度合作和团队协作的项目也适合采用敏捷过程模型。</li>
+</ol>
+<h3 id="1-4-7-渐进交付迭代模型"><a href="#1-4-7-渐进交付迭代模型" class="headerlink" title="1.4.7 渐进交付迭代模型"></a>1.4.7 渐进交付迭代模型</h3><p><strong>优点：</strong></p>
+<ol>
+<li><strong>分阶段交付：</strong> 渐进交付迭代模型允许将软件系统分成多个可交付的阶段，每个阶段都能够产生部分可用的系统，从而满足客户部分需求。</li>
+<li><strong>逐步完善：</strong> 通过迭代的方式，每个迭代周期都可以改进和完善之前版本的软件，使其更符合用户需求和质量标准。</li>
+<li><strong>风险管理：</strong> 通过将项目分成多个迭代，可以更好地管理和控制项目风险，及早发现和解决问题。</li>
+<li><strong>客户参与：</strong> 客户可以在每个迭代周期中查看和评估部分可用的系统，提供反馈，确保最终的软件产品符合其期望。<br><strong>缺点：</strong></li>
+<li><strong>增加复杂性：</strong> 管理多个迭代周期和交付阶段可能增加了项目的管理和协调复杂性。</li>
+<li><strong>时间和成本：</strong> 如果不恰当地规划迭代周期，可能会导致项目超出预算或超过时间表。</li>
+<li><strong>需求变化：</strong> 随着迭代的进行，客户需求可能会发生变化，需要灵活应对变更，否则可能导致范围膨胀。<br><strong>适用：</strong></li>
+<li><strong>大型项目：</strong> 渐进交付迭代模型适用于大型和复杂的项目，可以将项目分成多个管理和开发容易控制的部分。</li>
+<li><strong>客户需求不确定：</strong> 当客户需求不够清晰或可能会变化时，采用迭代方式可以更好地适应变化。</li>
+<li><strong>风险管理重要：</strong> 当项目中存在重要的风险，需要及早发现和解决时，渐进交付迭代模型是一种合适的选择。</li>
+<li><strong>需要快速交付部分功能：</strong> 如果需要在项目的早期阶段交付部分功能以满足紧急需求，这种模型也很有用。</li>
+</ol>
+<h3 id="1-4-10-软件过程模型的比较"><a href="#1-4-10-软件过程模型的比较" class="headerlink" title="1.4.10 软件过程模型的比较"></a>1.4.10 软件过程模型的比较</h3><p><img src="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202309111236414.png" alt="image.png"></p>
+<h2 id="1-5-软件开发方法"><a href="#1-5-软件开发方法" class="headerlink" title="1.5 软件开发方法"></a>1.5 软件开发方法</h2><h3 id="1-5-1-结构化开发方法"><a href="#1-5-1-结构化开发方法" class="headerlink" title="1.5.1 结构化开发方法"></a>1.5.1 结构化开发方法</h3><p>首先提出用结构化分析（SA）对软件进行需求分析<br>之后用结构化设计（SD）方法进行系统设计<br>最后用结构化编程（SP）实现软件</p>
+<p>提高了软件开发的效率和质量，降低了错误率</p>
+<h3 id="1-5-2-面对对象开发方法"><a href="#1-5-2-面对对象开发方法" class="headerlink" title="1.5.2 面对对象开发方法"></a>1.5.2 面对对象开发方法</h3><p>面对对象&#x3D;对象+类+继承+消息</p>
+<h2 id="1-6-案例描述"><a href="#1-6-案例描述" class="headerlink" title="1.6 案例描述"></a>1.6 案例描述</h2><p>基本 书上基本功能 提高</p>
+<ol>
+<li><p>自动匹配自动筛选自动调剂</p>
+</li>
+<li><p>另选难度更大的 基本 书本基本功能 提高</p>
+</li>
+<li><p>考试过程 提交答卷 改卷 手动 自动 分配试卷</p>
+</li>
+<li><p>成绩分析 平均分统计 分数段统计 知识点掌握分析</p>
+</li>
+<li><p>考试 选择考试学员 题库选择 配置试卷 组卷 图表 自动链接相关知识点</p>
+</li>
+<li><p>试题库 判断 单选 多选 按章节 按难度</p>
+</li>
+<li><p>学员管理 注册 主动导入</p>
+</li>
+</ol>
+<p>同义词近义词反义词数据库</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/2023/09/ae144853cad2.html" title="" target="_blank" rel="external">http://example.com/2023/09/ae144853cad2.html</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/limingqian17" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/limingqian17" target="_blank"><span class="text-dark">安xy</span><small class="ml-1x">安_blog</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2023/09/42d3656aee50.html" title="(no title)"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2023/09/55322f34c6bd.html" title="(no title)"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/limingqian17" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+
+
+
+
+
+
+</body>
+</html>

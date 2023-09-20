@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>Hexo</title>
+  <meta name="description" content="一、实验目的(1) 编写程序，实现数据的预处理，以及检查数据的分布特征。(2) 调用有关模型，检查数据异常值，并且比较与分析模型。(3) 写出实验报告。 二、实验原理(1)  数据预测处理：现实世界中的数据库极易受到噪音数据、遗漏数据和不一致性数据的估计，为提供⾼数据质量进入并提供⾼挖掘结果的质量，产生了大数据预测处理技术。数据预测处理有多种方法：数据清理，数据集合，数据变换，数据归约等。这些数据">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2023/06/6f49b06c6fae.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一、实验目的(1) 编写程序，实现数据的预处理，以及检查数据的分布特征。(2) 调用有关模型，检查数据异常值，并且比较与分析模型。(3) 写出实验报告。 二、实验原理(1)  数据预测处理：现实世界中的数据库极易受到噪音数据、遗漏数据和不一致性数据的估计，为提供⾼数据质量进入并提供⾼挖掘结果的质量，产生了大数据预测处理技术。数据预测处理有多种方法：数据清理，数据集合，数据变换，数据归约等。这些数据">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306041452907.png">
+<meta property="og:image" content="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306041452908.png">
+<meta property="og:image" content="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306041452909.png">
+<meta property="og:image" content="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306041452910.png">
+<meta property="og:image" content="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306041452911.png">
+<meta property="og:image" content="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306041452912.png">
+<meta property="og:image" content="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306041452913.png">
+<meta property="article:published_time" content="2023-06-04T06:52:47.133Z">
+<meta property="article:modified_time" content="2023-09-20T08:42:18.847Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306041452907.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://example.com/2023/06/6f49b06c6fae.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/limingqian17" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">安xy</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">安_blog</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/limingqian17" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>go on!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 13px;">-算法</a> <a href="/tags/C/" style="font-size: 13px;">C++</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 13px;">算法</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/">culitivate</a><span class="category-list-count">18</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/408/">408</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/408/%E7%AE%97%E6%B3%95/">算法</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/C/">C++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/PHP/">PHP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/Python/">Python</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/Python/%E7%88%AC%E8%99%AB/">爬虫</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/">java技术栈</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/java/">java</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/mysql/">mysql</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/vue/">vue</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/other/">other</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/other/CTF/">CTF</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/other/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E7%AC%94%E8%AE%B0/">数学建模笔记</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/other/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><span class="category-list-count">2</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/plan/">plan</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/project/">project</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/project/2023%E6%9A%91%E6%9C%9F%E9%A1%B9%E7%9B%AEhealth/">2023暑期项目health</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E8%AE%B0%E5%BD%95/">工具记录</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E8%AE%B0%E5%BD%95/vim/">vim</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E8%AE%B0%E5%BD%95/%E5%BB%BA%E7%AB%99/">建站</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E8%AE%B0%E5%BD%95/%E6%99%AE%E9%80%9A%E8%AF%9D/">普通话</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">课程笔记</a><span class="category-list-count">19</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/R/">R</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/R/%E5%AE%9E%E9%AA%8C%E4%B8%80/">实验一</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/python/">python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C/">复杂网络</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C/%E5%B0%8F%E5%AE%9E%E9%AA%8C1/">小实验1</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E5%AD%A6%E8%AF%AD%E6%96%87/">大学语文</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%AE%89%E5%8D%93%E8%AE%BA%E6%96%87/">安卓论文</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/">数据挖掘</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E4%BD%9C%E4%B8%9A/">作业</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/">实验报告</a><span class="category-list-count">7</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E7%90%86%E9%80%BB%E8%BE%91/">数理逻辑</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%9F%BA%E7%A1%80/">软件工程基础</a><span class="category-list-count">1</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">九月 2023</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">八月 2023</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">七月 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">六月 2023</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">五月 2023</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">四月 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">三月 2023</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">九月 2022</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-课程笔记/数据挖掘/实验报告/实验一 数据预处理实验_信用卡欺诈检测" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2023/06/6f49b06c6fae.html" class="article-date">
+	  <time datetime="2023-06-04T06:52:47.133Z" itemprop="datePublished">2023-06-04</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">课程笔记</a>►<a class="article-category-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/">数据挖掘</a>►<a class="article-category-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/">实验报告</a>
+  </span>
+
+        
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2023/06/6f49b06c6fae.html#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2.3k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 9(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="一、实验目的"><a href="#一、实验目的" class="headerlink" title="一、实验目的"></a>一、实验目的</h1><p>(1) 编写程序，实现数据的预处理，以及检查数据的分布特征。<br>(2) 调用有关模型，检查数据异常值，并且比较与分析模型。<br>(3) 写出实验报告。</p>
+<h1 id="二、实验原理"><a href="#二、实验原理" class="headerlink" title="二、实验原理"></a>二、实验原理</h1><p>(1)  数据预测处理：现实世界中的数据库极易受到噪音数据、遗漏数据和不一致性数据的估计，为提供⾼数据质量进入并提供⾼挖掘结果的质量，产生了大数据预测处理技术。数据预测处理有多种方法：数据清理，数据集合，数据变换，数据归约等。这些数据处理技术在 数据挖掘之前使用，大大提⾼了数据挖掘模型的质量，降低了实际挖掘所需要的时间。</p>
+<p>(2) 数据清理：数据清理示例通过填写遗漏的值，平滑噪声数据，识别、删去离群点，并解决不一致于“理”数据。</p>
+<p>(3) 检测数据异常值：在数据挖掘的过程中，数据异常值可能会对模型的准确性和稳定性产生负面影响。因此，检测和处理数据中的异常值是数据预处理的重要步骤之一。<br>常见的数据异常值检测方法包括孤立森林（Isolation Forest）、局部异常因子（Local Outlier Factor）和支持向量机（Support Vector Machine）等。这些方法利用数据的统计特性、密度、距离或边界来识别与大多数数据点明显不同的数据点。<br>通过使用这些异常值检测方法，我们可以标识出数据中的异常值，并进行进一步的处理，例如删除异常值、替换为缺失值或使用其他方法进行修正。这样可以提高数据质量，减少异常值对数据挖掘模型的影响，从而获得更准确和可靠的分析结果。</p>
+<h1 id="三、实验内容和步骤"><a href="#三、实验内容和步骤" class="headerlink" title="三、实验内容和步骤"></a>三、实验内容和步骤</h1><h2 id="1-实验内容"><a href="#1-实验内容" class="headerlink" title="(1)实验内容"></a>(1)实验内容</h2><ol>
+<li>用Python编写程序工具编写程序，实现数据清理、检查数据特征等功能，并在实验报告中写出主要的过程和采用的方法。</li>
+<li>通过一些模型来检测数据的异常值</li>
+</ol>
+<h2 id="2-实验步骤"><a href="#2-实验步骤" class="headerlink" title="(2)实验步骤"></a>(2)实验步骤</h2><ol>
+<li>导入库</li>
+<li>读取数据</li>
+<li>检查缺失值</li>
+<li>检查分类数据<br> 4.1查看数据的基本统计描述<br> 4.2绘制交易金额分布柱状图<br> 4.3绘制交易时间与交易量分布图<br> 4.4抽取数据样本观察分布<br> 4.5相关性分析</li>
+<li>模型建立与分析<br> 5.1数据准备<br> 5.2模型与分析<br> 5.3模型比较</li>
+</ol>
+<p>具体步骤：</p>
+<h3 id="1-导入库"><a href="#1-导入库" class="headerlink" title="1.导入库"></a>1.导入库</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> warnings <span class="keyword">import</span> filterwarnings </span><br><span class="line">filterwarnings(<span class="string">&#x27;ignore&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np </span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> sklearn</span><br><span class="line"><span class="keyword">import</span> scipy</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> classification_report,accuracy_score</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> IsolationForest</span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> LocalOutlierFactor</span><br><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> OneClassSVM</span><br><span class="line"><span class="keyword">from</span> pylab <span class="keyword">import</span> rcParams</span><br><span class="line">rcParams[<span class="string">&#x27;figure.figsize&#x27;</span>] = <span class="number">14</span>, <span class="number">8</span></span><br><span class="line">RANDOM_SEED = <span class="number">42</span></span><br><span class="line">LABELS = [<span class="string">&quot;Normal&quot;</span>, <span class="string">&quot;Fraud&quot;</span>]</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-读取数据"><a href="#2-读取数据" class="headerlink" title="2.读取数据"></a>2.读取数据</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data = pd.read_csv(<span class="string">&#x27;../Dataset/creditcard.csv&#x27;</span>,sep=<span class="string">&#x27;,&#x27;</span>)</span><br><span class="line">data.head()</span><br></pre></td></tr></table></figure>
+<p>结果：<br><img src="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306041452907.png"></p>
+<h3 id="3-检查缺失值"><a href="#3-检查缺失值" class="headerlink" title="3.检查缺失值"></a>3.检查缺失值</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.isnull().values.<span class="built_in">any</span>()</span><br></pre></td></tr></table></figure>
+<p>输出：False<br>说明该数据集中不存在缺失值</p>
+<p>粗看数据分类占比</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">count_classes = pd.value_counts(data[<span class="string">&#x27;Class&#x27;</span>], sort = <span class="literal">True</span>)</span><br><span class="line">count_classes.plot(kind = <span class="string">&#x27;bar&#x27;</span>, rot=<span class="number">0</span>)</span><br><span class="line">LABELS = [<span class="string">&quot;Normal&quot;</span>, <span class="string">&quot;Fraud&quot;</span>]</span><br><span class="line">plt.title(<span class="string">&quot;Transaction Class Distribution&quot;</span>)</span><br><span class="line">plt.xticks(<span class="built_in">range</span>(<span class="number">2</span>), LABELS)</span><br><span class="line">plt.xlabel(<span class="string">&quot;Class&quot;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;Frequency&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>运行结果：<br><img src="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306041452908.png"></p>
+<h3 id="4-检查分类数据"><a href="#4-检查分类数据" class="headerlink" title="4.检查分类数据"></a>4.检查分类数据</h3><h4 id="4-1查看数据的基本统计描述"><a href="#4-1查看数据的基本统计描述" class="headerlink" title="4.1查看数据的基本统计描述"></a>4.1查看数据的基本统计描述</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fraud = data[data[<span class="string">&#x27;Class&#x27;</span>]==<span class="number">1</span>]</span><br><span class="line">normal = data[data[<span class="string">&#x27;Class&#x27;</span>]==<span class="number">0</span>]</span><br><span class="line"><span class="built_in">print</span>(fraud.shape,normal.shape)</span><br></pre></td></tr></table></figure>
+<p>输出被诈骗数据以及正常数据的维度：(492, 31) (284315, 31)<br>从中看出正常数据有284315条，而被诈骗数据仅仅有492条。</p>
+<p>查看正常数据以及被诈骗数据的基本统计量</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fraud.Amount.describe()</span><br></pre></td></tr></table></figure>
+<p><img src="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306041452909.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">normal.Amount.describe()</span><br></pre></td></tr></table></figure>
+<p><img src="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306041452910.png" alt="image.png"></p>
+<p>&#96;</p>
+<h4 id="4-2绘制交易金额分布柱状图"><a href="#4-2绘制交易金额分布柱状图" class="headerlink" title="4.2绘制交易金额分布柱状图"></a>4.2绘制交易金额分布柱状图</h4><p>按类别列出的每笔交易的金额，据此分别绘制柱状图，观察数据分布。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">f, (ax1, ax2) = plt.subplots(<span class="number">2</span>, <span class="number">1</span>, sharex=<span class="literal">True</span>)</span><br><span class="line">f.suptitle(<span class="string">&#x27;Amount per transaction by class&#x27;</span>)</span><br><span class="line">bins = <span class="number">50</span></span><br><span class="line"></span><br><span class="line">ax1.hist(fraud.Amount, bins = bins)</span><br><span class="line">ax1.set_title(<span class="string">&#x27;Fraud&#x27;</span>)</span><br><span class="line">ax2.hist(normal.Amount, bins = bins)</span><br><span class="line">ax2.set_title(<span class="string">&#x27;Normal&#x27;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;Amount ($)&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;Number of Transactions&#x27;</span>)</span><br><span class="line">plt.xlim((<span class="number">0</span>, <span class="number">20000</span>))</span><br><span class="line">plt.yscale(<span class="string">&#x27;log&#x27;</span>)</span><br><span class="line">plt.show();</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306041452911.png" alt="image.png"></p>
+<h4 id="4-3绘制交易时间与交易量分布图"><a href="#4-3绘制交易时间与交易量分布图" class="headerlink" title="4.3绘制交易时间与交易量分布图"></a>4.3绘制交易时间与交易量分布图</h4><p>将检查欺诈交易是否在特定时间段内更频繁发生，用数据可视化——点状图来直观分析。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">f, (ax1, ax2) = plt.subplots(<span class="number">2</span>, <span class="number">1</span>, sharex=<span class="literal">True</span>)</span><br><span class="line">f.suptitle(<span class="string">&#x27;Time of transaction vs Amount by class&#x27;</span>)</span><br><span class="line">ax1.scatter(fraud.Time, fraud.Amount)</span><br><span class="line">ax1.set_title(<span class="string">&#x27;Fraud&#x27;</span>)</span><br><span class="line">ax2.scatter(normal.Time, normal.Amount)</span><br><span class="line">ax2.set_title(<span class="string">&#x27;Normal&#x27;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;Time (in Seconds)&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;Amount&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>输出的点状图如下：<br><img src="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306041452912.png" alt="image.png"></p>
+<h4 id="4-4抽取数据样本观察分布"><a href="#4-4抽取数据样本观察分布" class="headerlink" title="4.4抽取数据样本观察分布"></a>4.4抽取数据样本观察分布</h4><p>通过在总体数据集中随机抽取一定量(10%)的样本，来观察样本中正常数据与被诈骗数据的分布情况。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">data1= data.sample(frac = <span class="number">0.1</span>,random_state=<span class="number">1</span>)</span><br><span class="line">data1.shape</span><br><span class="line"></span><br><span class="line">Fraud = data1[data1[<span class="string">&#x27;Class&#x27;</span>]==<span class="number">1</span>]</span><br><span class="line">Valid = data1[data1[<span class="string">&#x27;Class&#x27;</span>]==<span class="number">0</span>]</span><br><span class="line">outlier_fraction = <span class="built_in">len</span>(Fraud)/<span class="built_in">float</span>(<span class="built_in">len</span>(Valid))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(outlier_fraction)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Fraud Cases : &#123;&#125;&quot;</span>.<span class="built_in">format</span>(<span class="built_in">len</span>(Fraud)))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Valid Cases : &#123;&#125;&quot;</span>.<span class="built_in">format</span>(<span class="built_in">len</span>(Valid)))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>输出结果如下：<br><code>0.0017234102419808666 </code><br><code>Fraud Cases : 49  </code>Valid Cases : 28432&#96;<br>得出样本数据中，欺诈交易数量与有效（正常）交易数量之比为0.0017234102419808666。可见欺诈交易占比之小。</p>
+<h4 id="4-5相关性分析"><a href="#4-5相关性分析" class="headerlink" title="4.5相关性分析"></a>4.5相关性分析</h4><p>通过以下代码，获取数据集中每个特征的相关性，并绘制出相关性的图像。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line">corrmat = data1.corr()</span><br><span class="line">top_corr_features = corrmat.index</span><br><span class="line">plt.figure(figsize=(<span class="number">26</span>,<span class="number">26</span>))</span><br><span class="line">g=sns.heatmap(data[top_corr_features].corr(),annot=<span class="literal">True</span>,cmap=<span class="string">&quot;RdYlGn&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>图像如下：<br><img src="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306041452913.png" alt="image.png"></p>
+<h3 id="5-模型建立与分析"><a href="#5-模型建立与分析" class="headerlink" title="5.模型建立与分析"></a>5.模型建立与分析</h3><h4 id="5-1数据准备"><a href="#5-1数据准备" class="headerlink" title="5.1数据准备"></a>5.1数据准备</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">columns = data1.columns.tolist()</span><br><span class="line">columns = [c <span class="keyword">for</span> c <span class="keyword">in</span> columns <span class="keyword">if</span> c <span class="keyword">not</span> <span class="keyword">in</span> [<span class="string">&quot;Class&quot;</span>]]</span><br><span class="line">target = <span class="string">&quot;Class&quot;</span></span><br><span class="line"></span><br><span class="line">state = np.random.RandomState(<span class="number">42</span>)</span><br><span class="line">X = data1[columns]</span><br><span class="line">Y = data1[target]</span><br><span class="line">X_outliers = state.uniform(low=<span class="number">0</span>, high=<span class="number">1</span>, size=(X.shape[<span class="number">0</span>], X.shape[<span class="number">1</span>]))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(X.shape)</span><br><span class="line"><span class="built_in">print</span>(Y.shape)</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-2模型与分析"><a href="#5-2模型与分析" class="headerlink" title="5.2模型与分析"></a>5.2模型与分析</h4><p>为了检测数据集中的异常值或离群点，将分别使用以下三个模型进行检测：<strong>孤立森林（Isolation Forest）、局部异常因子（Local Outlier Factor）与局部异常因子（Local Outlier Factor）</strong></p>
+<ol>
+<li><p><strong>孤立森林（Isolation Forest）</strong>：这是一种基于树的模型，用于异常值检测。它的工作原理是随机选择一个特征，然后随机选择一个分割值，将数据分为两部分。这个过程重复进行，形成了一个“森林”。孤立森林认为那些容易被孤立的点是异常值。</p>
+</li>
+<li><p><strong>局部异常因子（Local Outlier Factor）</strong>：这是一种基于邻近性的方法，用于异常值检测。它比较了一个点和其邻居的局部密度，如果一个点的局部密度远低于其邻居，那么这个点就被认为是异常值。</p>
+</li>
+<li><p><strong>支持向量机（Support Vector Machine）</strong>：这是一种基于边界的方法，用于异常值检测。在这种情况下，它被配置为一个单类支持向量机（One-Class SVM），这意味着它试图找到数据的“正常”边界，然后将那些在边界之外的点视为异常值。</p>
+</li>
+</ol>
+<p>以下是定义了三个模型检测方法的一个字典序列：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">classifiers = &#123;</span><br><span class="line">    <span class="string">&quot;Isolation Forest&quot;</span>:IsolationForest(n_estimators=<span class="number">100</span>, max_samples=<span class="built_in">len</span>(X),</span><br><span class="line">                                       contamination=outlier_fraction,random_state=state, verbose=<span class="number">0</span>),</span><br><span class="line">    <span class="string">&quot;Local Outlier Factor&quot;</span>:LocalOutlierFactor(n_neighbors=<span class="number">20</span>, algorithm=<span class="string">&#x27;auto&#x27;</span>,leaf_size=<span class="number">30</span>, metric=<span class="string">&#x27;minkowski&#x27;</span>,p=<span class="number">2</span>, metric_params=<span class="literal">None</span>, contamination=outlier_fraction),</span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;Support Vector Machine&quot;</span>:OneClassSVM(kernel=<span class="string">&#x27;rbf&#x27;</span>, degree=<span class="number">3</span>, gamma=<span class="number">0.1</span>,nu=<span class="number">0.05</span>,max_iter=-<span class="number">1</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-3模型比较"><a href="#5-3模型比较" class="headerlink" title="5.3模型比较"></a>5.3模型比较</h4><p>将从模型的误差精确度、召回率、f1-score等方面对三个模型进行比较。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">n_outliers = <span class="built_in">len</span>(Fraud)</span><br><span class="line"><span class="keyword">for</span> i, (clf_name,clf) <span class="keyword">in</span> <span class="built_in">enumerate</span>(classifiers.items()):</span><br><span class="line">    <span class="comment">#Fit the data and tag outliers</span></span><br><span class="line">    <span class="keyword">if</span> clf_name == <span class="string">&quot;Local Outlier Factor&quot;</span>:</span><br><span class="line">        y_pred = clf.fit_predict(X)</span><br><span class="line">        scores_prediction = clf.negative_outlier_factor_</span><br><span class="line">    <span class="keyword">elif</span> clf_name == <span class="string">&quot;Support Vector Machine&quot;</span>:</span><br><span class="line">        clf.fit(X)</span><br><span class="line">        y_pred = clf.predict(X)</span><br><span class="line">    <span class="keyword">else</span>:    </span><br><span class="line">        clf.fit(X)</span><br><span class="line">        scores_prediction = clf.decision_function(X)</span><br><span class="line">        y_pred = clf.predict(X)</span><br><span class="line">    <span class="comment">#Reshape the prediction values to 0 for Valid transactions , 1 for Fraud transactions</span></span><br><span class="line">    y_pred[y_pred == <span class="number">1</span>] = <span class="number">0</span></span><br><span class="line">    y_pred[y_pred == -<span class="number">1</span>] = <span class="number">1</span></span><br><span class="line">    n_errors = (y_pred != Y).<span class="built_in">sum</span>()</span><br><span class="line">    <span class="comment"># Run Classification Metrics</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;&#123;&#125;: &#123;&#125;&quot;</span>.<span class="built_in">format</span>(clf_name,n_errors))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Accuracy Score :&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(accuracy_score(Y,y_pred))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Classification Report :&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(classification_report(Y,y_pred))</span><br></pre></td></tr></table></figure>
+<p>该代码使用前面定义的三种异常检测方法（孤立森林、局部异常因子、单类支持向量机）来预测数据集中的异常值，并计算每种方法的预测错误数、准确度和分类报告。</p>
+<p><strong>结论：</strong><br>在精确度方面，Isolation Forest为99.74%比Local Outlier Factor的99.66%和Support Vector Machine的70.09%都要高。<br>在召回率方面，Isolation Forest模型依然是最优的，其召回率为27%，而Local Outlier Factor的召回率为2%，Support Vector Machine仅为0%。<br>因此，整体上，Isolation Forest在确定欺诈交易方面表现得更好。</p>
+<h1 id="四、实验结果"><a href="#四、实验结果" class="headerlink" title="四、实验结果"></a>四、实验结果</h1><p>首先，通过检查缺失值、检查分类数据等数据预处理步骤，对数据进行一个初步处理与了解。<br>然后，通过模型的建立与分析，对比了三种模型：solation Forest、Local Outlier Factor和Support Vector Machine，在检测异常值方面的优劣。<br>最终，得出loslation Forest模型在确定欺诈交易方面表现得更好。</p>
+<h1 id="五、实验分析"><a href="#五、实验分析" class="headerlink" title="五、实验分析"></a>五、实验分析</h1><p>此次实验，在三个模型上进行了优劣对比，往后可以考虑用更多的模型来进行对比，以此来获得更加切合，表现更为优秀的模型。</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/2023/06/6f49b06c6fae.html" title="" target="_blank" rel="external">http://example.com/2023/06/6f49b06c6fae.html</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/limingqian17" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/limingqian17" target="_blank"><span class="text-dark">安xy</span><small class="ml-1x">安_blog</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2023/06/4c83db3bac28.html" title="(no title)"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2023/06/284aeead5564.html" title="(no title)"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/limingqian17" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>Hexo</title>
+  <meta name="description" content="一、实验目的(1) 编写程序，基于机器学习和深度学习实现手写体的识别。(2) 对实现的三个模型进行评估。(3) 写出实验报告。 二、实验原理(1)支持向量机（SVM）： 支持向量机是一种监督学习算法，用于二分类和多分类问题。在手写体识别任务中，S和VM可以被用来将手写数字图像分为不同的类别。SVM通过寻找一个最优的超平面来将不同类别的数据点分开。对于手写数字识别，每个图像被表示为一组特征向量，并与">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2023/06/d3cad4e9c8fb.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一、实验目的(1) 编写程序，基于机器学习和深度学习实现手写体的识别。(2) 对实现的三个模型进行评估。(3) 写出实验报告。 二、实验原理(1)支持向量机（SVM）： 支持向量机是一种监督学习算法，用于二分类和多分类问题。在手写体识别任务中，S和VM可以被用来将手写数字图像分为不同的类别。SVM通过寻找一个最优的超平面来将不同类别的数据点分开。对于手写数字识别，每个图像被表示为一组特征向量，并与">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306041938640.png">
+<meta property="og:image" content="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306041939851.png">
+<meta property="og:image" content="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306041940411.png">
+<meta property="og:image" content="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306042008003.png">
+<meta property="og:image" content="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306042019198.png">
+<meta property="og:image" content="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306042013188.png">
+<meta property="og:image" content="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306042013047.png">
+<meta property="og:image" content="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306042013211.png">
+<meta property="article:published_time" content="2023-06-04T10:34:34.136Z">
+<meta property="article:modified_time" content="2023-09-20T08:42:18.847Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306041938640.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://example.com/2023/06/d3cad4e9c8fb.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/limingqian17" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">安xy</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">安_blog</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/limingqian17" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>go on!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 13px;">-算法</a> <a href="/tags/C/" style="font-size: 13px;">C++</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 13px;">算法</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/">culitivate</a><span class="category-list-count">18</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/408/">408</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/408/%E7%AE%97%E6%B3%95/">算法</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/C/">C++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/PHP/">PHP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/Python/">Python</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/Python/%E7%88%AC%E8%99%AB/">爬虫</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/">java技术栈</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/java/">java</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/mysql/">mysql</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/java%E6%8A%80%E6%9C%AF%E6%A0%88/vue/">vue</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/other/">other</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/other/CTF/">CTF</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/other/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E7%AC%94%E8%AE%B0/">数学建模笔记</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/culitivate/other/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><span class="category-list-count">2</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/plan/">plan</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/project/">project</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/project/2023%E6%9A%91%E6%9C%9F%E9%A1%B9%E7%9B%AEhealth/">2023暑期项目health</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E8%AE%B0%E5%BD%95/">工具记录</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E8%AE%B0%E5%BD%95/vim/">vim</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E8%AE%B0%E5%BD%95/%E5%BB%BA%E7%AB%99/">建站</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E8%AE%B0%E5%BD%95/%E6%99%AE%E9%80%9A%E8%AF%9D/">普通话</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">课程笔记</a><span class="category-list-count">19</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/R/">R</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/R/%E5%AE%9E%E9%AA%8C%E4%B8%80/">实验一</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/python/">python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C/">复杂网络</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C/%E5%B0%8F%E5%AE%9E%E9%AA%8C1/">小实验1</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%A4%A7%E5%AD%A6%E8%AF%AD%E6%96%87/">大学语文</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%AE%89%E5%8D%93%E8%AE%BA%E6%96%87/">安卓论文</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/">数据挖掘</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E4%BD%9C%E4%B8%9A/">作业</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/">实验报告</a><span class="category-list-count">7</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E7%90%86%E9%80%BB%E8%BE%91/">数理逻辑</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%9F%BA%E7%A1%80/">软件工程基础</a><span class="category-list-count">1</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">九月 2023</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">八月 2023</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">七月 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">六月 2023</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">五月 2023</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">四月 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">三月 2023</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">九月 2022</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-课程笔记/数据挖掘/实验报告/实验五 手写体识别实验(Handwritten Digit Recognition)" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2023/06/d3cad4e9c8fb.html" class="article-date">
+	  <time datetime="2023-06-04T10:34:34.136Z" itemprop="datePublished">2023-06-04</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">课程笔记</a>►<a class="article-category-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/">数据挖掘</a>►<a class="article-category-link" href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/">实验报告</a>
+  </span>
+
+        
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2023/06/d3cad4e9c8fb.html#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 5.3k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 24(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="一、实验目的"><a href="#一、实验目的" class="headerlink" title="一、实验目的"></a>一、实验目的</h1><p>(1) 编写程序，基于机器学习和深度学习实现手写体的识别。<br>(2) 对实现的三个模型进行评估。<br>(3) 写出实验报告。</p>
+<h1 id="二、实验原理"><a href="#二、实验原理" class="headerlink" title="二、实验原理"></a>二、实验原理</h1><p>(1)支持向量机（SVM）： 支持向量机是一种监督学习算法，用于二分类和多分类问题。在手写体识别任务中，S和VM可以被用来将手写数字图像分为不同的类别。SVM通过寻找一个最优的超平面来将不同类别的数据点分开。对于手写数字识别，每个图像被表示为一组特征向量，并与相应的标签（数字类别）相关联。SVM通过学习一个决策边界，使得不同类别的图像在特征空间中被最大化地分离。  </p>
+<p>(2)K最近邻算法（K Nearest Neighbors）： K最近邻算法是一种基于实例的学习方法，用于分类和回归问题。对于手写体识别任务，K最近邻算法可以用于根据与目标图像最相似的K个训练样本的标签来预测目标图像的类别。算法通过计算目标图像与所有训练图像之间的距离（如欧氏距离）来确定最相似的训练样本，然后根据K个最相似样本的标签进行投票来确定目标图像的类别。   </p>
+<p>(3) 随机森林分类器（Random Forest Classifier）： 随机森林是一种集成学习方法，它由多个决策树组成。每个决策树都是基于不同的训练样本和特征子集构建的。在手写体识别任务中，随机森林分类器可以通过将图像的特征输入到每个决策树中，并将决策树的预测结果进行投票来确定图像的类别。随机森林具有良好的泛化能力和抗过拟合能力，并且在处理高维特征空间和大规模数据集时表现良好</p>
+<h1 id="三、实验内容和步骤"><a href="#三、实验内容和步骤" class="headerlink" title="三、实验内容和步骤"></a>三、实验内容和步骤</h1><h2 id="1-实验内容"><a href="#1-实验内容" class="headerlink" title="(1)实验内容"></a>(1)实验内容</h2><ol>
+<li>用python编写程序，通过SVM、K Nearest Neighbors、Random Forest Classifier分别实现手写体的识别模型</li>
+<li>分别评估模型</li>
+</ol>
+<h2 id="2-实验步骤"><a href="#2-实验步骤" class="headerlink" title="(2)实验步骤"></a>(2)实验步骤</h2><ol>
+<li>基于K Nearest Neighbors实现</li>
+<li>基于SVM实现</li>
+<li>基于Random Forest Classifier实现</li>
+</ol>
+<p>具体步骤：</p>
+<h4 id="1-基于K-Nearest-Neighbors实现"><a href="#1-基于K-Nearest-Neighbors实现" class="headerlink" title="1. 基于K Nearest Neighbors实现"></a>1. 基于K Nearest Neighbors实现</h4><h5 id="1-1-相关库的导入"><a href="#1-1-相关库的导入" class="headerlink" title="1.1 相关库的导入"></a>1.1 相关库的导入</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> model_selection</span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_score, confusion_matrix</span><br><span class="line"><span class="keyword">from</span> MNIST_Dataset_Loader.mnist_loader <span class="keyword">import</span> MNIST</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> style</span><br><span class="line">style.use(<span class="string">&#x27;ggplot&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h5 id="1-2-数据加载和准备"><a href="#1-2-数据加载和准备" class="headerlink" title="1.2 数据加载和准备"></a>1.2 数据加载和准备</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nLoading MNIST Data...&#x27;</span>)</span><br><span class="line"><span class="comment"># data = MNIST(&#x27;./python-mnist/data/&#x27;)</span></span><br><span class="line"></span><br><span class="line">data = MNIST(<span class="string">&#x27;E:\MNIST_Dataset_Loader\dataset&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nLoading Training Data...&#x27;</span>)</span><br><span class="line">img_train, labels_train = data.load_training()</span><br><span class="line">train_img = np.array(img_train)</span><br><span class="line">train_labels = np.array(labels_train)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nLoading Testing Data...&#x27;</span>)</span><br><span class="line">img_test, labels_test = data.load_testing()</span><br><span class="line">test_img = np.array(img_test)</span><br><span class="line">test_labels = np.array(labels_test)</span><br></pre></td></tr></table></figure>
+<p><strong>代码解析：</strong></p>
+<ol>
+<li>MNIST数据集是一个广泛使用的手写数字数据集，包含了大量的手写数字图像和相应的标签。</li>
+<li>使用MNIST数据加载器加载训练数据和测试数据，并将其转换为NumPy数组。</li>
+</ol>
+<h5 id="1-3-创建和训练KNN分类器"><a href="#1-3-创建和训练KNN分类器" class="headerlink" title="1.3 创建和训练KNN分类器"></a>1.3 创建和训练KNN分类器</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Features</span></span><br><span class="line">X = train_img</span><br><span class="line"></span><br><span class="line"><span class="comment">#Labels</span></span><br><span class="line">y = train_labels</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nPreparing Classifier Training and Validation Data...&#x27;</span>)</span><br><span class="line">X_train, X_test, y_train, y_test = model_selection.train_test_split(X,y,test_size=<span class="number">0.1</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nKNN Classifier with n_neighbors = 5, algorithm = auto, n_jobs = 10&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nPickling the Classifier for Future Use...&#x27;</span>)</span><br><span class="line">clf = KNeighborsClassifier(n_neighbors=<span class="number">5</span>,algorithm=<span class="string">&#x27;auto&#x27;</span>,n_jobs=<span class="number">10</span>)</span><br><span class="line">clf.fit(X_train,y_train)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;MNIST_KNN.pickle&#x27;</span>,<span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">	pickle.dump(clf, f)</span><br></pre></td></tr></table></figure>
+<p><strong>代码解析：</strong></p>
+<ol>
+<li>使用<code>train_test_split</code>函数将训练数据划分为训练集和验证集。</li>
+<li>使用<code>KNeighborsClassifier</code>类创建一个K最近邻分类器。</li>
+<li>将训练图像作为特征（X）和对应的标签（y）传递给分类器，使用训练集对KNN分类器进行训练。</li>
+<li>将训练好的分类器保存到文件中，以便将来使用。</li>
+</ol>
+<h5 id="1-4-验证和评估分类器"><a href="#1-4-验证和评估分类器" class="headerlink" title="1.4 验证和评估分类器"></a>1.4 验证和评估分类器</h5><p>在这部分代码中，首先使用<code>pickle.load</code>函数从文件中加载之前保存的KNN分类器对象。具体步骤如下：</p>
+<ol>
+<li>打开文件<code>MNIST_KNN.pickle</code>，以二进制读取模式进行操作。<code>&#39;rb&#39;</code>表示以二进制读取模式打开文件。</li>
+<li>使用<code>pickle.load</code>函数从文件中加载KNN分类器对象，并将其赋值给变量<code>clf</code>。<br>具体代码如下：<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pickle_in = <span class="built_in">open</span>(<span class="string">&#x27;MNIST_KNN.pickle&#x27;</span>,<span class="string">&#x27;rb&#x27;</span>)</span><br><span class="line">clf = pickle.load(pickle_in)</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>接下来，先进行对已训练分类器的性能在验证数据集上的评估和预测：</p>
+<p><strong>代码解析：</strong></p>
+<ol>
+<li>计算已训练分类器在验证数据集上的准确率。通过调用<code>clf.score(X_test, y_test)</code>方法，得到分类器在验证数据集上的准确率，将其赋值给变量<code>confidence</code>。</li>
+<li>使用已训练分类器对验证数据集进行预测。通过调用<code>clf.predict(X_test)</code>方法，得到分类器对验证数据集的预测结果，将其赋值给变量<code>y_pred</code>。</li>
+<li>计算预测结果的准确率。通过调用<code>accuracy_score(y_test, y_pred)</code>方法，计算分类器的预测准确率，将其赋值给变量<code>accuracy</code>。</li>
+<li>创建并显示验证数据集的混淆矩阵。通过调用<code>confusion_matrix(y_test, y_pred)</code>方法，得到验证数据集的混淆矩阵，然后使用<code>plt.matshow</code>等函数绘制混淆矩阵的可视化。</li>
+</ol>
+<p>具体代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nCalculating Accuracy of trained Classifier...&#x27;</span>)</span><br><span class="line">confidence = clf.score(X_test,y_test)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nMaking Predictions on Validation Data...&#x27;</span>)</span><br><span class="line">y_pred = clf.predict(X_test)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nCalculating Accuracy of Predictions...&#x27;</span>)</span><br><span class="line">accuracy = accuracy_score(y_test, y_pred)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nCreating Confusion Matrix...&#x27;</span>)</span><br><span class="line">conf_mat = confusion_matrix(y_test,y_pred)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nKNN Trained Classifier Confidence: &#x27;</span>,confidence)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nPredicted Values: &#x27;</span>,y_pred)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nAccuracy of Classifier on Validation Image Data: &#x27;</span>,accuracy)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nConfusion Matrix: \n&#x27;</span>,conf_mat)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Plot Confusion Matrix Data as a Matrix</span></span><br><span class="line">plt.matshow(conf_mat)</span><br><span class="line">plt.title(<span class="string">&#x27;Confusion Matrix for Validation Data&#x27;</span>)</span><br><span class="line">plt.colorbar()</span><br><span class="line">plt.ylabel(<span class="string">&#x27;True label&#x27;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;Predicted label&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>输出结果：<br><code>KNN Trained Classifier Confidence:  0.9738333333333333</code><br><code>Predicted Values:  [7 0 0 ... 8 2 1]</code><br><code>Accuracy of Classifier on Validation Image Data:  0.9738333333333333</code><br>Confusion Matrix:<br> [[568   0   0   0   0   0   1   1   0   0]<br> [  0 674   1   0   1   0   0   1   0   0]<br> [  1   6 585   1   1   1   2   9   0   0]<br> [  0   3   3 616   0   4   0   6   5   2]<br> [  0   3   0   0 564   0   1   1   0  14]<br> [  1   1   0   6   0 509   4   0   1   3]<br> [  2   3   0   0   0   8 605   0   0   0]<br> [  2   5   3   0   0   0   0 599   0   6]<br> [  0   9   0   6   2   5   1   0 547   7]<br> [  0   2   0   1   1   2   0   7   1 576]]</p>
+<p><img src="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306041938640.png" alt="image.png"></p>
+<p>然后进行对已训练分类器的性能在测试数据集上的评估和预测：</p>
+<p><strong>代码解析：</strong></p>
+<ol>
+<li>使用已训练分类器对测试数据集进行预测。通过调用<code>clf.predict(test_img)</code>方法，得到分类器对测试数据集的预测结果，将其赋值给变量<code>test_labels_pred</code>。</li>
+<li>计算已训练分类器在测试数据集上的准确率。通过调用<code>accuracy_score(test_labels, test_labels_pred)</code>方法，计算分类器在测试数据集上的预测准确率，将其赋值给变量<code>acc</code>。</li>
+<li>创建并显示测试数据集的混淆矩阵。通过调用<code>confusion_matrix(test_labels, test_labels_pred)</code>方法，得到测试数据集的混淆矩阵，然后使用<code>plt.matshow</code>等函数绘制混淆矩阵的可视化。</li>
+</ol>
+<p>具体代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nMaking Predictions on Test Input Images...&#x27;</span>)</span><br><span class="line">test_labels_pred = clf.predict(test_img)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nCalculating Accuracy of Trained Classifier on Test Data... &#x27;</span>)</span><br><span class="line">acc = accuracy_score(test_labels,test_labels_pred)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\n Creating Confusion Matrix for Test Data...&#x27;</span>)</span><br><span class="line">conf_mat_test = confusion_matrix(test_labels,test_labels_pred)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nPredicted Labels for Test Images: &#x27;</span>,test_labels_pred)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nAccuracy of Classifier on Test Images: &#x27;</span>,acc)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nConfusion Matrix for Test Data: \n&#x27;</span>,conf_mat_test)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Plot Confusion Matrix for Test Data</span></span><br><span class="line">plt.matshow(conf_mat_test)</span><br><span class="line">plt.title(<span class="string">&#x27;Confusion Matrix for Test Data&#x27;</span>)</span><br><span class="line">plt.colorbar()</span><br><span class="line">plt.ylabel(<span class="string">&#x27;True label&#x27;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;Predicted label&#x27;</span>)</span><br><span class="line">plt.axis(<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>输出结果：<br><code>Predicted Labels for Test Images:  [7 2 1 ... 4 5 6]</code><br><code>Accuracy of Classifier on Test Images:  0.9675</code><br>Confusion Matrix for Test Data:<br> [[ 973    1    1    0    0    1    3    1    0    0]<br> [   0 1131    2    0    0    0    2    0    0    0]<br> [  11    8  989    2    1    0    1   16    4    0]<br> [   0    3    2  972    1   16    1    7    4    4]<br> [   3    6    0    0  944    0    4    2    1   22]<br> [   5    0    0   13    2  861    4    1    2    4]<br> [   5    4    0    0    3    2  944    0    0    0]<br> [   0   23    4    0    3    0    0  987    0   11]<br> [   7    3    5   13    6   15    4    5  911    5]<br> [   5    6    3    8    8    2    1   11    2  963]]</p>
+<p><img src="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306041939851.png" alt="image.png"></p>
+<h5 id="1-5-显示预测结果"><a href="#1-5-显示预测结果" class="headerlink" title="1.5 显示预测结果"></a>1.5 显示预测结果</h5><p>随机选择一些测试图像，将原始标签和预测标签显示在图像上，以便观察分类器的预测效果。</p>
+<p>具体代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Show the Test Images with Original and Predicted Labels</span></span><br><span class="line">a = np.random.randint(<span class="number">1</span>,<span class="number">50</span>,<span class="number">20</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> a:</span><br><span class="line">	two_d = (np.reshape(test_img[i], (<span class="number">28</span>, <span class="number">28</span>)) * <span class="number">255</span>).astype(np.uint8)</span><br><span class="line">	plt.title(<span class="string">&#x27;Original Label: &#123;0&#125;  Predicted Label: &#123;1&#125;&#x27;</span>.<span class="built_in">format</span>(test_labels[i],test_labels_pred[i]))</span><br><span class="line">	plt.imshow(two_d, interpolation=<span class="string">&#x27;nearest&#x27;</span>,cmap=<span class="string">&#x27;gray&#x27;</span>)</span><br><span class="line">	plt.show()</span><br></pre></td></tr></table></figure>
+<p>输出效果如下：<br><img src="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306041940411.png" alt="image.png"></p>
+<h4 id="2-基于SVM实现"><a href="#2-基于SVM实现" class="headerlink" title="2. 基于SVM实现"></a>2. 基于SVM实现</h4><h5 id="2-1-相关库的导入"><a href="#2-1-相关库的导入" class="headerlink" title="2.1 相关库的导入"></a>2.1 相关库的导入</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> model_selection, svm, preprocessing</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_score,confusion_matrix</span><br><span class="line"><span class="keyword">from</span> MNIST_Dataset_Loader.mnist_loader <span class="keyword">import</span> MNIST</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> style</span><br><span class="line">style.use(<span class="string">&#x27;ggplot&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-2-数据加载和准备"><a href="#2-2-数据加载和准备" class="headerlink" title="2.2 数据加载和准备"></a>2.2 数据加载和准备</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Load MNIST Data</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nLoading MNIST Data...&#x27;</span>)</span><br><span class="line">data = MNIST(<span class="string">&#x27;E:\MNIST_Dataset_Loader\dataset&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nLoading Training Data...&#x27;</span>)</span><br><span class="line">img_train, labels_train = data.load_training()</span><br><span class="line">train_img = np.array(img_train)</span><br><span class="line">train_labels = np.array(labels_train)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nLoading Testing Data...&#x27;</span>)</span><br><span class="line">img_test, labels_test = data.load_testing()</span><br><span class="line">test_img = np.array(img_test)</span><br><span class="line">test_labels = np.array(labels_test)</span><br></pre></td></tr></table></figure>
+<p><strong>代码解析：</strong></p>
+<ol>
+<li>MNIST数据集是一个广泛使用的手写数字数据集，包含了大量的手写数字图像和相应的标签。</li>
+<li>使用MNIST数据加载器加载训练数据和测试数据，并将其转换为NumPy数组。</li>
+</ol>
+<h5 id="2-3-创建和训练SVM分类器"><a href="#2-3-创建和训练SVM分类器" class="headerlink" title="2.3 创建和训练SVM分类器"></a>2.3 创建和训练SVM分类器</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Features</span></span><br><span class="line">X = train_img</span><br><span class="line"></span><br><span class="line"><span class="comment">#Labels</span></span><br><span class="line">y = train_labels</span><br><span class="line"></span><br><span class="line"><span class="comment"># Prepare Classifier Training and Testing Data</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nPreparing Classifier Training and Validation Data...&#x27;</span>)</span><br><span class="line">X_train, X_test, y_train, y_test = model_selection.train_test_split(X,y,test_size=<span class="number">0.1</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Pickle the Classifier for Future Use</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nSVM Classifier with gamma = 0.1; Kernel = polynomial&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nPickling the Classifier for Future Use...&#x27;</span>)</span><br><span class="line">clf = svm.SVC(gamma=<span class="number">0.1</span>, kernel=<span class="string">&#x27;poly&#x27;</span>)</span><br><span class="line">clf.fit(X_train,y_train)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;MNIST_SVM.pickle&#x27;</span>,<span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">	pickle.dump(clf, f)</span><br></pre></td></tr></table></figure>
+<p><strong>代码解析：</strong></p>
+<ol>
+<li>使用<code>train_test_split</code>函数将训练数据划分为训练集和验证集。</li>
+<li>使用<code>svm.SVC</code>类创建一个SVM分类器。</li>
+<li>将训练图像作为特征（X）和对应的标签（y）传递给分类器，使用训练集对SVM分类器进行训练。</li>
+<li>将训练好的分类器保存到文件中，以便将来使用。</li>
+</ol>
+<h5 id="2-4-验证和评估分类器"><a href="#2-4-验证和评估分类器" class="headerlink" title="2.4 验证和评估分类器"></a>2.4 验证和评估分类器</h5><p>在这部分代码中，首先使用<code>pickle.load</code>函数从文件中加载之前保存的SVM分类器对象。具体步骤如下：</p>
+<ol>
+<li>打开文件<code>MNIST_KNN.pickle</code>，以二进制读取模式进行操作。<code>&#39;rb&#39;</code>表示以二进制读取模式打开文件。</li>
+<li>使用<code>pickle.load</code>函数从文件中加载KNN分类器对象，并将其赋值给变量<code>clf</code>。<br>具体代码如下：<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pickle_in = <span class="built_in">open</span>(<span class="string">&#x27;MNIST_KNN.pickle&#x27;</span>,<span class="string">&#x27;rb&#x27;</span>)</span><br><span class="line">clf = pickle.load(pickle_in)</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>接下来，先进行对已训练分类器的性能在验证数据集上的评估和预测：</p>
+<p><strong>代码解析：</strong></p>
+<ol>
+<li>计算已训练分类器在验证数据集上的准确率。通过调用<code>clf.score(X_test, y_test)</code>方法，得到分类器在验证数据集上的准确率，将其赋值给变量<code>confidence</code>。</li>
+<li>使用已训练分类器对验证数据集进行预测。通过调用<code>clf.predict(X_test)</code>方法，得到分类器对验证数据集的预测结果，将其赋值给变量<code>y_pred</code>。</li>
+<li>计算预测结果的准确率。通过调用<code>accuracy_score(y_test, y_pred)</code>方法，计算分类器的预测准确率，将其赋值给变量<code>accuracy</code>。</li>
+<li>创建并显示验证数据集的混淆矩阵。通过调用<code>confusion_matrix(y_test, y_pred)</code>方法，得到验证数据集的混淆矩阵，然后使用<code>plt.matshow</code>等函数绘制混淆矩阵的可视化。</li>
+</ol>
+<p>具体代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nCalculating Accuracy of trained Classifier...&#x27;</span>)</span><br><span class="line">confidence = clf.score(X_test,y_test)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nMaking Predictions on Validation Data...&#x27;</span>)</span><br><span class="line">y_pred = clf.predict(X_test)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nCalculating Accuracy of Predictions...&#x27;</span>)</span><br><span class="line">accuracy = accuracy_score(y_test, y_pred)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nCreating Confusion Matrix...&#x27;</span>)</span><br><span class="line">conf_mat = confusion_matrix(y_test,y_pred)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nKNN Trained Classifier Confidence: &#x27;</span>,confidence)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nPredicted Values: &#x27;</span>,y_pred)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nAccuracy of Classifier on Validation Image Data: &#x27;</span>,accuracy)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nConfusion Matrix: \n&#x27;</span>,conf_mat)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Plot Confusion Matrix Data as a Matrix</span></span><br><span class="line">plt.matshow(conf_mat)</span><br><span class="line">plt.title(<span class="string">&#x27;Confusion Matrix for Validation Data&#x27;</span>)</span><br><span class="line">plt.colorbar()</span><br><span class="line">plt.ylabel(<span class="string">&#x27;True label&#x27;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;Predicted label&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>输出结果：<br><code>SVM Trained Classifier Accuracy:  0.9808333333333333</code><br><code>Predicted Values:  [3 3 3 ... 1 8 7]</code><br><code>Accuracy of Classifier on Validation Images:  0.9808333333333333</code><br>Confusion Matrix:<br> [[599   0   2   0   0   1   2   0   0   0]<br> [  0 677   4   2   0   0   1   0   1   0]<br> [  1   1 585   1   0   0   1   6   1   1]<br> [  2   0   4 593   0   3   0   1   3   2]<br> [  1   0   1   0 560   0   0   0   2   4]<br> [  0   1   1   1   0 524   2   0   4   1]<br> [  3   0   0   0   1   2 545   0   0   0]<br> [  0   3   2   1   2   2   0 665   1   4]<br> [  3   2   1   5   1   4   3   0 545   2]<br> [  1   1   0   4   3   2   0   4   0 592]]</p>
+<p><img src="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306042008003.png" alt="image.png"></p>
+<p>然后进行对已训练分类器的性能在测试数据集上的评估和预测：</p>
+<p><strong>代码解析：</strong></p>
+<ol>
+<li>使用已训练分类器对测试数据集进行预测。通过调用<code>clf.predict(test_img)</code>方法，得到分类器对测试数据集的预测结果，将其赋值给变量<code>test_labels_pred</code>。</li>
+<li>计算已训练分类器在测试数据集上的准确率。通过调用<code>accuracy_score(test_labels, test_labels_pred)</code>方法，计算分类器在测试数据集上的预测准确率，将其赋值给变量<code>acc</code>。</li>
+<li>创建并显示测试数据集的混淆矩阵。通过调用<code>confusion_matrix(test_labels, test_labels_pred)</code>方法，得到测试数据集的混淆矩阵，然后使用<code>plt.matshow</code>等函数绘制混淆矩阵的可视化。</li>
+</ol>
+<p>具体代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nMaking Predictions on Test Input Images...&#x27;</span>)</span><br><span class="line">test_labels_pred = clf.predict(test_img)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nCalculating Accuracy of Trained Classifier on Test Data... &#x27;</span>)</span><br><span class="line">acc = accuracy_score(test_labels,test_labels_pred)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\n Creating Confusion Matrix for Test Data...&#x27;</span>)</span><br><span class="line">conf_mat_test = confusion_matrix(test_labels,test_labels_pred)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nPredicted Labels for Test Images: &#x27;</span>,test_labels_pred)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nAccuracy of Classifier on Test Images: &#x27;</span>,acc)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nConfusion Matrix for Test Data: \n&#x27;</span>,conf_mat_test)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Plot Confusion Matrix for Test Data</span></span><br><span class="line">plt.matshow(conf_mat_test)</span><br><span class="line">plt.title(<span class="string">&#x27;Confusion Matrix for Test Data&#x27;</span>)</span><br><span class="line">plt.colorbar()</span><br><span class="line">plt.ylabel(<span class="string">&#x27;True label&#x27;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;Predicted label&#x27;</span>)</span><br><span class="line">plt.axis(<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>输出结果：<br><code>Predicted Labels for Test Images:  [7 2 1 ... 4 5 6]</code><br><code>Accuracy of Classifier on Test Images:  0.9783</code><br>Confusion Matrix for Test Data:<br> [[ 972    0    1    1    0    3    1    0    2    0]<br> [   0 1127    2    1    0    0    3    0    2    0]<br> [   5    1 1007    0    2    0    4    7    6    0]<br> [   0    2    2  985    0    7    0    4    6    4]<br> [   2    0    2    0  966    0    3    0    0    9]<br> [   2    0    2   11    1  863    4    1    5    3]<br> [   5    5    1    0    3    6  936    0    2    0]<br> [   0   10    9    1    1    0    0 1001    0    6]<br> [   6    0    1    3    2    4    2    3  951    2]<br> [   2    7    1    5   10    3    1    2    3  975]]</p>
+<p><img src="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306042019198.png" alt="image.png"></p>
+<h5 id="2-5-显示预测结果"><a href="#2-5-显示预测结果" class="headerlink" title="2.5 显示预测结果"></a>2.5 显示预测结果</h5><p>随机选择一些测试图像，将原始标签和预测标签显示在图像上，以便观察分类器的预测效果。</p>
+<p>具体代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Show the Test Images with Original and Predicted Labels</span></span><br><span class="line">a = np.random.randint(<span class="number">1</span>,<span class="number">40</span>,<span class="number">15</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> a:</span><br><span class="line">	two_d = (np.reshape(test_img[i], (<span class="number">28</span>, <span class="number">28</span>)) * <span class="number">255</span>).astype(np.uint8)</span><br><span class="line">	plt.title(<span class="string">&#x27;Original Label: &#123;0&#125;  Predicted Label: &#123;1&#125;&#x27;</span>.<span class="built_in">format</span>(test_labels[i],test_labels_pred[i]))</span><br><span class="line">	plt.imshow(two_d, interpolation=<span class="string">&#x27;nearest&#x27;</span>,cmap=<span class="string">&#x27;gray&#x27;</span>)</span><br><span class="line">	plt.show()</span><br></pre></td></tr></table></figure>
+<p>输出效果如下：</p>
+<h4 id="3-基于Random-Forest-Classifier实现"><a href="#3-基于Random-Forest-Classifier实现" class="headerlink" title="3. 基于Random Forest Classifier实现"></a>3. 基于Random Forest Classifier实现</h4><h5 id="3-1-相关库的导入"><a href="#3-1-相关库的导入" class="headerlink" title="3.1 相关库的导入"></a>3.1 相关库的导入</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> model_selection</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_score, confusion_matrix</span><br><span class="line"><span class="keyword">from</span> MNIST_Dataset_Loader.mnist_loader <span class="keyword">import</span> MNIST</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> style</span><br><span class="line">style.use(<span class="string">&#x27;ggplot&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h5 id="3-2-数据加载和准备"><a href="#3-2-数据加载和准备" class="headerlink" title="3.2 数据加载和准备"></a>3.2 数据加载和准备</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nLoading MNIST Data...&#x27;</span>)</span><br><span class="line"><span class="comment"># data = MNIST(&#x27;./python-mnist/data/&#x27;)</span></span><br><span class="line"></span><br><span class="line">data = MNIST(<span class="string">&#x27;E:\MNIST_Dataset_Loader\dataset&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nLoading Training Data...&#x27;</span>)</span><br><span class="line">img_train, labels_train = data.load_training()</span><br><span class="line">train_img = np.array(img_train)</span><br><span class="line">train_labels = np.array(labels_train)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nLoading Testing Data...&#x27;</span>)</span><br><span class="line">img_test, labels_test = data.load_testing()</span><br><span class="line">test_img = np.array(img_test)</span><br><span class="line">test_labels = np.array(labels_test)</span><br></pre></td></tr></table></figure>
+<p><strong>代码解析：</strong></p>
+<ol>
+<li>MNIST数据集是一个广泛使用的手写数字数据集，包含了大量的手写数字图像和相应的标签。</li>
+<li>使用MNIST数据加载器加载训练数据和测试数据，并将其转换为NumPy数组。</li>
+</ol>
+<h5 id="3-3-创建和训练RFC分类器"><a href="#3-3-创建和训练RFC分类器" class="headerlink" title="3.3 创建和训练RFC分类器"></a>3.3 创建和训练RFC分类器</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Features</span></span><br><span class="line">X = train_img</span><br><span class="line"></span><br><span class="line"><span class="comment">#Labels</span></span><br><span class="line">y = train_labels</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nPreparing Classifier Training and Validation Data...&#x27;</span>)</span><br><span class="line">X_train, X_test, y_train, y_test = model_selection.train_test_split(X,y,test_size=<span class="number">0.1</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nKNN Classifier with n_neighbors = 5, algorithm = auto, n_jobs = 10&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nPickling the Classifier for Future Use...&#x27;</span>)</span><br><span class="line">clf = KNeighborsClassifier(n_neighbors=<span class="number">5</span>,algorithm=<span class="string">&#x27;auto&#x27;</span>,n_jobs=<span class="number">10</span>)</span><br><span class="line">clf.fit(X_train,y_train)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;MNIST_KNN.pickle&#x27;</span>,<span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">	pickle.dump(clf, f)</span><br></pre></td></tr></table></figure>
+<p><strong>代码解析：</strong></p>
+<ol>
+<li>使用<code>train_test_split</code>函数将训练数据划分为训练集和验证集。</li>
+<li>使用<code>KNeighborsClassifier</code>类创建一个K最近邻分类器。</li>
+<li>将训练图像作为特征（X）和对应的标签（y）传递给分类器，使用训练集对KNN分类器进行训练。</li>
+<li>将训练好的分类器保存到文件中，以便将来使用。</li>
+</ol>
+<h5 id="3-4-验证和评估分类器"><a href="#3-4-验证和评估分类器" class="headerlink" title="3.4 验证和评估分类器"></a>3.4 验证和评估分类器</h5><p>在这部分代码中，首先使用<code>pickle.load</code>函数从文件中加载之前保存的KNN分类器对象。具体步骤如下：</p>
+<ol>
+<li>打开文件<code>MNIST_KNN.pickle</code>，以二进制读取模式进行操作。<code>&#39;rb&#39;</code>表示以二进制读取模式打开文件。</li>
+<li>使用<code>pickle.load</code>函数从文件中加载KNN分类器对象，并将其赋值给变量<code>clf</code>。<br>具体代码如下：<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pickle_in = <span class="built_in">open</span>(<span class="string">&#x27;MNIST_KNN.pickle&#x27;</span>,<span class="string">&#x27;rb&#x27;</span>)</span><br><span class="line">clf = pickle.load(pickle_in)</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>接下来，先进行对已训练分类器的性能在验证数据集上的评估和预测：</p>
+<p><strong>代码解析：</strong></p>
+<ol>
+<li>计算已训练分类器在验证数据集上的准确率。通过调用<code>clf.score(X_test, y_test)</code>方法，得到分类器在验证数据集上的准确率，将其赋值给变量<code>confidence</code>。</li>
+<li>使用已训练分类器对验证数据集进行预测。通过调用<code>clf.predict(X_test)</code>方法，得到分类器对验证数据集的预测结果，将其赋值给变量<code>y_pred</code>。</li>
+<li>计算预测结果的准确率。通过调用<code>accuracy_score(y_test, y_pred)</code>方法，计算分类器的预测准确率，将其赋值给变量<code>accuracy</code>。</li>
+<li>创建并显示验证数据集的混淆矩阵。通过调用<code>confusion_matrix(y_test, y_pred)</code>方法，得到验证数据集的混淆矩阵，然后使用<code>plt.matshow</code>等函数绘制混淆矩阵的可视化。</li>
+</ol>
+<p>具体代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nCalculating Accuracy of trained Classifier...&#x27;</span>)</span><br><span class="line">confidence = clf.score(X_test,y_test)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nMaking Predictions on Validation Data...&#x27;</span>)</span><br><span class="line">y_pred = clf.predict(X_test)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nCalculating Accuracy of Predictions...&#x27;</span>)</span><br><span class="line">accuracy = accuracy_score(y_test, y_pred)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nCreating Confusion Matrix...&#x27;</span>)</span><br><span class="line">conf_mat = confusion_matrix(y_test,y_pred)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nKNN Trained Classifier Confidence: &#x27;</span>,confidence)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nPredicted Values: &#x27;</span>,y_pred)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nAccuracy of Classifier on Validation Image Data: &#x27;</span>,accuracy)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nConfusion Matrix: \n&#x27;</span>,conf_mat)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Plot Confusion Matrix Data as a Matrix</span></span><br><span class="line">plt.matshow(conf_mat)</span><br><span class="line">plt.title(<span class="string">&#x27;Confusion Matrix for Validation Data&#x27;</span>)</span><br><span class="line">plt.colorbar()</span><br><span class="line">plt.ylabel(<span class="string">&#x27;True label&#x27;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;Predicted label&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>输出结果：<br><code>RFC Trained Classifier Confidence:  0.9695</code><br><code>Predicted Values:  [6 0 8 ... 7 3 1]</code><br><code>Accuracy of Classifier on Validation Image Data:  0.9695</code><br>Confusion Matrix:<br> [[568   0   1   1   1   0   1   0   9   0]<br> [  0 692   1   1   2   0   0   1   0   0]<br> [  1   1 586   2   2   0   2   4   2   0]<br> [  3   0   7 572   2   4   1   2   6   1]<br> [  0   0   2   0 579   1   2   1   2   8]<br> [  1   0   0  11   3 520   3   0   2   4]<br> [  3   3   1   0   0   4 569   0   2   0]<br> [  0   4   6   0   4   0   0 561   1   2]<br> [  0   6   4   5   4   6   3   0 577   6]<br> [  5   1   0   6   6   0   0   2   1 593]]</p>
+<p><img src="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306042013188.png" alt="image.png"></p>
+<p>然后进行对已训练分类器的性能在测试数据集上的评估和预测：</p>
+<p><strong>代码解析：</strong></p>
+<ol>
+<li>使用已训练分类器对测试数据集进行预测。通过调用<code>clf.predict(test_img)</code>方法，得到分类器对测试数据集的预测结果，将其赋值给变量<code>test_labels_pred</code>。</li>
+<li>计算已训练分类器在测试数据集上的准确率。通过调用<code>accuracy_score(test_labels, test_labels_pred)</code>方法，计算分类器在测试数据集上的预测准确率，将其赋值给变量<code>acc</code>。</li>
+<li>创建并显示测试数据集的混淆矩阵。通过调用<code>confusion_matrix(test_labels, test_labels_pred)</code>方法，得到测试数据集的混淆矩阵，然后使用<code>plt.matshow</code>等函数绘制混淆矩阵的可视化。</li>
+</ol>
+<p>具体代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nMaking Predictions on Test Input Images...&#x27;</span>)</span><br><span class="line">test_labels_pred = clf.predict(test_img)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nCalculating Accuracy of Trained Classifier on Test Data... &#x27;</span>)</span><br><span class="line">acc = accuracy_score(test_labels,test_labels_pred)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\n Creating Confusion Matrix for Test Data...&#x27;</span>)</span><br><span class="line">conf_mat_test = confusion_matrix(test_labels,test_labels_pred)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nPredicted Labels for Test Images: &#x27;</span>,test_labels_pred)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nAccuracy of Classifier on Test Images: &#x27;</span>,acc)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nConfusion Matrix for Test Data: \n&#x27;</span>,conf_mat_test)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Plot Confusion Matrix for Test Data</span></span><br><span class="line">plt.matshow(conf_mat_test)</span><br><span class="line">plt.title(<span class="string">&#x27;Confusion Matrix for Test Data&#x27;</span>)</span><br><span class="line">plt.colorbar()</span><br><span class="line">plt.ylabel(<span class="string">&#x27;True label&#x27;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;Predicted label&#x27;</span>)</span><br><span class="line">plt.axis(<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>输出结果：<br><code>Predicted Labels for Test Images:  [7 2 1 ... 4 5 6]</code><br><code>Accuracy of Classifier on Test Images:  0.9677</code><br>Confusion Matrix for Test Data:<br> [[ 968    0    0    0    0    2    5    1    4    0]<br> [   0 1124    3    3    1    2    1    0    1    0]<br> [   6    0  996    6    3    0    4   10    7    0]<br> [   0    0   11  971    0    8    0    9    7    4]<br> [   1    0    3    0  950    0    4    1    2   21]<br> [   4    0    1    9    3  859    5    2    8    1]<br> [   5    3    0    0    4    3  940    0    3    0]<br> [   1    3   17    1    0    0    0  991    3   12]<br> [   7    0    5   10    6    6    4    3  918   15]<br> [   6    6    3   13   10    3    1    3    4  960]]</p>
+<p><img src="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306042013047.png" alt="image.png"></p>
+<h5 id="3-5-显示预测结果"><a href="#3-5-显示预测结果" class="headerlink" title="3.5 显示预测结果"></a>3.5 显示预测结果</h5><p>随机选择一些测试图像，将原始标签和预测标签显示在图像上，以便观察分类器的预测效果。</p>
+<p>具体代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Show the Test Images with Original and Predicted Labels</span></span><br><span class="line">a = np.random.randint(<span class="number">1</span>,<span class="number">50</span>,<span class="number">20</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> a:</span><br><span class="line">	two_d = (np.reshape(test_img[i], (<span class="number">28</span>, <span class="number">28</span>)) * <span class="number">255</span>).astype(np.uint8)</span><br><span class="line">	plt.title(<span class="string">&#x27;Original Label: &#123;0&#125;  Predicted Label: &#123;1&#125;&#x27;</span>.<span class="built_in">format</span>(test_labels[i],test_labels_pred[i]))</span><br><span class="line">	plt.imshow(two_d, interpolation=<span class="string">&#x27;nearest&#x27;</span>,cmap=<span class="string">&#x27;gray&#x27;</span>)</span><br><span class="line">	plt.show()</span><br></pre></td></tr></table></figure>
+<p>输出效果如下：<br><img src="https://images-1314484890.cos.ap-nanjing.myqcloud.com/Obsidian/202306042013211.png" alt="image.png"></p>
+<h1 id="四、实验结果"><a href="#四、实验结果" class="headerlink" title="四、实验结果"></a>四、实验结果</h1><p>分别使用了K Nearest Neighbors、SVM以及Random Forest Classifier模型实现了手写体的识别。<br>对比他们在测试集上的表现：<br>K Nearest Neighbors：<code>Accuracy of Classifier on Test Images:  0.9675</code><br>SVM：<code>Accuracy of Classifier on Test Images:  0.9783</code><br>Random Forest Classifier：<code>Accuracy of Classifier on Test Images:  0.9677</code><br>由上述数据得出，SVM模型在手写体识别的测试集上具有最高的准确率。</p>
+<h1 id="五、实验分析"><a href="#五、实验分析" class="headerlink" title="五、实验分析"></a>五、实验分析</h1><p>此次实验，在三个模型上进行了手写体识别的准确率的评估，但在模型考察上较为单一，往后可以考虑用更多评价指标来对模型进行评估，以此获得更加全面的模型报告。</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/2023/06/d3cad4e9c8fb.html" title="" target="_blank" rel="external">http://example.com/2023/06/d3cad4e9c8fb.html</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/limingqian17" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/limingqian17" target="_blank"><span class="text-dark">安xy</span><small class="ml-1x">安_blog</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2023/06/5879215f93d2.html" title="(no title)"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2023/06/60d9fd126048.html" title="(no title)"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/limingqian17" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+
+
+
+
+
+
+</body>
+</html>
