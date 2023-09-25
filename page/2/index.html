@@ -505,7 +505,11 @@
 <p>Cloneable是一个标记接口，不包含任何方法，唯一作用是允许在类型查询中使用instanceof,没有实现这个接口，会抛出检查型异常<br>super.clone()继承的是Object中的clone()方法<br>如果被克隆对象除了基本类型有引用类型，则对该字段也应该实现clone</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> A <span class="title function_">clone</span><span class="params">()</span> <span class="keyword">throws</span> CloneNotSupportedException&#123;</span><br><span class="line">	<span class="type">A</span> <span class="variable">cloned</span> <span class="operator">=</span> (A) supe.clone();</span><br><span class="line">	cloned.stu=(Student) stu.clone();</span><br><span class="line">	<span class="keyword">return</span> cloned;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h2><h1 id="类的高级特性"><a href="#类的高级特性" class="headerlink" title="类的高级特性"></a>类的高级特性</h1><ul>
+<h2 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h2><p>景，你也可以理解为扩展版的Consumer，接口定义如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Function</span>&lt;T, R&gt; &#123;</span><br><span class="line">    R <span class="title function_">apply</span><span class="params">(T t)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>通过</p>
+<h1 id="类的高级特性"><a href="#类的高级特性" class="headerlink" title="类的高级特性"></a>类的高级特性</h1><ul>
 <li>package 包名</li>
 <li>import static 静态成员&#x2F;&#x2F;后可直接使用该成员方法</li>
 <li>final常量需用大写字母并且加下划线进行连接 VALUE_1</li>
